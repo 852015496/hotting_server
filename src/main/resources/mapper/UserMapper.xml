@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="valve_id" jdbcType="INTEGER" property="valveId" />
+    <result column="plot_id" jdbcType="INTEGER" property="plotId" />
+    <result column="hot_id" jdbcType="INTEGER" property="hotId" />
+    <result column="concent_id" jdbcType="INTEGER" property="concnetId" />
+    <result column="socket_id" jdbcType="INTEGER" property="socketId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_sex" jdbcType="INTEGER" property="userSex" />
+    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="user_contactWay" jdbcType="CHAR" property="userContactway" />
+    <result column="user_plot" jdbcType="VARCHAR" property="userPlot" />
+    <result column="user_building" jdbcType="CHAR" property="userBuilding" />
+    <result column="user_cell" jdbcType="CHAR" property="userCell" />
+    <result column="user_doorNum" jdbcType="CHAR" property="userDoornum" />
+    <result column="user_id_type" jdbcType="VARCHAR" property="userIdType" />
+    <result column="user_creatTime" jdbcType="TIMESTAMP" property="userCreattime" />
+    <result column="user_code" jdbcType="CHAR" property="userCode" />
+    <result column="user_operator" jdbcType="CHAR" property="userOperator" />
+    <result column="user_sum" jdbcType="BIGINT" property="userSum" />
+    <result column="userNum" jdbcType="INTEGER" property="userNum" />
+    <result column="pay_type" jdbcType="INTEGER" property="payType" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="user_area" jdbcType="CHAR" property="userArea" />
+    <result column="user_concent_code" jdbcType="CHAR" property="userConcentCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, valve_id, plot_id, hot_id, concent_id, socket_id, user_name, user_sex, user_address,
+    user_contactWay, user_plot, user_building, user_cell, user_doorNum, user_id_type, 
+    user_creatTime, user_code, user_operator, user_sum, pay_type, user_type, user_area, 
+    user_concent_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.User">
+    insert into user (user_id, valve_id, plot_id, 
+      hot_id, concent_id, socket_id, user_name,
+      user_sex, user_address, user_contactWay, 
+      user_plot, user_building, user_cell, 
+      user_doorNum, user_id_type, user_creatTime, 
+      user_code, user_operator, user_sum, 
+      pay_type, user_type, user_area, 
+      user_concent_code)
+    values (#{userId,jdbcType=INTEGER}, #{valveId,jdbcType=INTEGER}, #{plotId,jdbcType=INTEGER}, 
+      #{hotId,jdbcType=INTEGER}, #{concentId,jdbcType=INTEGER}, #{socketId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
+      #{userSex,jdbcType=INTEGER}, #{userAddress,jdbcType=VARCHAR}, #{userContactway,jdbcType=CHAR}, 
+      #{userPlot,jdbcType=VARCHAR}, #{userBuilding,jdbcType=CHAR}, #{userCell,jdbcType=CHAR}, 
+      #{userDoornum,jdbcType=CHAR}, #{userIdType,jdbcType=VARCHAR}, #{userCreattime,jdbcType=TIMESTAMP}, 
+      #{userCode,jdbcType=CHAR}, #{userOperator,jdbcType=CHAR}, #{userSum,jdbcType=BIGINT}, 
+      #{payType,jdbcType=INTEGER}, #{userType,jdbcType=VARCHAR}, #{userArea,jdbcType=CHAR}, 
+      #{userConcentCode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="userId" parameterType="com.hetting.hottable.entity.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="valveId != null">
+        valve_id,
+      </if>
+      <if test="plotId != null">
+        plot_id,
+      </if>
+      <if test="hotId != null">
+        hot_id,
+      </if>
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="socketId != null">
+        socket_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userSex != null">
+        user_sex,
+      </if>
+      <if test="userAddress != null">
+        user_address,
+      </if>
+      <if test="userContactway != null">
+        user_contactWay,
+      </if>
+      <if test="userPlot != null">
+        user_plot,
+      </if>
+      <if test="userBuilding != null">
+        user_building,
+      </if>
+      <if test="userCell != null">
+        user_cell,
+      </if>
+      <if test="userDoornum != null">
+        user_doorNum,
+      </if>
+      <if test="userIdType != null">
+        user_id_type,
+      </if>
+      <if test="userCreattime != null">
+        user_creatTime,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="userOperator != null">
+        user_operator,
+      </if>
+      <if test="userSum != null">
+        user_sum,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="userArea != null">
+        user_area,
+      </if>
+      <if test="userConcentCode != null">
+        user_concent_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="valveId != null">
+        #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="plotId != null">
+        #{plotId,jdbcType=INTEGER},
+      </if>
+      <if test="hotId != null">
+        #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="socketId != null">
+        #{socketId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        #{userSex,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null">
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userContactway != null">
+        #{userContactway,jdbcType=CHAR},
+      </if>
+      <if test="userPlot != null">
+        #{userPlot,jdbcType=VARCHAR},
+      </if>
+      <if test="userBuilding != null">
+        #{userBuilding,jdbcType=CHAR},
+      </if>
+      <if test="userCell != null">
+        #{userCell,jdbcType=CHAR},
+      </if>
+      <if test="userDoornum != null">
+        #{userDoornum,jdbcType=CHAR},
+      </if>
+      <if test="userIdType != null">
+        #{userIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreattime != null">
+        #{userCreattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=CHAR},
+      </if>
+      <if test="userOperator != null">
+        #{userOperator,jdbcType=CHAR},
+      </if>
+      <if test="userSum != null">
+        #{userSum,jdbcType=BIGINT},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userArea != null">
+        #{userArea,jdbcType=CHAR},
+      </if>
+      <if test="userConcentCode != null">
+        #{userConcentCode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.User">
+    update user
+    <set>
+      <if test="valveId != null">
+        valve_id = #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="plotId != null">
+        plot_id = #{plotId,jdbcType=INTEGER},
+      </if>
+      <if test="hotId != null">
+        hot_id = #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="concentId != null">
+        concent_id = #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="socketId != null">
+        socket_id = #{socketId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null">
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userContactway != null">
+        user_contactWay = #{userContactway,jdbcType=CHAR},
+      </if>
+      <if test="userPlot != null">
+        user_plot = #{userPlot,jdbcType=VARCHAR},
+      </if>
+      <if test="userBuilding != null">
+        user_building = #{userBuilding,jdbcType=CHAR},
+      </if>
+      <if test="userCell != null">
+        user_cell = #{userCell,jdbcType=CHAR},
+      </if>
+      <if test="userDoornum != null">
+        user_doorNum = #{userDoornum,jdbcType=CHAR},
+      </if>
+      <if test="userIdType != null">
+        user_id_type = #{userIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreattime != null">
+        user_creatTime = #{userCreattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=CHAR},
+      </if>
+      <if test="userOperator != null">
+        user_operator = #{userOperator,jdbcType=CHAR},
+      </if>
+      <if test="userSum != null">
+        user_sum = #{userSum,jdbcType=BIGINT},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userArea != null">
+        user_area = #{userArea,jdbcType=CHAR},
+      </if>
+      <if test="userConcentCode != null">
+        user_concent_code = #{userConcentCode,jdbcType=CHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.User">
+    update user
+    set valve_id = #{valveId,jdbcType=INTEGER},
+      plot_id = #{plotId,jdbcType=INTEGER},
+      hot_id = #{hotId,jdbcType=INTEGER},
+      concent_id = #{concentId,jdbcType=INTEGER},
+      socket_id = #{socketId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=INTEGER},
+      user_address = #{userAddress,jdbcType=VARCHAR},
+      user_contactWay = #{userContactway,jdbcType=CHAR},
+      user_plot = #{userPlot,jdbcType=VARCHAR},
+      user_building = #{userBuilding,jdbcType=CHAR},
+      user_cell = #{userCell,jdbcType=CHAR},
+      user_doorNum = #{userDoornum,jdbcType=CHAR},
+      user_id_type = #{userIdType,jdbcType=VARCHAR},
+      user_creatTime = #{userCreattime,jdbcType=TIMESTAMP},
+      user_code = #{userCode,jdbcType=CHAR},
+      user_operator = #{userOperator,jdbcType=CHAR},
+      user_sum = #{userSum,jdbcType=BIGINT},
+      pay_type = #{payType,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=VARCHAR},
+      user_area = #{userArea,jdbcType=CHAR},
+      user_concent_code = #{userConcentCode,jdbcType=CHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteById" parameterType="java.util.List">
+    delete from
+     user where user_id = #{userId}
+  </delete>
+  <delete id="deleteByConcentId" parameterType="java.util.List">
+    delete from
+     user where concent_id = #{concentId}
+  </delete>
+  <select id="userSum" parameterType="com.hetting.hottable.entity.User" resultMap="BaseResultMap">
+    select count(*) as  userNum from user u left join plot_message pm on u.plot_id = pm.plot_id
+    <where>
+      <if test="plotAddress != '' and plotAddress != null">
+        and pm.plot_address = #{plotAddress}
+      </if>
+    </where>
+  </select>
+  <select id="userNumArea" parameterType="java.lang.String" resultType="java.lang.String">
+    select floor(sum(user_area)) as userArea from user
+  </select>
+  <update id="updateByAddress" parameterType="com.hetting.hottable.entity.Concent">
+    update user set plot_id = #{plotId} where concent_id = #{concentId}
+  </update>
+  <update id="updateByImportData" parameterType="com.hetting.hottable.entity.User">
+    update user
+    <set>
+      <if test="valveId != null">
+        valve_id = #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="plotId != null">
+        plot_id = #{plotId,jdbcType=INTEGER},
+      </if>
+      <if test="hotId != null">
+        hot_id = #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="concentId != null">
+        concent_id = #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="socketId != null">
+        socket_id = #{socketId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null">
+        user_sex = #{userSex,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null">
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="userContactway != null">
+        user_contactWay = #{userContactway,jdbcType=CHAR},
+      </if>
+      <if test="userPlot != null">
+        user_plot = #{userPlot,jdbcType=VARCHAR},
+      </if>
+      <if test="userBuilding != null">
+        user_building = #{userBuilding,jdbcType=CHAR},
+      </if>
+      <if test="userCell != null">
+        user_cell = #{userCell,jdbcType=CHAR},
+      </if>
+      <if test="userDoornum != null">
+        user_doorNum = #{userDoornum,jdbcType=CHAR},
+      </if>
+      <if test="userIdType != null">
+        user_id_type = #{userIdType,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreattime != null">
+        user_creatTime = #{userCreattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=CHAR},
+      </if>
+      <if test="userOperator != null">
+        user_operator = #{userOperator,jdbcType=CHAR},
+      </if>
+      <if test="userSum != null">
+        user_sum = #{userSum,jdbcType=BIGINT},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userArea != null">
+        user_area = #{userArea,jdbcType=CHAR},
+      </if>
+      <if test="userConcentCode != null">
+        user_concent_code = #{userConcentCode,jdbcType=CHAR},
+      </if>
+    </set>
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
+  <select id="selectUserBuilding" resultMap="BaseResultMap">
+    select user_building from user group by user_building
+  </select>
+  <select id="selectUserDoorNum" resultMap="BaseResultMap">
+    select user_doorNum from user group by user_doorNum
+  </select>
+  <select id="get" parameterType="com.hetting.hottable.entity.FacilityAllMessage" resultMap="BaseResultMap">
+    select * from user u left join hot h on u.hot_id = h.hot_id
+  </select>
+<!--  阀门表获取用户id和集中器id-->
+  <select id="selectUserIdAndConcentId" resultMap="BaseResultMap">
+    select user_id,concent_id from user
+  </select>
+</mapper>

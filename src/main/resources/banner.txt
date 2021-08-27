@@ -1,0 +1,14 @@
+${AnsiColor.BRIGHT_BLACK}$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░░░░░░░░░░░░░░░░░░░░░░░▄░░              $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░░░░░░░░▐█░░░░░░░░░░░▄▀▒▌░              $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░░░░░░░▐▀▒█░░░░░░░░▄▀▒▒▒▐               $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐               $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐                $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌               $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒               $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐              $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄              $$
+${AnsiColor.BRIGHT_BLACK}$$                                ░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒              $$
+${AnsiColor.BRIGHT_BLACK}$$                                ▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒              $$
+${AnsiColor.BRIGHT_BLACK}$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+${AnsiColor.BRIGHT_BLUE}Spring Boot: ${spring-boot.formatted-version}

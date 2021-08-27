@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.SocketMessageMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.SocketMessage">
+    <id column="socket_id" jdbcType="BIGINT" property="socketId" />
+    <result column="soc_socket_id" jdbcType="INTEGER" property="socSocketId" />
+    <result column="concentM_id" jdbcType="BIGINT" property="concentmId" />
+    <result column="last_date" jdbcType="TIMESTAMP" property="lastDate" />
+    <result column="data_temp" jdbcType="VARCHAR" property="dataTemp" />
+    <result column="load_time" jdbcType="TIMESTAMP" property="loadTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    socket_id, soc_socket_id, concentM_id, last_date, data_temp, load_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from socket_message
+    where socket_id = #{socketId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from socket_message
+    where socket_id = #{socketId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.SocketMessage">
+    insert into socket_message (socket_id, soc_socket_id, concentM_id, 
+      last_date, data_temp, load_time
+      )
+    values (#{socketId,jdbcType=BIGINT}, #{socSocketId,jdbcType=INTEGER}, #{concentmId,jdbcType=BIGINT}, 
+      #{lastDate,jdbcType=TIMESTAMP}, #{dataTemp,jdbcType=VARCHAR}, #{loadTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.SocketMessage">
+    insert into socket_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="socketId != null">
+        socket_id,
+      </if>
+      <if test="socSocketId != null">
+        soc_socket_id,
+      </if>
+      <if test="concentmId != null">
+        concentM_id,
+      </if>
+      <if test="lastDate != null">
+        last_date,
+      </if>
+      <if test="dataTemp != null">
+        data_temp,
+      </if>
+      <if test="loadTime != null">
+        load_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="socketId != null">
+        #{socketId,jdbcType=BIGINT},
+      </if>
+      <if test="socSocketId != null">
+        #{socSocketId,jdbcType=INTEGER},
+      </if>
+      <if test="concentmId != null">
+        #{concentmId,jdbcType=BIGINT},
+      </if>
+      <if test="lastDate != null">
+        #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataTemp != null">
+        #{dataTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="loadTime != null">
+        #{loadTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.SocketMessage">
+    update socket_message
+    <set>
+      <if test="socSocketId != null">
+        soc_socket_id = #{socSocketId,jdbcType=INTEGER},
+      </if>
+      <if test="concentmId != null">
+        concentM_id = #{concentmId,jdbcType=BIGINT},
+      </if>
+      <if test="lastDate != null">
+        last_date = #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataTemp != null">
+        data_temp = #{dataTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="loadTime != null">
+        load_time = #{loadTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where socket_id = #{socketId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.SocketMessage">
+    update socket_message
+    set soc_socket_id = #{socSocketId,jdbcType=INTEGER},
+      concentM_id = #{concentmId,jdbcType=BIGINT},
+      last_date = #{lastDate,jdbcType=TIMESTAMP},
+      data_temp = #{dataTemp,jdbcType=VARCHAR},
+      load_time = #{loadTime,jdbcType=TIMESTAMP}
+    where socket_id = #{socketId,jdbcType=BIGINT}
+  </update>
+</mapper>

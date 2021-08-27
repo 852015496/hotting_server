@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.PlotMessageMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.PlotMessage">
+    <id column="plot_id" jdbcType="INTEGER" property="plotId" />
+    <result column="plot_name" jdbcType="VARCHAR" property="plotName" />
+    <result column="plot_address" jdbcType="VARCHAR" property="plotAddress" />
+    <result column="address_code" jdbcType="CHAR" property="addressCode" />
+    <result column="plot_building" jdbcType="CHAR" property="plotBuilding" />
+    <result column="plot_creatHot_time" jdbcType="TIMESTAMP" property="plotCreathotTime" />
+    <result column="plot_endHot_time" jdbcType="TIMESTAMP" property="plotEndhotTime" />
+    <result column="gps_long" jdbcType="VARCHAR" property="gpsLong" />
+    <result column="gps_latitude" jdbcType="VARCHAR" property="gpsLatitude" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    plot_id, plot_name, plot_address, address_code, plot_building, plot_creatHot_time, 
+    plot_endHot_time, gps_long, gps_latitude,company_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from plot_message3
+    where plot_id = #{plotId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from plot_message
+    where plot_id = #{plotId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.PlotMessage">
+    insert into plot_message (plot_id, plot_name, plot_address, 
+      address_code, plot_building, plot_creatHot_time, 
+      plot_endHot_time, gps_long, gps_latitude,company_name
+      )
+    values (#{plotId,jdbcType=INTEGER}, #{plotName,jdbcType=VARCHAR}, #{plotAddress,jdbcType=VARCHAR}, 
+      #{addressCode,jdbcType=CHAR}, #{plotBuilding,jdbcType=CHAR}, #{plotCreathotTime,jdbcType=TIMESTAMP}, 
+      #{plotEndhotTime,jdbcType=TIMESTAMP}, #{gpsLong,jdbcType=VARCHAR}, #{gpsLatitude,jdbcType=VARCHAR},
+      #{companyName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.PlotMessage">
+    insert into plot_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="plotId != null">
+        plot_id,
+      </if>
+      <if test="plotName != null">
+        plot_name,
+      </if>
+      <if test="plotAddress != null">
+        plot_address,
+      </if>
+      <if test="addressCode != null">
+        address_code,
+      </if>
+      <if test="plotBuilding != null">
+        plot_building,
+      </if>
+      <if test="plotCreathotTime != null">
+        plot_creatHot_time,
+      </if>
+      <if test="plotEndhotTime != null">
+        plot_endHot_time,
+      </if>
+      <if test="gpsLong != null">
+        gps_long,
+      </if>
+      <if test="gpsLatitude != null">
+        gps_latitude,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="plotId != null">
+        #{plotId,jdbcType=INTEGER},
+      </if>
+      <if test="plotName != null">
+        #{plotName,jdbcType=VARCHAR},
+      </if>
+      <if test="plotAddress != null">
+        #{plotAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCode != null">
+        #{addressCode,jdbcType=CHAR},
+      </if>
+      <if test="plotBuilding != null">
+        #{plotBuilding,jdbcType=CHAR},
+      </if>
+      <if test="plotCreathotTime != null">
+        #{plotCreathotTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plotEndhotTime != null">
+        #{plotEndhotTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gpsLong != null">
+        #{gpsLong,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsLatitude != null">
+        #{gpsLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.PlotMessage">
+    update plot_message
+    <set>
+      <if test="plotName != null">
+        plot_name = #{plotName,jdbcType=VARCHAR},
+      </if>
+      <if test="plotAddress != null">
+        plot_address = #{plotAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="addressCode != null">
+        address_code = #{addressCode,jdbcType=CHAR},
+      </if>
+      <if test="plotBuilding != null">
+        plot_building = #{plotBuilding,jdbcType=CHAR},
+      </if>
+      <if test="plotCreathotTime != null">
+        plot_creatHot_time = #{plotCreathotTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plotEndhotTime != null">
+        plot_endHot_time = #{plotEndhotTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gpsLong != null">
+        gps_long = #{gpsLong,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsLatitude != null">
+        gps_latitude = #{gpsLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where plot_id = #{plotId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.PlotMessage">
+    update plot_message
+    set plot_name = #{plotName,jdbcType=VARCHAR},
+      plot_address = #{plotAddress,jdbcType=VARCHAR},
+      address_code = #{addressCode,jdbcType=CHAR},
+      plot_building = #{plotBuilding,jdbcType=CHAR},
+      plot_creatHot_time = #{plotCreathotTime,jdbcType=TIMESTAMP},
+      plot_endHot_time = #{plotEndhotTime,jdbcType=TIMESTAMP},
+      gps_long = #{gpsLong,jdbcType=VARCHAR},
+      gps_latitude = #{gpsLatitude,jdbcType=VARCHAR}
+      company_name = #{companyName,jdbcType=VARCHAR}
+    where plot_id = #{plotId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+       select * from plot_message
+  </select>
+
+  <select id="listPlotMessage" parameterType="com.hetting.hottable.entity.PlotMessage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from plot_message
+    <if test="plotAddress != null">
+      WHERE plot_address like CONCAT('%',#{plotAddress,jdbcType=VARCHAR},'%')
+    </if>
+  </select>
+
+  <delete id="deleteAllMessage" parameterType="java.util.List">
+    delete from
+    plot_message  where plot_id in
+    <foreach item="id" collection="id" open="(" close=")" separator="," >
+      #{id}
+    </foreach>
+  </delete>
+
+  <select id="plotList" resultMap="BaseResultMap">
+    select pm.plot_address,pm.plot_id,pm.gps_long,pm.gps_latitude from plot_message pm group by pm.plot_address
+  </select>
+
+  <select id="selectByCreatBy" resultType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from
+    plot_message
+  </select>
+
+  <select id="plotName" resultType="java.lang.String">
+    select plot_address from plot_message
+  </select>
+
+</mapper>

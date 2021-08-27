@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.ValveMessageMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.ValveMessage">
+    <id column="valve_mid" jdbcType="BIGINT" property="valveMid" />
+    <result column="valve_id" jdbcType="INTEGER" property="valveId" />
+    <result column="concent_mid" jdbcType="BIGINT" property="concentMid" />
+    <result column="valve_work_mode" jdbcType="INTEGER" property="valveWorkMode" />
+    <result column="valve_open" jdbcType="VARCHAR" property="valveOpen" />
+    <result column="valve_open_min" jdbcType="VARCHAR" property="valveOpenMin" />
+    <result column="valve_open_max" jdbcType="VARCHAR" property="valveOpenMax" />
+    <result column="valve_antirustTmo" jdbcType="VARCHAR" property="valveAntirusttmo" />
+    <result column="testInterjust" jdbcType="VARCHAR" property="testinterjust" />
+    <result column="test_pycle" jdbcType="VARCHAR" property="testPycle" />
+    <result column="temp_adjust" jdbcType="VARCHAR" property="tempAdjust" />
+    <result column="low_var" jdbcType="VARCHAR" property="lowVar" />
+    <result column="high_var" jdbcType="VARCHAR" property="highVar" />
+    <result column="set_temp" jdbcType="VARCHAR" property="setTemp" />
+    <result column="set_power" jdbcType="VARCHAR" property="setPower" />
+    <result column="set_flux" jdbcType="VARCHAR" property="setFlux" />
+    <result column="valve_updateDate" jdbcType="TIMESTAMP" property="valveUpdatedate" />
+    <result column="valve_flag" jdbcType="VARCHAR" property="valveFlag" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="avgTemp" jdbcType="VARCHAR" property="avgTemp" />
+    <result column="hotValveNum" jdbcType="VARCHAR" property="hotValveNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    valveM_id, valve_id, concentM_id, valve_work_mode, valve_open, valve_open_min, valve_open_max, 
+    valve_antirustTmo, testInterjust, test_pycle, temp_adjust, low_var, high_var, set_temp, 
+    set_power, set_flux, valve_updateDate, valve_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from valve_message
+    where valveM_id = #{valvemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from valve_message
+    where valveM_id = #{valvemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.ValveMessage">
+    insert into valve_message (valveM_id, valve_id, concentM_id, 
+      valve_work_mode, valve_open, valve_open_min, 
+      valve_open_max, valve_antirustTmo, testInterjust, 
+      test_pycle, temp_adjust, low_var, 
+      high_var, set_temp, set_power, 
+      set_flux, valve_updateDate, valve_flag
+      )
+    values (#{valvemId,jdbcType=BIGINT}, #{valveId,jdbcType=INTEGER}, #{concentmId,jdbcType=BIGINT}, 
+      #{valveWorkMode,jdbcType=INTEGER}, #{valveOpen,jdbcType=VARCHAR}, #{valveOpenMin,jdbcType=VARCHAR}, 
+      #{valveOpenMax,jdbcType=VARCHAR}, #{valveAntirusttmo,jdbcType=VARCHAR}, #{testinterjust,jdbcType=VARCHAR}, 
+      #{testPycle,jdbcType=VARCHAR}, #{tempAdjust,jdbcType=VARCHAR}, #{lowVar,jdbcType=VARCHAR}, 
+      #{highVar,jdbcType=VARCHAR}, #{setTemp,jdbcType=VARCHAR}, #{setPower,jdbcType=VARCHAR}, 
+      #{setFlux,jdbcType=VARCHAR}, #{valveUpdatedate,jdbcType=TIMESTAMP}, #{valveFlag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.ValveMessage">
+    insert into valve_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="valvemId != null">
+        valveM_id,
+      </if>
+      <if test="valveId != null">
+        valve_id,
+      </if>
+      <if test="concentmId != null">
+        concentM_id,
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode,
+      </if>
+      <if test="valveOpen != null">
+        valve_open,
+      </if>
+      <if test="valveOpenMin != null">
+        valve_open_min,
+      </if>
+      <if test="valveOpenMax != null">
+        valve_open_max,
+      </if>
+      <if test="valveAntirusttmo != null">
+        valve_antirustTmo,
+      </if>
+      <if test="testinterjust != null">
+        testInterjust,
+      </if>
+      <if test="testPycle != null">
+        test_pycle,
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust,
+      </if>
+      <if test="lowVar != null">
+        low_var,
+      </if>
+      <if test="highVar != null">
+        high_var,
+      </if>
+      <if test="setTemp != null">
+        set_temp,
+      </if>
+      <if test="setPower != null">
+        set_power,
+      </if>
+      <if test="setFlux != null">
+        set_flux,
+      </if>
+      <if test="valveUpdatedate != null">
+        valve_updateDate,
+      </if>
+      <if test="valveFlag != null">
+        valve_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="valvemId != null">
+        #{valvemId,jdbcType=BIGINT},
+      </if>
+      <if test="valveId != null">
+        #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="concentmId != null">
+        #{concentmId,jdbcType=BIGINT},
+      </if>
+      <if test="valveWorkMode != null">
+        #{valveWorkMode,jdbcType=INTEGER},
+      </if>
+      <if test="valveOpen != null">
+        #{valveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="valveOpenMin != null">
+        #{valveOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="valveOpenMax != null">
+        #{valveOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAntirusttmo != null">
+        #{valveAntirusttmo,jdbcType=VARCHAR},
+      </if>
+      <if test="testinterjust != null">
+        #{testinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="testPycle != null">
+        #{testPycle,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lowVar != null">
+        #{lowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="highVar != null">
+        #{highVar,jdbcType=VARCHAR},
+      </if>
+      <if test="setTemp != null">
+        #{setTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="setFlux != null">
+        #{setFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="valveUpdatedate != null">
+        #{valveUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valveFlag != null">
+        #{valveFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.ValveMessage">
+    update valve_message
+    <set>
+      <if test="valveId != null">
+        valve_id = #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="concentmId != null">
+        concentM_id = #{concentmId,jdbcType=BIGINT},
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode = #{valveWorkMode,jdbcType=INTEGER},
+      </if>
+      <if test="valveOpen != null">
+        valve_open = #{valveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="valveOpenMin != null">
+        valve_open_min = #{valveOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="valveOpenMax != null">
+        valve_open_max = #{valveOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAntirusttmo != null">
+        valve_antirustTmo = #{valveAntirusttmo,jdbcType=VARCHAR},
+      </if>
+      <if test="testinterjust != null">
+        testInterjust = #{testinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="testPycle != null">
+        test_pycle = #{testPycle,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust = #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lowVar != null">
+        low_var = #{lowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="highVar != null">
+        high_var = #{highVar,jdbcType=VARCHAR},
+      </if>
+      <if test="setTemp != null">
+        set_temp = #{setTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        set_power = #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="setFlux != null">
+        set_flux = #{setFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="valveUpdatedate != null">
+        valve_updateDate = #{valveUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valveFlag != null">
+        valve_flag = #{valveFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where valveM_id = #{valvemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.ValveMessage">
+    update valve_message
+    set valve_id = #{valveId,jdbcType=INTEGER},
+      concentM_id = #{concentmId,jdbcType=BIGINT},
+      valve_work_mode = #{valveWorkMode,jdbcType=INTEGER},
+      valve_open = #{valveOpen,jdbcType=VARCHAR},
+      valve_open_min = #{valveOpenMin,jdbcType=VARCHAR},
+      valve_open_max = #{valveOpenMax,jdbcType=VARCHAR},
+      valve_antirustTmo = #{valveAntirusttmo,jdbcType=VARCHAR},
+      testInterjust = #{testinterjust,jdbcType=VARCHAR},
+      test_pycle = #{testPycle,jdbcType=VARCHAR},
+      temp_adjust = #{tempAdjust,jdbcType=VARCHAR},
+      low_var = #{lowVar,jdbcType=VARCHAR},
+      high_var = #{highVar,jdbcType=VARCHAR},
+      set_temp = #{setTemp,jdbcType=VARCHAR},
+      set_power = #{setPower,jdbcType=VARCHAR},
+      set_flux = #{setFlux,jdbcType=VARCHAR},
+      valve_updateDate = #{valveUpdatedate,jdbcType=TIMESTAMP},
+      valve_flag = #{valveFlag,jdbcType=VARCHAR}
+    where valveM_id = #{valvemId,jdbcType=BIGINT}
+  </update>
+  <select id="avgTemp" parameterType="java.lang.String" resultType="java.lang.String">
+    select cast(avg(valve_room_temp) as decimal(3,1))avgTemp from valve_message
+
+  </select>
+  <select id="hotAndValveNum" parameterType="java.lang.String" resultType="java.lang.String">
+    select count(v.valve_id) + count(h.hot_id) as hotValveNum from valve v
+    left join user u on v.user_id = u.user_id left join hot h on h.user_id = u.user_id
+  </select>
+
+  <select id="findListByJzqAndSpare14" parameterType="com.hetting.hottable.entity.ValveMessage" resultMap="BaseResultMap">
+    select * from valve_message
+  </select>
+
+  <insert id="saveMeterMessage" parameterType="com.hetting.hottable.entity.ValveMessage">
+    insert into valve_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="valveMid != null">
+        valveM_id,
+      </if>
+      <if test="valveId != null">
+        valve_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="concentMid != null">
+        concentM_id,
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode,
+      </if>
+      <if test="valveOpen != null">
+        valve_open,
+      </if>
+      <if test="valveOpenMin != null">
+        valve_open_min,
+      </if>
+      <if test="valveOpenMax != null">
+        valve_open_max,
+      </if>
+      <if test="valveAntirusttmo != null">
+        valve_antirustTmo,
+      </if>
+      <if test="testinterjust != null">
+        testInterjust,
+      </if>
+      <if test="testPycle != null">
+        test_pycle,
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust,
+      </if>
+      <if test="lowVar != null">
+        low_var,
+      </if>
+      <if test="highVar != null">
+        high_var,
+      </if>
+      <if test="setTemp != null">
+        set_temp,
+      </if>
+      <if test="setPower != null">
+        set_power,
+      </if>
+      <if test="setFlux != null">
+        set_flux,
+      </if>
+      <if test="valveUpdatedate != null">
+        valve_updateDate,
+      </if>
+      <if test="valveFlag != null">
+        valve_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="valveMid != null">
+        #{valveMid,jdbcType=BIGINT},
+      </if>
+      <if test="valveId != null">
+        #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="concentMid != null">
+        #{concentMid,jdbcType=BIGINT},
+      </if>
+      <if test="valveWorkMode != null">
+        #{valveWorkMode,jdbcType=INTEGER},
+      </if>
+      <if test="valveOpen != null">
+        #{valveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="valveOpenMin != null">
+        #{valveOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="valveOpenMax != null">
+        #{valveOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAntirusttmo != null">
+        #{valveAntirusttmo,jdbcType=VARCHAR},
+      </if>
+      <if test="testinterjust != null">
+        #{testinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="testPycle != null">
+        #{testPycle,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lowVar != null">
+        #{lowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="highVar != null">
+        #{highVar,jdbcType=VARCHAR},
+      </if>
+      <if test="setTemp != null">
+        #{setTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="setFlux != null">
+        #{setFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="valveUpdatedate != null">
+        #{valveUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valveFlag != null">
+        #{valveFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

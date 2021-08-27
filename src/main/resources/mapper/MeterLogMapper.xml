@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.MeterLogMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.MeterLog">
+    <id column="meter_id" jdbcType="BIGINT" property="meterId" />
+    <result column="meter_addr" jdbcType="VARCHAR" property="meterAddr" />
+    <result column="cold" jdbcType="VARCHAR" property="cold" />
+    <result column="hot" jdbcType="VARCHAR" property="hot" />
+    <result column="power" jdbcType="VARCHAR" property="power" />
+    <result column="flux" jdbcType="VARCHAR" property="flux" />
+    <result column="vol" jdbcType="VARCHAR" property="vol" />
+    <result column="intemp" jdbcType="VARCHAR" property="intemp" />
+    <result column="outtemp" jdbcType="VARCHAR" property="outtemp" />
+    <result column="worktime" jdbcType="VARCHAR" property="worktime" />
+    <result column="stat1" jdbcType="VARCHAR" property="stat1" />
+    <result column="star2" jdbcType="VARCHAR" property="star2" />
+    <result column="coldunit" jdbcType="VARCHAR" property="coldunit" />
+    <result column="hotunit" jdbcType="VARCHAR" property="hotunit" />
+    <result column="openRate" jdbcType="VARCHAR" property="openrate" />
+    <result column="stat" jdbcType="VARCHAR" property="stat" />
+    <result column="vintemp" jdbcType="VARCHAR" property="vintemp" />
+    <result column="vouttemp" jdbcType="VARCHAR" property="vouttemp" />
+    <result column="ralval" jdbcType="VARCHAR" property="ralval" />
+    <result column="opentime" jdbcType="VARCHAR" property="opentime" />
+    <result column="share_heat" jdbcType="VARCHAR" property="shareHeat" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    meter_id, meter_addr, cold, hot, power, flux, vol, intemp, outtemp, worktime, stat1, 
+    star2, coldunit, hotunit, openRate, stat, vintemp, vouttemp, ralval, opentime, share_heat
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from meter_log
+    where meter_id = #{meterId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from meter_log
+    where meter_id = #{meterId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.MeterLog">
+    insert into meter_log (meter_id, meter_addr, cold, 
+      hot, power, flux, vol, 
+      intemp, outtemp, worktime, 
+      stat1, star2, coldunit, 
+      hotunit, openRate, stat, 
+      vintemp, vouttemp, ralval, 
+      opentime, share_heat)
+    values (#{meterId,jdbcType=BIGINT}, #{meterAddr,jdbcType=VARCHAR}, #{cold,jdbcType=VARCHAR}, 
+      #{hot,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}, #{flux,jdbcType=VARCHAR}, #{vol,jdbcType=VARCHAR}, 
+      #{intemp,jdbcType=VARCHAR}, #{outtemp,jdbcType=VARCHAR}, #{worktime,jdbcType=VARCHAR}, 
+      #{stat1,jdbcType=VARCHAR}, #{star2,jdbcType=VARCHAR}, #{coldunit,jdbcType=VARCHAR}, 
+      #{hotunit,jdbcType=VARCHAR}, #{openrate,jdbcType=VARCHAR}, #{stat,jdbcType=VARCHAR}, 
+      #{vintemp,jdbcType=VARCHAR}, #{vouttemp,jdbcType=VARCHAR}, #{ralval,jdbcType=VARCHAR}, 
+      #{opentime,jdbcType=VARCHAR}, #{shareHeat,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.MeterLog">
+    insert into meter_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="meterId != null">
+        meter_id,
+      </if>
+      <if test="meterAddr != null">
+        meter_addr,
+      </if>
+      <if test="cold != null">
+        cold,
+      </if>
+      <if test="hot != null">
+        hot,
+      </if>
+      <if test="power != null">
+        power,
+      </if>
+      <if test="flux != null">
+        flux,
+      </if>
+      <if test="vol != null">
+        vol,
+      </if>
+      <if test="intemp != null">
+        intemp,
+      </if>
+      <if test="outtemp != null">
+        outtemp,
+      </if>
+      <if test="worktime != null">
+        worktime,
+      </if>
+      <if test="stat1 != null">
+        stat1,
+      </if>
+      <if test="star2 != null">
+        star2,
+      </if>
+      <if test="coldunit != null">
+        coldunit,
+      </if>
+      <if test="hotunit != null">
+        hotunit,
+      </if>
+      <if test="openrate != null">
+        openRate,
+      </if>
+      <if test="stat != null">
+        stat,
+      </if>
+      <if test="vintemp != null">
+        vintemp,
+      </if>
+      <if test="vouttemp != null">
+        vouttemp,
+      </if>
+      <if test="ralval != null">
+        ralval,
+      </if>
+      <if test="opentime != null">
+        opentime,
+      </if>
+      <if test="shareHeat != null">
+        share_heat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="meterId != null">
+        #{meterId,jdbcType=BIGINT},
+      </if>
+      <if test="meterAddr != null">
+        #{meterAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cold != null">
+        #{cold,jdbcType=VARCHAR},
+      </if>
+      <if test="hot != null">
+        #{hot,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="flux != null">
+        #{flux,jdbcType=VARCHAR},
+      </if>
+      <if test="vol != null">
+        #{vol,jdbcType=VARCHAR},
+      </if>
+      <if test="intemp != null">
+        #{intemp,jdbcType=VARCHAR},
+      </if>
+      <if test="outtemp != null">
+        #{outtemp,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null">
+        #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="stat1 != null">
+        #{stat1,jdbcType=VARCHAR},
+      </if>
+      <if test="star2 != null">
+        #{star2,jdbcType=VARCHAR},
+      </if>
+      <if test="coldunit != null">
+        #{coldunit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotunit != null">
+        #{hotunit,jdbcType=VARCHAR},
+      </if>
+      <if test="openrate != null">
+        #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="stat != null">
+        #{stat,jdbcType=VARCHAR},
+      </if>
+      <if test="vintemp != null">
+        #{vintemp,jdbcType=VARCHAR},
+      </if>
+      <if test="vouttemp != null">
+        #{vouttemp,jdbcType=VARCHAR},
+      </if>
+      <if test="ralval != null">
+        #{ralval,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null">
+        #{opentime,jdbcType=VARCHAR},
+      </if>
+      <if test="shareHeat != null">
+        #{shareHeat,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.MeterLog">
+    update meter_log
+    <set>
+      <if test="meterAddr != null">
+        meter_addr = #{meterAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="cold != null">
+        cold = #{cold,jdbcType=VARCHAR},
+      </if>
+      <if test="hot != null">
+        hot = #{hot,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="flux != null">
+        flux = #{flux,jdbcType=VARCHAR},
+      </if>
+      <if test="vol != null">
+        vol = #{vol,jdbcType=VARCHAR},
+      </if>
+      <if test="intemp != null">
+        intemp = #{intemp,jdbcType=VARCHAR},
+      </if>
+      <if test="outtemp != null">
+        outtemp = #{outtemp,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null">
+        worktime = #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="stat1 != null">
+        stat1 = #{stat1,jdbcType=VARCHAR},
+      </if>
+      <if test="star2 != null">
+        star2 = #{star2,jdbcType=VARCHAR},
+      </if>
+      <if test="coldunit != null">
+        coldunit = #{coldunit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotunit != null">
+        hotunit = #{hotunit,jdbcType=VARCHAR},
+      </if>
+      <if test="openrate != null">
+        openRate = #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="stat != null">
+        stat = #{stat,jdbcType=VARCHAR},
+      </if>
+      <if test="vintemp != null">
+        vintemp = #{vintemp,jdbcType=VARCHAR},
+      </if>
+      <if test="vouttemp != null">
+        vouttemp = #{vouttemp,jdbcType=VARCHAR},
+      </if>
+      <if test="ralval != null">
+        ralval = #{ralval,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null">
+        opentime = #{opentime,jdbcType=VARCHAR},
+      </if>
+      <if test="shareHeat != null">
+        share_heat = #{shareHeat,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where meter_id = #{meterId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.MeterLog">
+    update meter_log
+    set meter_addr = #{meterAddr,jdbcType=VARCHAR},
+      cold = #{cold,jdbcType=VARCHAR},
+      hot = #{hot,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR},
+      flux = #{flux,jdbcType=VARCHAR},
+      vol = #{vol,jdbcType=VARCHAR},
+      intemp = #{intemp,jdbcType=VARCHAR},
+      outtemp = #{outtemp,jdbcType=VARCHAR},
+      worktime = #{worktime,jdbcType=VARCHAR},
+      stat1 = #{stat1,jdbcType=VARCHAR},
+      star2 = #{star2,jdbcType=VARCHAR},
+      coldunit = #{coldunit,jdbcType=VARCHAR},
+      hotunit = #{hotunit,jdbcType=VARCHAR},
+      openRate = #{openrate,jdbcType=VARCHAR},
+      stat = #{stat,jdbcType=VARCHAR},
+      vintemp = #{vintemp,jdbcType=VARCHAR},
+      vouttemp = #{vouttemp,jdbcType=VARCHAR},
+      ralval = #{ralval,jdbcType=VARCHAR},
+      opentime = #{opentime,jdbcType=VARCHAR},
+      share_heat = #{shareHeat,jdbcType=VARCHAR}
+    where meter_id = #{meterId,jdbcType=BIGINT}
+  </update>
+  <insert id="saveMeterAddrs" parameterType="java.util.List">
+    insert into meter_log (meter_addr) values
+    <foreach collection="list" item="hotAddress" separator=",">
+      (#{hotAddress})
+    </foreach>
+  </insert>
+</mapper>

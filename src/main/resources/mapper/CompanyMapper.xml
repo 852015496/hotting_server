@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.Company">
+    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_duty" jdbcType="VARCHAR" property="companyDuty" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="company_comment" jdbcType="VARCHAR" property="companyComment" />
+  </resultMap>
+  <resultMap id="BaseResultCompanyVO" type="com.hetting.hottable.entity.CompanyVO">
+    <id column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="plot_id" jdbcType="INTEGER" property="plotId" />
+    <result column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="user_role" jdbcType="VARCHAR" property="userRole" />
+    <result column="company_comment" jdbcType="VARCHAR" property="companyComment" />
+    <result column="admin_userName" jdbcType="VARCHAR" property="adminUserName" />
+    <result column="admin_postbox" jdbcType="VARCHAR" property="adminPostbox" />
+    <result column="admin_voip" jdbcType="VARCHAR" property="adminVoip" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="adminPhone" />
+    <result column="login_whether" jdbcType="VARCHAR" property="loginWhether" />
+    <result column="admin_pass" jdbcType="VARCHAR" property="adminPass" />
+    <result column="creat_date" jdbcType="TIMESTAMP" property="creatDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company_id, plot_id, company_name, company_address, company_voip, company_phone, 
+    company_comment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.Company">
+    insert into company (company_id, plot_id, company_name, 
+      company_address, company_voip, company_phone, 
+      company_comment)
+    values (#{companyId,jdbcType=INTEGER}, #{plotId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
+      #{companyAddress,jdbcType=VARCHAR},
+      #{companyComment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="companyId" parameterType="com.hetting.hottable.entity.CompanyVO">
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="plotId != null">
+        plot_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="userRole != null">
+        user_role,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="companyComment != null">
+        company_comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="plotId != null">
+        #{plotId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="userRole != null">
+        #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyComment != null">
+        #{companyComment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.Company">
+    update company
+    <set>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDuty != null">
+        company_duty = #{companyDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="companyComment != null">
+        company_comment = #{companyComment,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.Company">
+    update company
+    set plot_id = #{plotId,jdbcType=INTEGER},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      company_comment = #{companyComment,jdbcType=VARCHAR}
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <select id="companyList" parameterType="com.hetting.hottable.entity.CompanyVO" resultMap="BaseResultCompanyVO">
+    select * from admin_table ad left join company c on c.company_id = ad.company_id
+  </select>
+  <delete id="deleteByCompanyId" parameterType="java.lang.Integer">
+      delete company,admin_table from company left join admin_table on company.company_id = admin_table.company_id where company.company_id = #{companyId}
+  </delete>
+  <delete id="deleteAllCompanyId" parameterType="java.util.List">
+      delete company,admin_table from company left join admin_table on company.company_id = admin_table.company_id
+      where company.company_id in
+      <foreach item="id" collection="id" open="(" close=")" separator=",">
+        #{id}
+      </foreach>
+  </delete>
+  <select id="companyDutyList" parameterType="com.hetting.hottable.entity.Company" resultMap="BaseResultMap">
+    select * from company
+  </select>
+</mapper>

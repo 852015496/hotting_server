@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.HotMessageMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.HotMessage">
+    <id column="hot_mid" jdbcType="BIGINT" property="hotMid" />
+    <result column="hot_id" jdbcType="INTEGER" property="hotId" />
+    <result column="concent_Mid" jdbcType="BIGINT" property="concentMid" />
+    <result column="cooling" jdbcType="VARCHAR" property="cooling" />
+    <result column="hotting" jdbcType="VARCHAR" property="hotting" />
+    <result column="vol" jdbcType="VARCHAR" property="vol" />
+    <result column="worktime" jdbcType="VARCHAR" property="worktime" />
+    <result column="flow_time" jdbcType="VARCHAR" property="flowTime" />
+    <result column="power" jdbcType="VARCHAR" property="power" />
+    <result column="sumflow" jdbcType="VARCHAR" property="sumflow" />
+    <result column="hot_entrance" jdbcType="VARCHAR" property="hotEntrance" />
+    <result column="hot_exit" jdbcType="VARCHAR" property="hotExit" />
+    <result column="hot_status_name" jdbcType="VARCHAR" property="hotStatusName" />
+    <result column="hot_unusual_name" jdbcType="VARCHAR" property="hotUnusualName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hot_id, hot_hot_id, concentM_id, cooling, hotting, vol, worktime, flow_time, power, 
+    sumflow, hot_entrance, hot_exit,hot_status_name,hot_unusual_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hot_message
+    where hot_id = #{hotId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hot_message
+    where hot_id = #{hotId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.HotMessage">
+    insert into hot_message (hot_id, hot_hot_id, concentM_id, 
+      cooling, hotting, vol, 
+      worktime, flow_time, power, 
+      sumflow, hot_entrance, hot_exit,hot_status_name,hot_unusual_name,
+      )
+    values (#{hotId,jdbcType=BIGINT}, #{hotHotId,jdbcType=BIGINT}, #{concentmId,jdbcType=BIGINT}, 
+      #{cooling,jdbcType=VARCHAR}, #{hotting,jdbcType=VARCHAR}, #{vol,jdbcType=VARCHAR}, 
+      #{worktime,jdbcType=VARCHAR}, #{flowTime,jdbcType=VARCHAR}, #{power,jdbcType=VARCHAR}, 
+      #{sumflow,jdbcType=VARCHAR}, #{hotEntrance,jdbcType=VARCHAR}, #{hotExit,jdbcType=VARCHAR},
+      #{hotStatusName,jdbcType=VARCHAR}, #{hotUnusualName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.HotMessage">
+    insert into hot_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotId != null">
+        hot_id,
+      </if>
+      <if test="hotHotId != null">
+        hot_hot_id,
+      </if>
+      <if test="concentmId != null">
+        concentM_id,
+      </if>
+      <if test="cooling != null">
+        cooling,
+      </if>
+      <if test="hotting != null">
+        hotting,
+      </if>
+      <if test="vol != null">
+        vol,
+      </if>
+      <if test="worktime != null">
+        worktime,
+      </if>
+      <if test="flowTime != null">
+        flow_time,
+      </if>
+      <if test="power != null">
+        power,
+      </if>
+      <if test="sumflow != null">
+        sumflow,
+      </if>
+      <if test="hotEntrance != null">
+        hot_entrance,
+      </if>
+      <if test="hotExit != null">
+        hot_exit,
+      </if>
+      <if test="hotStatusName != null">
+        hot_status_name,
+      </if>
+      <if test="hotUnusualName != null">
+        hot_unusual_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotId != null">
+        #{hotId,jdbcType=BIGINT},
+      </if>
+      <if test="hotHotId != null">
+        #{hotHotId,jdbcType=BIGINT},
+      </if>
+      <if test="concentmId != null">
+        #{concentmId,jdbcType=BIGINT},
+      </if>
+      <if test="cooling != null">
+        #{cooling,jdbcType=VARCHAR},
+      </if>
+      <if test="hotting != null">
+        #{hotting,jdbcType=VARCHAR},
+      </if>
+      <if test="vol != null">
+        #{vol,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null">
+        #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="flowTime != null">
+        #{flowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="sumflow != null">
+        #{sumflow,jdbcType=VARCHAR},
+      </if>
+      <if test="hotEntrance != null">
+        #{hotEntrance,jdbcType=VARCHAR},
+      </if>
+      <if test="hotExit != null">
+        #{hotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotStatusName != null">
+        #{hotStatusName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotUnusualName != null">
+        #{hotUnusualName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.HotMessage">
+    update hot_message
+    <set>
+      <if test="hotHotId != null">
+        hot_hot_id = #{hotHotId,jdbcType=BIGINT},
+      </if>
+      <if test="concentmId != null">
+        concentM_id = #{concentmId,jdbcType=BIGINT},
+      </if>
+      <if test="cooling != null">
+        cooling = #{cooling,jdbcType=VARCHAR},
+      </if>
+      <if test="hotting != null">
+        hotting = #{hotting,jdbcType=VARCHAR},
+      </if>
+      <if test="vol != null">
+        vol = #{vol,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null">
+        worktime = #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="flowTime != null">
+        flow_time = #{flowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        power = #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="sumflow != null">
+        sumflow = #{sumflow,jdbcType=VARCHAR},
+      </if>
+      <if test="hotEntrance != null">
+        hot_entrance = #{hotEntrance,jdbcType=VARCHAR},
+      </if>
+      <if test="hotExit != null">
+        hot_exit = #{hotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotExit != null">
+        hot_exit = #{hotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotExit != null">
+        hot_exit = #{hotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotStatusName != null">
+        hot_status_name = #{hotStatusName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotUnusualName != null">
+        hot_unusual_name = #{hotStatusName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hot_id = #{hotId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.HotMessage">
+    update hot_message
+    set hot_hot_id = #{hotHotId,jdbcType=BIGINT},
+      concentM_id = #{concentmId,jdbcType=BIGINT},
+      cooling = #{cooling,jdbcType=VARCHAR},
+      hotting = #{hotting,jdbcType=VARCHAR},
+      vol = #{vol,jdbcType=VARCHAR},
+      worktime = #{worktime,jdbcType=VARCHAR},
+      flow_time = #{flowTime,jdbcType=VARCHAR},
+      power = #{power,jdbcType=VARCHAR},
+      sumflow = #{sumflow,jdbcType=VARCHAR},
+      hot_entrance = #{hotEntrance,jdbcType=VARCHAR},
+      hot_exit = #{hotExit,jdbcType=VARCHAR},
+      hot_status_name = #{hotStatusName,jdbcType=VARCHAR},
+      hot_unusual_name = #{hotUnusualName,jdbcType=VARCHAR},
+    where hot_id = #{hotId,jdbcType=BIGINT}
+  </update>
+  <select id="hotSum" parameterType="java.lang.String" resultType="java.lang.String">
+    select sum(hotting) as hotting from hot_message
+  </select>
+  <select id="hotSingleSum" parameterType="java.lang.String" resultType="java.lang.String">
+  select cast((x.hotting/count(*)) as decimal(8,2)) hotting from user u,
+  (select a.hotting from hot h,
+  (select sum(hotting) as hotting from hot_message) a where hot_id = h.hot_id group by hotting) x
+  </select>
+
+  <select id="findListByJzq" parameterType="com.hetting.hottable.entity.HotMessage" resultMap="BaseResultMap">
+    select * from hot_message
+  </select>
+
+  <insert id="saveHotMessage" parameterType="com.hetting.hottable.entity.HotMessage">
+    insert into hot_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotMid != null">
+        hot_mid,
+      </if>
+      <if test="hotId != null">
+        hot_id,
+      </if>
+      <if test="concentMid != null">
+        concent_Mid,
+      </if>
+      <if test="cooling != null">
+        cooling,
+      </if>
+      <if test="hotting != null">
+        hotting,
+      </if>
+      <if test="vol != null">
+        vol,
+      </if>
+      <if test="worktime != null">
+        worktime,
+      </if>
+      <if test="flowTime != null">
+        flow_time,
+      </if>
+      <if test="power != null">
+        power,
+      </if>
+      <if test="sumflow != null">
+        sumflow,
+      </if>
+      <if test="hotEntrance != null">
+        hot_entrance,
+      </if>
+      <if test="hotExit != null">
+        hot_exit,
+      </if>
+      <if test="hotStatusName != null">
+        hot_status_name,
+      </if>
+      <if test="hotUnusualName != null">
+        hot_unusual_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotMid != null">
+        #{hotMid,jdbcType=BIGINT},
+      </if>
+      <if test="hotId != null">
+        #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="concentMid != null">
+        #{concentMid,jdbcType=BIGINT},
+      </if>
+      <if test="cooling != null">
+        #{cooling,jdbcType=VARCHAR},
+      </if>
+      <if test="hotting != null">
+        #{hotting,jdbcType=VARCHAR},
+      </if>
+      <if test="vol != null">
+        #{vol,jdbcType=VARCHAR},
+      </if>
+      <if test="worktime != null">
+        #{worktime,jdbcType=VARCHAR},
+      </if>
+      <if test="flowTime != null">
+        #{flowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=VARCHAR},
+      </if>
+      <if test="sumflow != null">
+        #{sumflow,jdbcType=VARCHAR},
+      </if>
+      <if test="hotEntrance != null">
+        #{hotEntrance,jdbcType=VARCHAR},
+      </if>
+      <if test="hotExit != null">
+        #{hotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotStatusName != null">
+        #{hotStatusName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotUnusualName != null">
+        #{hotUnusualName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

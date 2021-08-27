@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.ConcentMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.Concent">
+    <id column="concent_id" jdbcType="INTEGER" property="concentId" />
+    <id column="plot_id" jdbcType="INTEGER" property="plotId" />
+    <result column="hot_id" jdbcType="INTEGER" property="hotId" />
+    <result column="socket_id" jdbcType="INTEGER" property="socketId" />
+    <result column="valve_id" jdbcType="INTEGER" property="valveId" />
+    <result column="concent_code" jdbcType="CHAR" property="concentCode" />
+    <result column="concent_num" jdbcType="BIGINT" property="concentNum" />
+    <result column="concent_address" jdbcType="VARCHAR" property="concentAddress" />
+    <result column="server_address1" jdbcType="VARCHAR" property="serverAddress1" />
+    <result column="server_address2" jdbcType="VARCHAR" property="serverAddress2" />
+    <result column="concent_type" jdbcType="VARCHAR" property="concentType" />
+    <result column="company_code" jdbcType="CHAR" property="companyCode" />
+    <result column="housing" jdbcType="CHAR" property="housing" />
+    <result column="cell" jdbcType="CHAR" property="cell" />
+    <result column="building" jdbcType="CHAR" property="building" />
+    <result column="roomNum" jdbcType="CHAR" property="roomnum" />
+    <result column="concent_status" jdbcType="INTEGER" property="concentStatus" />
+    <result column="concent_gap" jdbcType="CHAR" property="concentGap" />
+    <result column="last_short_out" jdbcType="CHAR" property="lastShortOut" />
+    <result column="last_communication_date" jdbcType="TIMESTAMP" property="lastCommunicationDate" />
+    <result column="materNum" jdbcType="VARCHAR" property="materNum" />
+    <result column="last_fault_mater" jdbcType="INTEGER" property="lastFaultMater" />
+    <result column="valveNum" jdbcType="VARCHAR" property="valveNum" />
+    <result column="last_fault_valve" jdbcType="INTEGER" property="lastFaultValve" />
+    <result column="phone_Id" jdbcType="VARCHAR" property="phoneId" />
+    <result column="concent_modal" jdbcType="VARCHAR" property="concentModal" />
+    <result column="professional" jdbcType="CHAR" property="professional" />
+    <result column="faultNum" jdbcType="VARCHAR" property="faultNum" />
+    <result column="normalNum" jdbcType="VARCHAR" property="normalNum" />
+    <result column="concentCount" jdbcType="INTEGER" property="concentCount" />
+    <result column="hotCount" jdbcType="INTEGER" property="hotCount" />
+    <result column="valveCount" jdbcType="INTEGER" property="valveCount" />
+    <result column="faultConcentCount" jdbcType="INTEGER" property="faultConcentCount" />
+    <result column="faultHotCount" jdbcType="INTEGER" property="faultHotCount" />
+    <result column="faultValveCount" jdbcType="INTEGER" property="faultValveCount" />
+    <result column="last_valve_room_temp" jdbcType="VARCHAR" property="lastValveRoomTemp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    concent_id, hot_id, socket_id, valve_id, concent_code, concent_num, concent_address,
+    server_address1, server_address2, concent_type, company_code, housing, cell, building,
+    roomNum, concent_status, concent_gap, last_short_out, last_communication_date, mater_num, last_fault_mater,
+    valve_num, last_fault_valve, phone_Id,concent_modal,professional
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from concent
+    where concent_id = #{concentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from concent
+    where concent_id = #{concentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.Concent">
+    insert into concent (concent_id, hot_id, socket_id,
+      valve_id, concent_code, concent_num,
+      concent_address, server_address1, server_address2,
+      concent_type, company_code, housing,
+      cell, building, roomNum, concent_status,
+      concent_gap, last_short_out, last_communication_date,
+      mater_num, last_fault_mater, valve_num,concent_modal
+      last_fault_valve, phone_Id,,professional)
+    values (#{concentId,jdbcType=INTEGER}, #{hotId,jdbcType=INTEGER}, #{socketId,jdbcType=INTEGER},
+      #{valveId,jdbcType=INTEGER}, #{concentCode,jdbcType=CHAR}, #{concentNum,jdbcType=BIGINT},
+      #{concentAddress,jdbcType=VARCHAR}, #{serverAddress1,jdbcType=VARCHAR}, #{serverAddress2,jdbcType=VARCHAR},
+      #{concentType,jdbcType=VARCHAR}, #{companyCode,jdbcType=CHAR}, #{housing,jdbcType=CHAR},
+      #{cell,jdbcType=CHAR}, #{building,jdbcType=CHAR}, #{roomnum,jdbcType=CHAR}, #{concentStatus,jdbcType=INTEGER},
+      #{concentGap,jdbcType=CHAR}, #{lastShortOut,jdbcType=CHAR}, #{lastCommunicationDate,jdbcType=TIMESTAMP},
+      #{materNum,jdbcType=INTEGER}, #{lastFaultMater,jdbcType=INTEGER}, #{valveNum,jdbcType=INTEGER},
+      #{lastFaultValve,jdbcType=INTEGER}, #{phoneId,jdbcType=VARCHAR},#{concentModal,jdbcType=CHAR},
+      #{professional,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="concentId"  parameterType="com.hetting.hottable.entity.Concent">
+    insert into concent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="plotId != null">
+        plot_id,
+      </if>
+      <if test="hotId != null">
+        hot_id,
+      </if>
+      <if test="socketId != null">
+        socket_id,
+      </if>
+      <if test="valveId != null">
+        valve_id,
+      </if>
+      <if test="concentCode != null">
+        concent_code,
+      </if>
+      <if test="concentNum != null">
+        concent_num,
+      </if>
+      <if test="concentAddress != null">
+        concent_address,
+      </if>
+      <if test="serverAddress1 != null">
+        server_address1,
+      </if>
+      <if test="serverAddress2 != null">
+        server_address2,
+      </if>
+      <if test="concentType != null">
+        concent_type,
+      </if>
+      <if test="companyCode != null">
+        company_code,
+      </if>
+      <if test="housing != null">
+        housing,
+      </if>
+      <if test="cell != null">
+        cell,
+      </if>
+      <if test="building != null">
+        building,
+      </if>
+      <if test="roomnum != null">
+        roomNum,
+      </if>
+      <if test="concentStatus != null">
+        concent_status,
+      </if>
+      <if test="concentGap != null">
+        concent_gap,
+      </if>
+      <if test="lastShortOut != null">
+        last_short_out,
+      </if>
+      <if test="lastCommunicationDate != null">
+        last_communication_date,
+      </if>
+      <if test="materNum != null">
+        mater_num,
+      </if>
+      <if test="lastFaultMater != null">
+        last_fault_mater,
+      </if>
+      <if test="valveNum != null">
+        valve_num,
+      </if>
+      <if test="lastFaultValve != null">
+        last_fault_valve,
+      </if>
+      <if test="phoneId != null">
+        phone_Id,
+      </if>
+      <if test="concentModal != null">
+        concent_modal,
+      </if>
+      <if test="professional != null">
+        professional,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="plotId != null">
+        #{plotId,jdbcType=INTEGER},
+      </if>
+      <if test="hotId != null">
+        #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="socketId != null">
+        #{socketId,jdbcType=INTEGER},
+      </if>
+      <if test="valveId != null">
+        #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="concentCode != null">
+        #{concentCode,jdbcType=CHAR},
+      </if>
+      <if test="concentNum != null">
+        #{concentNum,jdbcType=BIGINT},
+      </if>
+      <if test="concentAddress != null">
+        #{concentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="serverAddress1 != null">
+        #{serverAddress1,jdbcType=VARCHAR},
+      </if>
+      <if test="serverAddress2 != null">
+        #{serverAddress2,jdbcType=VARCHAR},
+      </if>
+      <if test="concentType != null">
+        #{concentType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=CHAR},
+      </if>
+      <if test="housing != null">
+        #{housing,jdbcType=CHAR},
+      </if>
+      <if test="cell != null">
+        #{cell,jdbcType=CHAR},
+      </if>
+      <if test="building != null">
+        #{building,jdbcType=CHAR},
+      </if>
+      <if test="roomnum != null">
+        #{roomnum,jdbcType=CHAR},
+      </if>
+      <if test="concentStatus != null">
+        #{concentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="concentGap != null">
+        #{concentGap,jdbcType=CHAR},
+      </if>
+      <if test="lastShortOut != null">
+        #{lastShortOut,jdbcType=CHAR},
+      </if>
+      <if test="lastCommunicationDate != null">
+        #{lastCommunicationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="materNum != null">
+        #{materNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastFaultMater != null">
+        #{lastFaultMater,jdbcType=INTEGER},
+      </if>
+      <if test="valveNum != null">
+        #{valveNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastFaultValve != null">
+        #{lastFaultValve,jdbcType=INTEGER},
+      </if>
+      <if test="phoneId != null">
+        #{phoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="concentModal != null">
+        #{concentModal,jdbcType=CHAR},
+      </if>
+      <if test="professional != null">
+        #{professional,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.Concent">
+    update concent
+    <set>
+      <if test="hotId != null">
+        hot_id = #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="socketId != null">
+        socket_id = #{socketId,jdbcType=INTEGER},
+      </if>
+      <if test="valveId != null">
+        valve_id = #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="concentCode != null">
+        concent_code = #{concentCode,jdbcType=CHAR},
+      </if>
+      <if test="concentNum != null">
+        concent_num = #{concentNum,jdbcType=BIGINT},
+      </if>
+      <if test="concentAddress != null">
+        concent_address = #{concentAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="serverAddress1 != null">
+        server_address1 = #{serverAddress1,jdbcType=VARCHAR},
+      </if>
+      <if test="serverAddress2 != null">
+        server_address2 = #{serverAddress2,jdbcType=VARCHAR},
+      </if>
+      <if test="concentType != null">
+        concent_type = #{concentType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        company_code = #{companyCode,jdbcType=CHAR},
+      </if>
+      <if test="housing != null">
+        housing = #{housing,jdbcType=CHAR},
+      </if>
+      <if test="cell != null">
+        cell = #{cell,jdbcType=CHAR},
+      </if>
+      <if test="building != null">
+        building = #{building,jdbcType=CHAR},
+      </if>
+      <if test="roomnum != null">
+        roomNum = #{roomnum,jdbcType=CHAR},
+      </if>
+      <if test="concentStatus != null">
+        concent_status = #{concentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="concentGap != null">
+        concent_gap = #{concentGap,jdbcType=CHAR},
+      </if>
+      <if test="lastShortOut != null">
+        last_short_out = #{lastShortOut,jdbcType=CHAR},
+      </if>
+      <if test="lastCommunicationDate != null">
+        last_communication_date = #{lastCommunicationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="materNum != null">
+        mater_num = #{materNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastFaultMater != null">
+        last_fault_mater = #{lastFaultMater,jdbcType=INTEGER},
+      </if>
+      <if test="valveNum != null">
+        valve_num = #{valveNum,jdbcType=INTEGER},
+      </if>
+      <if test="lastFaultValve != null">
+        last_fault_valve = #{lastFaultValve,jdbcType=INTEGER},
+      </if>
+      <if test="phoneId != null">
+        phone_Id = #{phoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="concentModal != null">
+        concent_modal =  #{concentModal,jdbcType=CHAR},
+      </if>
+      <if test="professional != null">
+        professional =  #{professional,jdbcType=CHAR},
+      </if>
+    </set>
+    where concent_id = #{concentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.Concent">
+    update concent
+    set hot_id = #{hotId,jdbcType=INTEGER},
+      socket_id = #{socketId,jdbcType=INTEGER},
+      valve_id = #{valveId,jdbcType=INTEGER},
+      concent_code = #{concentCode,jdbcType=CHAR},
+      concent_num = #{concentNum,jdbcType=BIGINT},
+      concent_address = #{concentAddress,jdbcType=VARCHAR},
+      server_address1 = #{serverAddress1,jdbcType=VARCHAR},
+      server_address2 = #{serverAddress2,jdbcType=VARCHAR},
+      concent_type = #{concentType,jdbcType=VARCHAR},
+      company_code = #{companyCode,jdbcType=CHAR},
+      housing = #{housing,jdbcType=CHAR},
+      cell = #{cell,jdbcType=CHAR},
+      building = #{building,jdbcType=CHAR},
+      roomNum = #{roomnum,jdbcType=CHAR},
+      concent_status = #{concentStatus,jdbcType=INTEGER},
+      concent_gap = #{concentGap,jdbcType=CHAR},
+      last_short_out = #{lastShortOut,jdbcType=CHAR},
+      last_communication_date = #{lastCommunicationDate,jdbcType=TIMESTAMP},
+      mater_num = #{materNum,jdbcType=INTEGER},
+      last_fault_mater = #{lastFaultMater,jdbcType=INTEGER},
+      valve_num = #{valveNum,jdbcType=INTEGER},
+      last_fault_valve = #{lastFaultValve,jdbcType=INTEGER},
+      phone_Id = #{phoneId,jdbcType=VARCHAR},
+      concent_modal = #{concentModal,jdbcType=CHAR}
+      professional = #{professional,jdbcType=CHAR}
+    where concent_id = #{concentId,jdbcType=INTEGER}
+  </update>
+
+  <select id="listConcent" parameterType="com.hetting.hottable.entity.Concent" resultMap="BaseResultMap">
+       <!--select
+       <include refid="Base_Column_List" />
+       from
+       concent-->
+    /*select c.*,(select count(h.hot_id) from hot h where h.concent_id = c.concent_id) as mater_num,
+     (select count(v.valve_id) from valve v where v.concent_id = c.concent_id) as valve_num
+    from concent c group by c.concent_id*/
+    select c.*,h.materNum, v.* from
+    concent c LEFT JOIN
+    (select concent_id, count(hot_id) as materNum
+    from hot
+    group by concent_id) h on c.concent_id = h.concent_id LEFT JOIN
+    (select concent_id, count(valve_id) as valveNum
+    from valve
+    group by concent_id) v on v.concent_id = c.concent_id
+    <where>
+      <if test="concentCode !='' and concentCode != null">
+        and c.concent_code like CONCAT('%',#{concentCode},'%')
+      </if>
+      <if test="housing !='' and housing != null">
+      and  c.housing like CONCAT('%',#{housing},'%')
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteAllConcent" parameterType="java.util.List">
+ /*   delete from
+    concent  where concent_id in*/
+    delete concent,user,hot, valve from concent left join user on concent.concent_id = user.concent_id left join hot on hot.concent_id = user.concent_id left join valve on valve.concent_id = hot.concent_id
+    where concent.concent_id in
+    <foreach item="id" collection="id" open="(" close=")" separator="," >
+      #{id}
+    </foreach>
+  </delete>
+
+  <delete id="deleteByConcentId" parameterType="java.lang.Integer">
+    delete from concent
+    where concent_id = #{concentId,jdbcType=INTEGER}
+  </delete>
+  <select id="concentTerm" parameterType="com.hetting.hottable.entity.Concent" resultMap="BaseResultMap">
+  select
+  *
+  from
+  concent
+  <where>
+    <if test="concentCode !='' and concentCode != null">
+      and concent_code = #{concentCode}
+    </if>
+    <if test="housing !='' and housing != null">
+      and housing = #{housing}
+    </if>
+  </where>
+  </select>
+
+  <select id="concentNum" parameterType="java.lang.String" resultType="java.lang.String">
+    select count(concent_id) as concentCount from concent;
+  </select>
+
+  <select id="faultNumber" resultType="java.lang.String">
+  select d.concentNum+d.hotNum+d.valveNum as falutNum from
+  (select count(*) as valveNum,b.concentNum,b.hotNum,b.concent_status,b.hot_status,valve_status from valve,
+  (select count(*) as hotNum,a.concentNum,a.concent_status,hot_status from hot,
+  (select count(*) as concentNum,concent_status from concent where concent_status != 0 )a
+  where hot_status != 0)b where valve_status != 0 and valve_status != 20)d
+  </select>
+
+  <select id="allNumberCount" parameterType="com.hetting.hottable.entity.Concent" resultMap="BaseResultMap">
+select x.concentCount,x.hotCount,x.valveCount,x.faultConcentCount,x.faultHotCount,x.faultValveCount from
+(select z.concentCount,z.faultConcentCount,z.hotCount,z.faultHotCount,count(*) as valveCount,sum(case when valve_status != 0 then 1  else 0 end ) as faultValveCount from valve v,
+(select a.concentCount,a.faultConcentCount,count(*) as hotCount,sum(case when hot_status != 0 then 1  else 0 end ) as faultHotCount from hot h,
+(select count(*) as concentCount,sum(case when concent_status != 0 then 1  else 0 end ) as faultConcentCount from concent )a where concent_id = h.concent_id)z)x
+  </select>
+
+  <select id="valveHotFault" parameterType="com.hetting.hottable.entity.Concent" resultMap="BaseResultMap">
+select (z.hotCount+z.valveCount) as normalNum ,(z.faultValveCount+z.faultHotCount) as faultNum from
+(select a.hotCount,a.faultHotCount,sum(case when valve_status = 0 then 1  else 0 end ) as valveCount,sum(case when valve_status != 0 and valve_status != 20 then 1  else 0 end ) as faultValveCount from valve v,
+(select sum(case when hot_status = 0 then 1  else 0 end ) as hotCount,sum(case when hot_status != 0 then 1  else 0 end ) as faultHotCount from hot h) a)z
+  </select>
+
+  <select id="concentNormalAndFault" parameterType="com.hetting.hottable.entity.Concent" resultMap="BaseResultMap">
+    select sum(case when concent_status = 1 then 1  else 0 end ) as concentCount,
+    sum(case when concent_status != 1 then 0  else 0 end ) as faultConcentCount from concent
+  </select>
+
+  <update id="updateByAddress" parameterType="com.hetting.hottable.entity.Concent">
+    update concent set plot_id = #{plotId} where housing = #{housing}
+  </update>
+
+  <!-- 导入Excel -->
+  <insert id="insertData" parameterType="list">
+    insert into user(id,name,password,remark) VALUES
+    <foreach collection="list" index="index" item="user" separator=",">
+      (#{user.id},#{user.name},#{user.password},#{user.remark})
+    </foreach>
+  </insert>
+
+  <!--根据导入集中器Code 查看集中器是否存在 -->
+  <select id="concentCodeInfoList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select concent_id from concent
+    <where>
+      <if test="concentCode != '' and concentCode != null ">
+        and concent_code = #{concentCode}
+      </if>
+    </where>
+  </select>
+
+  <select id="findConcentCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from concent
+    <where>
+      <if test="concentCode != '' and concentCode != null ">
+        and concent_code = #{concentCode}
+      </if>
+    </where>
+  </select>
+  <select id="findHistory" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    from concent
+    <where>
+      <if test="concentCode != '' and concentCode != null ">
+        and concent_code = #{concentCode}
+      </if>
+    </where>
+  </select>
+  <select id="finMetaData" parameterType="java.lang.String" resultType="java.lang.Object">
+    select
+    <include refid="Base_Column_List" />
+    from concent
+    <where>
+      <if test="concentCode != '' and concentCode != null ">
+        and concent_code = #{concentCode}
+      </if>
+    </where>
+  </select>
+
+
+  <!-- Send EMQ Message -->
+
+  <select id="sendConcentMessage" resultMap="BaseResultMap">
+    select * from concent
+  </select>
+</mapper>

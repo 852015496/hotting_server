@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.SupplierMaintainMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.SupplierMaintain">
+    <id column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="supplier_name" jdbcType="CHAR" property="supplierName" />
+    <result column="supplier_address" jdbcType="VARCHAR" property="supplierAddress" />
+    <result column="supplier_contact" jdbcType="VARCHAR" property="supplierContact" />
+    <result column="supplier_phone" jdbcType="VARCHAR" property="supplierPhone" />
+    <result column="dealer_name" jdbcType="VARCHAR" property="dealerName" />
+    <result column="dealer_address" jdbcType="VARCHAR" property="dealerAddress" />
+    <result column="dealer_contact" jdbcType="VARCHAR" property="dealerContact" />
+    <result column="dealer_phone" jdbcType="VARCHAR" property="dealerPhone" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    supplier_id, supplier_name, supplier_address, supplier_contact, supplier_phone, dealer_name, 
+    dealer_address, dealer_contact, dealer_phone, creat_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier_maintian
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supplier_maintian
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.SupplierMaintain">
+    insert into supplier_maintian (supplier_id, supplier_name, supplier_address, 
+      supplier_contact, supplier_phone, dealer_name, 
+      dealer_address, dealer_contact, dealer_phone, 
+      creat_time)
+    values (#{supplierId,jdbcType=INTEGER}, #{supplierName,jdbcType=CHAR}, #{supplierAddress,jdbcType=VARCHAR}, 
+      #{supplierContact,jdbcType=VARCHAR}, #{supplierPhone,jdbcType=VARCHAR}, #{dealerName,jdbcType=VARCHAR}, 
+      #{dealerAddress,jdbcType=VARCHAR}, #{dealerContact,jdbcType=VARCHAR}, #{dealerPhone,jdbcType=VARCHAR}, 
+      #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.SupplierMaintain">
+    insert into supplier_maintian
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="supplierName != null">
+        supplier_name,
+      </if>
+      <if test="supplierAddress != null">
+        supplier_address,
+      </if>
+      <if test="supplierContact != null">
+        supplier_contact,
+      </if>
+      <if test="supplierPhone != null">
+        supplier_phone,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address,
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact,
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="supplierName != null">
+        #{supplierName,jdbcType=CHAR},
+      </if>
+      <if test="supplierAddress != null">
+        #{supplierAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContact != null">
+        #{supplierContact,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPhone != null">
+        #{supplierPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        #{dealerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.SupplierMaintain">
+    update supplier_maintian
+    <set>
+      <if test="supplierName != null">
+        supplier_name = #{supplierName,jdbcType=CHAR},
+      </if>
+      <if test="supplierAddress != null">
+        supplier_address = #{supplierAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContact != null">
+        supplier_contact = #{supplierContact,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPhone != null">
+        supplier_phone = #{supplierPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address = #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact = #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone = #{dealerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.SupplierMaintain">
+    update supplier_maintian
+    set supplier_name = #{supplierName,jdbcType=CHAR},
+      supplier_address = #{supplierAddress,jdbcType=VARCHAR},
+      supplier_contact = #{supplierContact,jdbcType=VARCHAR},
+      supplier_phone = #{supplierPhone,jdbcType=VARCHAR},
+      dealer_name = #{dealerName,jdbcType=VARCHAR},
+      dealer_address = #{dealerAddress,jdbcType=VARCHAR},
+      dealer_contact = #{dealerContact,jdbcType=VARCHAR},
+      dealer_phone = #{dealerPhone,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+    where supplier_id = #{supplierId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllList" parameterType="com.hetting.hottable.entity.SupplierMaintain" resultMap="BaseResultMap">
+    select * from supplier_maintian
+    <where>
+      <if test="supplierName != '' and supplierName != null">
+        and supplier_name like concat ('%',#{supplierName},'%')
+      </if>
+      <if test="dealerName != '' and dealerName != null">
+        and dealer_name like concat('%', #{dealerName},'%')
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteAllBy" parameterType="java.util.List">
+    delete from supplier_maintian where supplier_id in
+    <foreach item="id" collection="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+
+  <select id="hotAndDealerName" parameterType="com.hetting.hottable.entity.SupplierMaintain" resultMap="BaseResultMap">
+    select supplier_name , dealer_name from supplier_maintian
+  </select>
+
+</mapper>

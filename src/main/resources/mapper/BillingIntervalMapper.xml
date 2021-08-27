@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.BillingIntervalMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.BillingInterval">
+    <id column="billing_id" jdbcType="INTEGER" property="billingId" />
+    <result column="hetting_name" jdbcType="VARCHAR" property="hettingName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="billing_state" jdbcType="VARCHAR" property="billingState" />
+    <result column="billing_zongDay" jdbcType="VARCHAR" property="billingZongDay" />
+    <result column="billing_whetherDay" jdbcType="VARCHAR" property="billingWhetherDay" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    billing_id, hetting_name, start_time, end_time, creat_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from billing_interval
+    where billing_id = #{billingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from billing_interval
+    where billing_id = #{billingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.BillingInterval">
+    insert into billing_interval (billing_id, hetting_name, start_time, 
+      end_time, creat_time)
+    values (#{billingId,jdbcType=INTEGER}, #{hettingName,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.BillingInterval">
+    insert into billing_interval
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="billingId != null">
+        billing_id,
+      </if>
+      <if test="hettingName != null">
+        hetting_name,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="billingId != null">
+        #{billingId,jdbcType=INTEGER},
+      </if>
+      <if test="hettingName != null">
+        #{hettingName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.BillingInterval">
+    update billing_interval
+    <set>
+      <if test="hettingName != null">
+        hetting_name = #{hettingName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where billing_id = #{billingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.BillingInterval">
+    update billing_interval
+    set hetting_name = #{hettingName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+    where billing_id = #{billingId,jdbcType=INTEGER}
+  </update>
+  <select id="queryList" parameterType="com.hetting.hottable.entity.BillingInterval" resultMap="BaseResultMap">
+    select * from billing_interval
+  </select>
+  <delete id="deleteByAll" parameterType="java.util.List">
+    delete from billing_interval where billing_id in
+    <foreach item="id" collection="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>

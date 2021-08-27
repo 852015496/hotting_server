@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.AlarmDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.AlarmDetails">
+    <id column="details_id" jdbcType="BIGINT" property="detailsId" />
+    <result column="alarm_id" jdbcType="INTEGER" property="alarmId" />
+    <result column="dispose_people" jdbcType="VARCHAR" property="disposePeople" />
+    <result column="dispose_condition" jdbcType="VARCHAR" property="disposeCondition" />
+    <result column="dispose_status" jdbcType="INTEGER" property="disposeStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    details_id, alarm_id, dispose_people, dispose_condition, dispose_status, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.hetting.hottable.entity.AlarmDetails" resultMap="BaseResultMap">
+    select * from alarm_details
+    <include refid="Base_Column_List" />
+    from alarm_details
+    where details_id = #{detailsId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from alarm_details
+    where details_id = #{detailsId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.AlarmDetails">
+    insert into alarm_details (details_id, alarm_id, dispose_people, 
+      dispose_condition, dispose_status, update_time
+      )
+    values (#{detailsId,jdbcType=BIGINT}, #{alarmId,jdbcType=INTEGER}, #{disposePeople,jdbcType=VARCHAR}, 
+      #{disposeCondition,jdbcType=VARCHAR}, #{disposeStatus,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.AlarmDetails">
+    insert into alarm_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailsId != null">
+        details_id,
+      </if>
+      <if test="alarmId != null">
+        alarm_id,
+      </if>
+      <if test="disposePeople != null">
+        dispose_people,
+      </if>
+      <if test="disposeCondition != null">
+        dispose_condition,
+      </if>
+      <if test="disposeStatus != null">
+        dispose_status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailsId != null">
+        #{detailsId,jdbcType=BIGINT},
+      </if>
+      <if test="alarmId != null">
+        #{alarmId,jdbcType=INTEGER},
+      </if>
+      <if test="disposePeople != null">
+        #{disposePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeCondition != null">
+        #{disposeCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeStatus != null">
+        #{disposeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.AlarmDetails">
+    update alarm_details
+    <set>
+      <if test="alarmId != null">
+        alarm_id = #{alarmId,jdbcType=INTEGER},
+      </if>
+      <if test="disposePeople != null">
+        dispose_people = #{disposePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeCondition != null">
+        dispose_condition = #{disposeCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeStatus != null">
+        dispose_status = #{disposeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where details_id = #{detailsId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.AlarmDetails">
+    update alarm_details
+    set alarm_id = #{alarmId,jdbcType=INTEGER},
+      dispose_people = #{disposePeople,jdbcType=VARCHAR},
+      dispose_condition = #{disposeCondition,jdbcType=VARCHAR},
+      dispose_status = #{disposeStatus,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where details_id = #{detailsId,jdbcType=BIGINT}
+  </update>
+  <select id="queryFacilityList" parameterType="com.hetting.hottable.entity.AlarmDetails" resultMap="BaseResultMap">
+    select * from alarm_details
+    <where>
+      <if test="alarmId != null">
+        alarm_id = #{alarmId}
+      </if>
+    </where>
+  </select>
+  <select id="queryAlarmId" parameterType="com.hetting.hottable.entity.AlarmDetails" resultMap="BaseResultMap">
+   select last_insert_id(alarm_id) as alarm_id from alarm;
+  </select>
+  <insert id="addAlarmIdAndCon" parameterType="com.hetting.hottable.entity.AlarmDetails">
+    insert into alarm_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alarmId != null">
+        alarm_id,
+      </if>
+      <if test="disposePeople != null">
+        dispose_people,
+      </if>
+      <if test="disposeCondition != null">
+        dispose_condition,
+      </if>
+      <if test="disposeStatus != null">
+        dispose_status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alarmId != null">
+        #{alarmId,jdbcType=INTEGER},
+      </if>
+      <if test="disposePeople != null">
+        #{disposePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeCondition != null">
+        #{disposeCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="disposeStatus != null">
+        #{disposeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

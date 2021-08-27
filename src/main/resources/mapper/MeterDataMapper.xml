@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.MeterDataMapper">
+    <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.MeterData">
+        <result column="concent_id" javaType="INTEGER" property="concentId"/>
+        <result column="concent_Mid" jdbcType="BIGINT" property="concentMid"/>
+        <result column="hot_Mid" jdbcType="BIGINT" property="hotMid"/>
+        <result column="hot_id" javaType="INTEGER" property="hotId"/>
+        <result column="valve_id" javaType="INTEGER" property="valveId"/>
+        <result column="valve_mid" jdbcType="BIGINT" property="valveMid"/>
+        <result column="user_id" javaType="INTEGER" property="userId"/>
+        <result column="concent_code" jdbcType="VARCHAR" property="concentCode"/>
+        <result column="housing" jdbcType="CHAR" property="housing" />
+        <result column="professional" jdbcType="CHAR" property="professional" />
+        <result column="hot_modal" jdbcType="VARCHAR" property="hotModal" />
+        <result column="hot_address" jdbcType="VARCHAR" property="hotAddress" />
+        <result column="cailber" jdbcType="VARCHAR" property="cailber" />
+        <result column="hot_status" jdbcType="CHAR" property="hotStatus" />
+        <result column="hotting" jdbcType="VARCHAR" property="hotting" />
+        <result column="vol" jdbcType="VARCHAR" property="vol" />
+        <result column="flow_time" jdbcType="VARCHAR" property="flowTime" />
+        <result column="meter_time" jdbcType="TIMESTAMP" property="meterTime" />
+        <result column="power" jdbcType="VARCHAR" property="power" />
+        <result column="hot_entrance" jdbcType="VARCHAR" property="hotEntrance" />
+        <result column="hot_exit" jdbcType="VARCHAR" property="hotExit" />
+        <result column="addup_time" jdbcType="VARCHAR" property="addupTime" />
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+        <result column="valve_status" jdbcType="CHAR" property="valveStatus" />
+        <result column="valve_address" jdbcType="VARCHAR" property="valveAddress" />
+        <result column="valve_modal" jdbcType="VARCHAR" property="valveModal" />
+        <result column="valve_room_temp" jdbcType="VARCHAR" property="valveRoomTemp" />
+        <result column="set_temp" jdbcType="VARCHAR" property="setTemp" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_building" jdbcType="CHAR" property="userBuilding" />
+        <result column="user_cell" jdbcType="CHAR" property="userCell" />
+        <result column="user_doorNum" jdbcType="CHAR" property="userDoorNum" />
+        <result column="user_area" jdbcType="CHAR" property="userArea" />
+    </resultMap>
+    <select id="materMessageList" parameterType="com.hetting.hottable.entity.MeterData" resultMap="BaseResultMap">
+        select c.*,u.*,h.*,v.*,hm.*,vm.*,cm.*,pm.* from concent c
+        left join user u on c.concent_id = u.concent_id left join plot_message pm on c.plot_id = pm.plot_id
+        left join hot h on u.user_id = h.user_id left join valve v on v.user_id = h.user_id
+        left join hot_message hm on h.hot_id = hm.hot_id left join valve_message vm on vm.concent_mid = hm.concent_mid
+        left join concent_message cm on cm.concent_mid = vm.concent_mid
+        <where>
+            <if test="concentCode != '' and concentCode != null ">
+                and c.concent_code like concat ('%',#{concentCode},'%')
+            </if>
+            <if test="housing !='' and housing != null ">
+                and c.housing = #{housing}
+            </if>
+            <if test="professional != '' and professional != null ">
+                and c.professional = #{professional}
+            </if>
+            <if test="hotStatus != '' and hotStatus != null ">
+                and h.hot_status = #{hotStatus}
+            </if>
+            <if test="hotAddress != '' and hotAddress != null ">
+                and h.hot_address like concat('%', #{hotAddress},'%')
+            </if>
+            <if test="valveAddress != '' and valveAddress != null ">
+                and v.valve_address like concat('%', #{valveAddress},'%')
+            </if>
+            <if test="userBuilding != '' and userBuilding != null ">
+                and u.user_building = #{userBuilding}
+            </if>
+            <if test="userCell != '' and userCell != null ">
+                and u.user_cell = #{userCell}
+            </if>
+            <if test="userDoorNum != '' and userDoorNum != null ">
+                and u.user_doorNum = #{userDoorNum}
+            </if>
+            <if test="valveStatus != '' and valveStatus != null ">
+                and v.valve_status = #{valveStatus}
+            </if>
+            <if test="valveModal != '' and valveModal != null ">
+                and v.valve_modal = #{valveModal}
+            </if>
+            <if test="min != '' and min != null">
+                and vm.valve_room_temp &gt;= #{min}
+            </if>
+            <if test="max !='' and max != null">
+                and vm.valve_room_temp &lt;= #{max}
+            </if>
+            <if test="startTime != null ">
+                and hm.meter_time  &gt;= #{startTime}
+            </if>
+            <if test="endTime != null ">
+                and hm.meter_time &lt;= #{endTime}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteByMeterDataMessage" parameterType="java.util.List">
+        delete concent_message,hot_message,valve_message from concent_message
+        left join hot_message on concent_message.concent_mid = hot_message.concent_mid
+        left join valve_message on valve_message.concent_mid = concent_message.concent_mid
+        where concent_message.concent_mid in
+--         delete user,hot,valve from user left join hot on `user`.user_id = hot.user_id left join valve on `user`.user_id = valve.user_id in
+        <foreach item="id" collection="id" open="(" close=")" separator="," >
+            #{id}
+        </foreach>
+    </delete>
+    <!--  根据集中器地址返回点名控阀要下发的信息配置-->
+    <select id="selectValveMessage" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from valve v left join concent c on v.concent_id = c.concent_id
+        <where>
+            <if test="concentCode != '' and concentCode != null">
+                and c.concent_code = #{concentCode}
+            </if>
+        </where>
+    </select>
+</mapper>

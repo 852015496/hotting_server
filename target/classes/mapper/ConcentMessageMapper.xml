@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.ConcentMessageMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.ConcentMessage">
+    <id column="concent_mid" jdbcType="BIGINT" property="concentMid" />
+    <result column="concent_id" jdbcType="INTEGER" property="concentId" />
+    <result column="concent_code" jdbcType="INTEGER" property="concentCode" />
+    <result column="concent_ip1" jdbcType="VARCHAR" property="concentIp1" />
+    <result column="concent_ip2" jdbcType="VARCHAR" property="concentIp2" />
+    <result column="concent_updateDate" jdbcType="TIMESTAMP" property="concentUpdatedate" />
+    <result column="work_time" jdbcType="VARCHAR" property="workTime" />
+    <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+    <result column="short_out" jdbcType="CHAR" property="shortOut" />
+    <result column="mater_num" jdbcType="INTEGER" property="materNum" />
+    <result column="fault_mater" jdbcType="INTEGER" property="faultMater" />
+    <result column="valve_num" jdbcType="INTEGER" property="valveNum" />
+    <result column="fault_valve" jdbcType="INTEGER" property="faultValve" />
+    <result column="phone_id" jdbcType="VARCHAR" property="phoneId" />
+    <result column="communication_date" jdbcType="TIMESTAMP" property="communicationDate" />
+    <result column="concent_professional_work" jdbcType="CHAR" property="concentProfessionalWork" />
+    <result column="concent_pant" jdbcType="CHAR" property="concentPant" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+  </resultMap>
+  <resultMap id="concentUserMap" type="com.hetting.hottable.entity.ConcentMessageVO">
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="hot_id" jdbcType="INTEGER" property="hotId" />
+    <result column="valve_id" jdbcType="INTEGER" property="valveId" />
+    <result column="concent_id" jdbcType="INTEGER" property="concentId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_area" jdbcType="VARCHAR" property="userArea" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="housing" jdbcType="VARCHAR" property="housing" />
+    <result column="user_building" jdbcType="VARCHAR" property="userBuilding" />
+    <result column="user_doorNum" jdbcType="CHAR" property="userDoornum" />
+    <result column="user_cell" jdbcType="VARCHAR" property="userCell" />
+    <result column="concent_code" jdbcType="VARCHAR" property="concentCode" />
+    <result column="hot_modal" jdbcType="VARCHAR" property="hotModal" />
+    <result column="hot_manu_code" jdbcType="INTEGER" property="hotManuCode" />
+    <result column="hot_aisle" jdbcType="INTEGER" property="hotAisle" />
+    <result column="hot_status" jdbcType="INTEGER" property="hotStatus" />
+    <result column="last_cooling" jdbcType="VARCHAR" property="lastCooling" />
+    <result column="last_hotting" jdbcType="VARCHAR" property="lastHotting" />
+    <result column="last_vol" jdbcType="VARCHAR" property="lastVol" />
+    <result column="last_flow_time" jdbcType="VARCHAR" property="lastFlowTime" />
+    <result column="last_power" jdbcType="VARCHAR" property="lastPower" />
+    <result column="last_sumflow" jdbcType="VARCHAR" property="lastSumflow" />
+    <result column="last_hot_entrance" jdbcType="VARCHAR" property="lastHotEntrance" />
+    <result column="last_hot_exit" jdbcType="VARCHAR" property="lastHotExit" />
+    <result column="valve_work_mode" jdbcType="VARCHAR" property="valveWorkMode" />
+    <result column="last_valve_open" jdbcType="VARCHAR" property="lastValveOpen" />
+    <result column="last_valve_room_temp" jdbcType="VARCHAR" property="lastValveRoomTemp" />
+    <result column="set_indoor_temp" jdbcType="VARCHAR" property="setIndoorTemp" />
+    <result column="valve_status" jdbcType="INTEGER" property="valveStatus" />
+    <result column="valve_modal" jdbcType="VARCHAR" property="valveModal" />
+    <result column="hot_address" jdbcType="VARCHAR" property="hotAddress" />
+    <result column="valve_address" jdbcType="VARCHAR" property="valveAddress"/>
+    <result column="concent_code" jdbcType="VARCHAR" property="concentCode" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="hot_manu_code" jdbcType="VARCHAR" property="hotManuCode" />
+    <result column="hot_aisle" jdbcType="CHAR" property="hotAisle" />
+    <result column="vender_code" jdbcType="CHAR" property="venderCode" />
+    <result column="valve_chn" jdbcType="VARCHAR" property="valveChn" />
+    <result column="hotVender_name" jdbcType="VARCHAR" property="hotVenderName" />
+    <result column="valveVender_name" jdbcType="VARCHAR" property="valveVenderName" />
+    <result column="opening" jdbcType="VARCHAR" property="opening" />
+    <result column="min_open" jdbcType="VARCHAR" property="minOpen" />
+    <result column="max_open" jdbcType="VARCHAR" property="maxOpen" />
+    <result column="temp_upper" jdbcType="VARCHAR" property="tempUpper" />
+    <result column="temp_lower" jdbcType="VARCHAR" property="tempLower" />
+    <result column="set_temp_value" jdbcType="VARCHAR" property="setTempValue" />
+    <result column="set_power" jdbcType="VARCHAR" property="setPower" />
+    <result column="set_flow" jdbcType="VARCHAR" property="setFlow" />
+    <result column="apportion_hot" jdbcType="VARCHAR" property="apportionHot" />
+    <result column="power_opening" jdbcType="VARCHAR" property="powerOpening" />
+    <result column="trim_closing" jdbcType="VARCHAR" property="trimClosing" />
+    <result column="rust_sport" jdbcType="VARCHAR" property="rustSport" />
+    <result column="temp_interval" jdbcType="VARCHAR" property="tempInterval" />
+    <result column="temp_adjust" jdbcType="VARCHAR" property="tempAdjust" />
+  </resultMap>
+  <resultMap id="plotMap" type="com.hetting.hottable.entity.PlotMessage">
+    <result column="plot_address" jdbcType="VARCHAR" property="plotAddrss" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    concentM_id, con_concent_id, concent_code, concent_ip1, concent_ip2, concent_updateDate,
+    work_time, last_time, short_out, mater_num, fault_mater, valve_num, fault_valve,
+    phone_id, communication_date,concent_professional_work,concent_pant
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from concent_message
+    where concentM_id = #{concentmId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from concent_message
+    where concentM_id = #{concentmId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.ConcentMessage">
+    insert into concent_message (concentM_id, con_concent_id, concent_code,
+      concent_ip1, concent_ip2, concent_updateDate,
+      work_time, last_time, short_out,
+      mater_num, fault_mater, valve_num,
+      fault_valve, phone_id, communication_date,concent_professional_work,concent_pant
+      )
+    values (#{concentmId,jdbcType=BIGINT}, #{conConcentId,jdbcType=INTEGER}, #{concentCode,jdbcType=INTEGER},
+      #{concentIp1,jdbcType=VARCHAR}, #{concentIp2,jdbcType=VARCHAR}, #{concentUpdatedate,jdbcType=TIMESTAMP},
+      #{workTime,jdbcType=VARCHAR}, #{lastTime,jdbcType=TIMESTAMP}, #{shortOut,jdbcType=CHAR},
+      #{materNum,jdbcType=INTEGER}, #{faultMater,jdbcType=INTEGER}, #{valveNum,jdbcType=INTEGER},
+      #{faultValve,jdbcType=INTEGER}, #{phoneId,jdbcType=VARCHAR}, #{communicationDate,jdbcType=TIMESTAMP},
+      #{concentProfessionalWorkjdbcType=CHAR},#{concentPant,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.ConcentMessage">
+    insert into concent_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="concentmId != null">
+        concentM_id,
+      </if>
+      <if test="conConcentId != null">
+        con_concent_id,
+      </if>
+      <if test="concentCode != null">
+        concent_code,
+      </if>
+      <if test="concentIp1 != null">
+        concent_ip1,
+      </if>
+      <if test="concentIp2 != null">
+        concent_ip2,
+      </if>
+      <if test="concentUpdatedate != null">
+        concent_updateDate,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+      <if test="lastTime != null">
+        last_time,
+      </if>
+      <if test="shortOut != null">
+        short_out,
+      </if>
+      <if test="materNum != null">
+        mater_num,
+      </if>
+      <if test="faultMater != null">
+        fault_mater,
+      </if>
+      <if test="valveNum != null">
+        valve_num,
+      </if>
+      <if test="faultValve != null">
+        fault_valve,
+      </if>
+      <if test="phoneId != null">
+        phone_id,
+      </if>
+      <if test="communicationDate != null">
+        communication_date,
+      </if>
+      <if test="concentProfessionalWork != null">
+        concent_professional_work,
+      </if>
+      <if test="concentPant != null">
+        concent_pant,
+      </if>
+      <if test="gprs != null">
+        gprs,
+      </if>
+      <if test="chaobiaofs != null">
+        chaobiaofs,
+      </if>
+      <if test="tongxunrq != null">
+        tongxunrq,
+      </if>
+      <if test="xiacitxrq != null">
+        xiacitxrq,
+      </if>
+      <if test="fuwuqdzxzrq != null">
+        fuwuqdzxzrq,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="concentmId != null">
+        #{concentmId,jdbcType=BIGINT},
+      </if>
+      <if test="conConcentId != null">
+        #{conConcentId,jdbcType=INTEGER},
+      </if>
+      <if test="concentCode != null">
+        #{concentCode,jdbcType=INTEGER},
+      </if>
+      <if test="concentIp1 != null">
+        #{concentIp1,jdbcType=VARCHAR},
+      </if>
+      <if test="concentIp2 != null">
+        #{concentIp2,jdbcType=VARCHAR},
+      </if>
+      <if test="concentUpdatedate != null">
+        #{concentUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shortOut != null">
+        #{shortOut,jdbcType=CHAR},
+      </if>
+      <if test="materNum != null">
+        #{materNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultMater != null">
+        #{faultMater,jdbcType=INTEGER},
+      </if>
+      <if test="valveNum != null">
+        #{valveNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultValve != null">
+        #{faultValve,jdbcType=INTEGER},
+      </if>
+      <if test="phoneId != null">
+        #{phoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="communicationDate != null">
+        #{communicationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="concentProfessionalWork != null">
+        #{concent_professional_work,jdbcType=CHAR},
+      </if>
+      <if test="concentPant != null">
+        #{concent_pant,jdbcType=CHAR},
+      </if>
+      <if test="gprs != null">
+        #{gprs,jdbcType=VARCHAR},
+      </if>
+      <if test="chaobiaofs != null">
+        #{chaobiaofs,jdbcType=VARCHAR},
+      </if>
+      <if test="tongxunrq != null">
+        #{tongxunrq,jdbcType=VARCHAR},
+      </if>
+      <if test="xiacitxrq != null">
+        #{xiacitxrq,jdbcType=VARCHAR},
+      </if>
+      <if test="fuwuqdzxzeq != null">
+        #{fuwuqdzxzrq,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{end_time,jdbcType=TIMESTAMP}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.ConcentMessage">
+    update concent_message
+    <set>
+      <if test="conConcentId != null">
+        con_concent_id = #{conConcentId,jdbcType=INTEGER},
+      </if>
+      <if test="concentCode != null">
+        concent_code = #{concentCode,jdbcType=INTEGER},
+      </if>
+      <if test="concentIp1 != null">
+        concent_ip1 = #{concentIp1,jdbcType=VARCHAR},
+      </if>
+      <if test="concentIp2 != null">
+        concent_ip2 = #{concentIp2,jdbcType=VARCHAR},
+      </if>
+      <if test="concentUpdatedate != null">
+        concent_updateDate = #{concentUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shortOut != null">
+        short_out = #{shortOut,jdbcType=CHAR},
+      </if>
+      <if test="materNum != null">
+        mater_num = #{materNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultMater != null">
+        fault_mater = #{faultMater,jdbcType=INTEGER},
+      </if>
+      <if test="valveNum != null">
+        valve_num = #{valveNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultValve != null">
+        fault_valve = #{faultValve,jdbcType=INTEGER},
+      </if>
+      <if test="phoneId != null">
+        phone_id = #{phoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="communicationDate != null">
+        communication_date = #{communicationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="concentProfessionalWork != null">
+        concent_professional_work = #{concentProfessionalWork,jdbcType=CHAR},
+      </if>
+      <if test="concentPant != null">
+        concent_pant = #{concentPant,jdbcType=CHAR},
+      </if>
+    </set>
+    where concentM_id = #{concentmId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.ConcentMessage">
+    update concent_message
+    set con_concent_id = #{conConcentId,jdbcType=INTEGER},
+      concent_code = #{concentCode,jdbcType=INTEGER},
+      concent_ip1 = #{concentIp1,jdbcType=VARCHAR},
+      concent_ip2 = #{concentIp2,jdbcType=VARCHAR},
+      concent_updateDate = #{concentUpdatedate,jdbcType=TIMESTAMP},
+      work_time = #{workTime,jdbcType=VARCHAR},
+      last_time = #{lastTime,jdbcType=TIMESTAMP},
+      short_out = #{shortOut,jdbcType=CHAR},
+      mater_num = #{materNum,jdbcType=INTEGER},
+      fault_mater = #{faultMater,jdbcType=INTEGER},
+      valve_num = #{valveNum,jdbcType=INTEGER},
+      fault_valve = #{faultValve,jdbcType=INTEGER},
+      phone_id = #{phoneId,jdbcType=VARCHAR},
+      communication_date = #{communicationDate,jdbcType=TIMESTAMP},
+      concent_professional_work = #{concentProfessionalWork,jdbcType=CHAR},
+      concent_pant = #{concentPant,jdbcType=CHAR}
+    where concentM_id = #{concentmId,jdbcType=BIGINT}
+  </update>
+  <select id="concentCodeInfoList" parameterType="com.hetting.hottable.entity.ConcentMessageVO" resultType="java.lang.Integer">
+    select c.*,u.*,h.*,v.*
+    from concent c join user u on c.concent_id = u.concent_id join hot h on h.user_id = u.user_id join valve v on v.user_id = u.user_id
+    <where>
+    <if test="concentCode !='' and concentCode != null">
+      and c.concent_code = #{concentCode}
+    </if>
+    </where>
+  </select>
+
+  <select id="concentUserList" parameterType="com.hetting.hottable.entity.ConcentMessageVO" resultMap="concentUserMap">
+    select c.*,u.*,h.*,v.*
+    from concent c join user u on c.concent_id = u.concent_id join hot h on h.user_id = u.user_id join valve v on v.user_id = u.user_id
+    <where>
+      <if test="concentId !='' and concentId != null">
+       and c.concent_id = #{concentId}
+      </if>
+      <if test="hotAddress !='' and hotAddress != null">
+       and h.hot_address like CONCAT('%',#{hotAddress},'%')
+      </if>
+      <if test="valveAddress !='' and valveAddress != null">
+       and v.valve_address like CONCAT('%',#{valveAddress},'%')
+      </if>
+    </where>
+  </select>
+  <delete id="deleteById" parameterType="java.util.List">
+    delete from
+     user where user_id = #{userId}
+  </delete>
+  <delete id="deleteAll" parameterType="java.util.List">
+    delete user, hot ,valve  from user left join hot on `user`.user_id = hot.user_id left join valve on valve.user_id = `user`.user_id
+    where user.user_id in
+    <foreach item="id" collection="id" open="(" close=")" separator="," >
+      #{id}
+    </foreach>
+  </delete>
+  <select id="select" parameterType="java.lang.Integer" resultMap="concentUserMap">
+     select c.*,u.*,h.*,v.*
+    from concent c join user u on c.concent_id = u.concent_id join hot h on h.user_id = u.user_id join valve v on v.user_id = u.user_id
+    <where>
+      <if test="housing !='' and housing != null">
+        and c.housing = #{housing}
+      </if>
+      <if test="concentCode !='' and concentCode != null ">
+        and c.concentCode = #{concentCode}
+      </if>
+    </where>
+  </select>
+
+  <select id="exportUserMessage" parameterType="com.hetting.hottable.entity.ConcentMessageVO" resultMap="concentUserMap">
+    select c.*,u.*,h.*,v.*
+    from concent c join user u on c.concent_id = u.concent_id join hot h on h.user_id = u.user_id join valve v on v.user_id = u.user_id
+    <where>
+      <if test="concentId !='' and concentId != null">
+        and c.concent_id = #{concentId}
+      </if>
+      <if test="hotAddress !='' and hotAddress != null">
+        and h.hot_address like CONCAT('%',#{hotAddress},'%')
+      </if>
+      <if test="valveAddress !='' and valveAddress != null">
+        and v.valve_address like CONCAT('%',#{valveAddress},'%')
+      </if>
+    </where>
+  </select>
+
+  <select id="findList" parameterType="com.hetting.hottable.entity.ConcentMessageVO" resultMap="BaseResultMap">
+    select * from concent_message
+    <where>
+      <if test="concentCode != '' and concentCode != null">
+        and concent_code = #{concentCode,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <update id="updateRunStatus" parameterType="com.hetting.hottable.entity.FacilityAllMessage">
+    update concent_message
+    <set>
+      <if test="conConcentId != null">
+        con_concent_id = #{conConcentId,jdbcType=INTEGER},
+      </if>
+      <if test="concentCode != null">
+        concent_code = #{concentCode,jdbcType=INTEGER},
+      </if>
+      <if test="concentIp1 != null">
+        concent_ip1 = #{concentIp1,jdbcType=VARCHAR},
+      </if>
+      <if test="concentIp2 != null">
+        concent_ip2 = #{concentIp2,jdbcType=VARCHAR},
+      </if>
+      <if test="concentUpdatedate != null">
+        concent_updateDate = #{concentUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workTime != null">
+        work_time = #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shortOut != null">
+        short_out = #{shortOut,jdbcType=CHAR},
+      </if>
+      <if test="materNum != null">
+        mater_num = #{materNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultMater != null">
+        fault_mater = #{faultMater,jdbcType=INTEGER},
+      </if>
+      <if test="valveNum != null">
+        valve_num = #{valveNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultValve != null">
+        fault_valve = #{faultValve,jdbcType=INTEGER},
+      </if>
+      <if test="phoneId != null">
+        phone_id = #{phoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="communicationDate != null">
+        communication_date = #{communicationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="concentProfessionalWork != null">
+        concent_professional_work = #{concentProfessionalWork,jdbcType=CHAR},
+      </if>
+      <if test="concentPant != null">
+        concent_pant = #{concentPant,jdbcType=CHAR},
+      </if>
+    </set>
+    where concentM_id = #{concentmId,jdbcType=BIGINT}
+  </update>
+  <insert id="saveConcentMessage" parameterType="com.hetting.hottable.entity.Concent">
+    insert into concent_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="concentMid != null">
+        concent_Mid,
+      </if>
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="concentCode != null">
+        concent_code,
+      </if>
+      <if test="concentIp1 != null">
+        concent_ip1,
+      </if>
+      <if test="concentIp2 != null">
+        concent_ip2,
+      </if>
+      <if test="concentUpdatedate != null">
+        concent_updateDate,
+      </if>
+      <if test="workTime != null">
+        work_time,
+      </if>
+      <if test="lastTime != null">
+        last_time,
+      </if>
+      <if test="shortOut != null">
+        short_out,
+      </if>
+      <if test="materNum != null">
+        mater_num,
+      </if>
+      <if test="faultMater != null">
+        fault_mater,
+      </if>
+      <if test="valveNum != null">
+        valve_num,
+      </if>
+      <if test="faultValve != null">
+        fault_valve,
+      </if>
+      <if test="phoneId != null">
+        phone_id,
+      </if>
+      <if test="communicationDate != null">
+        communication_date,
+      </if>
+      <if test="concentProfessionalWork != null">
+        concent_professional_work,
+      </if>
+      <if test="concentPant != null">
+        concent_pant,
+      </if>
+      <if test="gprs != null">
+        gprs,
+      </if>
+      <if test="chaobiaofs != null">
+        chaobiaofs,
+      </if>
+      <if test="tongxunrq != null">
+        tongxunrq,
+      </if>
+      <if test="xiacitxrq != null">
+        xiacitxrq,
+      </if>
+      <if test="fuwuqdzxzrq != null">
+        fuwuqdzxzrq,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="concentMid != null">
+        #{concentMid,jdbcType=BIGINT},
+      </if>
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="concentCode != null">
+        #{concentCode,jdbcType=INTEGER},
+      </if>
+      <if test="concentIp1 != null">
+        #{concentIp1,jdbcType=VARCHAR},
+      </if>
+      <if test="concentIp2 != null">
+        #{concentIp2,jdbcType=VARCHAR},
+      </if>
+      <if test="concentUpdatedate != null">
+        #{concentUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workTime != null">
+        #{workTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shortOut != null">
+        #{shortOut,jdbcType=CHAR},
+      </if>
+      <if test="materNum != null">
+        #{materNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultMater != null">
+        #{faultMater,jdbcType=INTEGER},
+      </if>
+      <if test="valveNum != null">
+        #{valveNum,jdbcType=INTEGER},
+      </if>
+      <if test="faultValve != null">
+        #{faultValve,jdbcType=INTEGER},
+      </if>
+      <if test="phoneId != null">
+        #{phoneId,jdbcType=VARCHAR},
+      </if>
+      <if test="communicationDate != null">
+        #{communicationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="concentProfessionalWork != null">
+        #{concentProfessionalWork,jdbcType=CHAR},
+      </if>
+      <if test="concentPant != null">
+        #{concentPant,jdbcType=VARCHAR},
+      </if>
+      <if test="gprs != null">
+        #{gprs,jdbcType=VARCHAR},
+      </if>
+      <if test="chaobiaofs != null">
+        #{chaobiaofs,jdbcType=VARCHAR},
+      </if>
+      <if test="tongxunrq != null">
+        #{tongxunrq,jdbcType=VARCHAR},
+      </if>
+      <if test="xiacitxrq != null">
+        #{xiacitxrq,jdbcType=VARCHAR},
+      </if>
+      <if test="fuwuqdzxzrq != null">
+        #{fuwuqdzxzrq,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{end_time,jdbcType=TIMESTAMP}
+      </if>
+    </trim>
+  </insert>
+</mapper>

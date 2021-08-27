@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.HotTypeMaintainMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.HotTypeMaintain">
+    <id column="hotType_id" jdbcType="INTEGER" property="hotTypeId" />
+    <result column="hotVender_name" jdbcType="VARCHAR" property="hotVenderName" />
+    <result column="dealer_name" jdbcType="VARCHAR" property="dealerName" />
+    <result column="hot_type" jdbcType="VARCHAR" property="hotType" />
+    <result column="protocol_name" jdbcType="VARCHAR" property="protocolName" />
+    <result column="caliber" jdbcType="VARCHAR" property="caliber" />
+    <result column="max_power" jdbcType="VARCHAR" property="maxPower" />
+    <result column="max_flux" jdbcType="VARCHAR" property="maxFlux" />
+    <result column="max_provide_temp" jdbcType="VARCHAR" property="maxProvideTemp" />
+    <result column="max_return_temp" jdbcType="VARCHAR" property="maxReturnTemp" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="supplier_address" jdbcType="VARCHAR" property="supplierAddress" />
+    <result column="supplier_contact" jdbcType="VARCHAR" property="supplierContact" />
+    <result column="supplier_phone" jdbcType="VARCHAR" property="supplierPhone" />
+    <result column="dealer_address" jdbcType="VARCHAR" property="dealerAddress" />
+    <result column="dealer_contact" jdbcType="VARCHAR" property="dealerContact" />
+    <result column="dealer_phone" jdbcType="VARCHAR" property="dealerPhone" />
+    <result column="protocol_type" jdbcType="VARCHAR" property="protocolType" />
+    <result column="protocol_code" jdbcType="VARCHAR" property="protocolCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hotType_id, hotVender_name, dealer_name, hot_type, protocol_name, caliber, max_power,
+    max_flux, max_provide_temp, max_return_temp, creat_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hottype_maintian
+    where hotType_id = #{hotTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hottype_maintian
+    where hotType_id = #{hotTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.HotTypeMaintain">
+    insert into hottype_maintian (hotType_id, hotVender_name, dealer_name, 
+      hot_type, protocol_name, caliber,
+      max_power, max_flux, max_provide_temp, 
+      max_return_temp, creat_time)
+    values (#{hotTypeId,jdbcType=INTEGER}, #{hotVenderName,jdbcType=VARCHAR}, #{dealerName,jdbcType=VARCHAR}, 
+      #{hotType,jdbcType=VARCHAR}, #{protocolName,jdbcType=VARCHAR}, #{caliber,jdbcType=VARCHAR}, 
+      #{maxPower,jdbcType=VARCHAR}, #{maxFlux,jdbcType=VARCHAR}, #{maxProvideTemp,jdbcType=VARCHAR}, 
+      #{maxReturnTemp,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.HotTypeMaintain">
+    insert into hottype_maintian
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotTypeId != null">
+        hotType_id,
+      </if>
+      <if test="hotVenderName != null">
+        hotVender_name,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="hotType != null">
+        hot_type,
+      </if>
+      <if test="protocolName != null">
+        protocol_name,
+      </if>
+      <if test="caliber != null">
+        caliber,
+      </if>
+      <if test="maxPower != null">
+        max_power,
+      </if>
+      <if test="maxFlux != null">
+        max_flux,
+      </if>
+      <if test="maxProvideTemp != null">
+        max_provide_temp,
+      </if>
+      <if test="maxReturnTemp != null">
+        max_return_temp,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="supplierAddress != null">
+        supplier_address,
+      </if>
+      <if test="supplierContact != null">
+        supplier_contact,
+      </if>
+      <if test="supplierPhone != null">
+        supplier_phone,
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address,
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact,
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone,
+      </if>
+      <if test="protocolType != null">
+        protocol_type,
+      </if>
+      <if test="protocolCode != null">
+        protocol_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotTypeId != null">
+        #{hotTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="hotVenderName != null">
+        #{hotVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotType != null">
+        #{hotType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolName != null">
+        #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="caliber != null">
+        #{caliber,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPower != null">
+        #{maxPower,jdbcType=VARCHAR},
+      </if>
+      <if test="maxFlux != null">
+        #{maxFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="maxProvideTemp != null">
+        #{maxProvideTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="maxReturnTemp != null">
+        #{maxReturnTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supplierAddress != null">
+        #{supplierAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContact != null">
+        #{supplierContact,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPhone != null">
+        #{supplierPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        #{dealerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolType != null">
+        #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolCode != null">
+        #{protocolCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.HotTypeMaintain">
+    update hottype_maintian
+    <set>
+      <if test="hotVenderName != null">
+        hotVender_name = #{hotVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotType != null">
+        hot_type = #{hotType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolName != null">
+        protocol_name = #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="caliber != null">
+        caliber = #{caliber,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPower != null">
+        max_power = #{maxPower,jdbcType=VARCHAR},
+      </if>
+      <if test="maxFlux != null">
+        max_flux = #{maxFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="maxProvideTemp != null">
+        max_provide_temp = #{maxProvideTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="maxReturnTemp != null">
+        max_return_temp = #{maxReturnTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierAddress != null">
+        supplier_address = #{supplierAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContact != null">
+        supplier_contact = #{supplierContact,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPhone != null">
+        supplier_phone = #{supplierPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address = #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact = #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone = #{dealerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolType != null">
+        protocol_type = #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolCode != null">
+        protocol_code = #{protocolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where hotType_id = #{hotTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.HotTypeMaintain">
+    update hottype_maintian
+    set hotVender_name = #{hotVenderName,jdbcType=VARCHAR},
+      dealer_name = #{dealerName,jdbcType=VARCHAR},
+      hot_type = #{hotType,jdbcType=VARCHAR},
+      protocol_name = #{protocolName,jdbcType=VARCHAR},
+      caliber = #{caliber,jdbcType=VARCHAR},
+      max_power = #{maxPower,jdbcType=VARCHAR},
+      max_flux = #{maxFlux,jdbcType=VARCHAR},
+      max_provide_temp = #{maxProvideTemp,jdbcType=VARCHAR},
+      max_return_temp = #{maxReturnTemp,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+    where hotType_id = #{hotTypeId,jdbcType=INTEGER}
+  </update>
+  <select id="queryList" parameterType="com.hetting.hottable.entity.HotTypeMaintain" resultMap="BaseResultMap">
+    select * from hottype_maintian
+    <where>
+      <if test="hotVenderName != '' and hotVenderName != null">
+        and hotVender_name like concat('%', #{hotVenderName,jdbcType=VARCHAR},'%')
+      </if>
+      <if test="hotType != '' and hotType != null">
+        and hot_type like concat ('%', #{hotType,jdbcType=VARCHAR},'%')
+      </if>
+    </where>
+  </select>
+  <delete id="deleteAllById" parameterType="java.util.List">
+    delete from hottype_maintian where hottype_id in
+    <foreach collection="id" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+  <select id="finprotocolCode" parameterType="com.hetting.hottable.entity.HotTypeMaintain" resultMap="BaseResultMap">
+    select * from hottype_maintian where protocol_code = '${value}'
+  </select>
+  <insert id="save" parameterType="com.hetting.hottable.entity.FacilityAllMessage">
+    insert into hottype_maintian
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotTypeId != null">
+        hotType_id,
+      </if>
+      <if test="hotVenderName != null">
+        hotVender_name,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="hotType != null">
+        hot_type,
+      </if>
+      <if test="protocolName != null">
+        protocol_name,
+      </if>
+      <if test="caliber != null">
+        caliber,
+      </if>
+      <if test="maxPower != null">
+        max_power,
+      </if>
+      <if test="maxFlux != null">
+        max_flux,
+      </if>
+      <if test="maxProvideTemp != null">
+        max_provide_temp,
+      </if>
+      <if test="maxReturnTemp != null">
+        max_return_temp,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="supplierAddress != null">
+        supplier_address,
+      </if>
+      <if test="supplierContact != null">
+        supplier_contact,
+      </if>
+      <if test="supplierPhone != null">
+        supplier_phone,
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address,
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact,
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone,
+      </if>
+      <if test="protocolType != null">
+        protocol_type,
+      </if>
+      <if test="protocolCode != null">
+        protocol_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotTypeId != null">
+        #{hotTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="hotVenderName != null">
+        #{hotVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotType != null">
+        #{hotType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolName != null">
+        #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="caliber != null">
+        #{caliber,jdbcType=VARCHAR},
+      </if>
+      <if test="maxPower != null">
+        #{maxPower,jdbcType=VARCHAR},
+      </if>
+      <if test="maxFlux != null">
+        #{maxFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="maxProvideTemp != null">
+        #{maxProvideTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="maxReturnTemp != null">
+        #{maxReturnTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supplierAddress != null">
+        #{supplierAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContact != null">
+        #{supplierContact,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPhone != null">
+        #{supplierPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        #{dealerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolType != null">
+        #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolCode != null">
+        #{protocolCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

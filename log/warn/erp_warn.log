@@ -1,0 +1,2 @@
+[2020-04-05 11:27:40,957][WARN ][http-nio-8181-exec-2] Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. (DriverDataSource.java:70)
+[2020-04-05 12:39:20,710][WARN ][http-nio-8181-exec-2] Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. (DriverDataSource.java:70)

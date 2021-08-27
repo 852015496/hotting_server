@@ -1,0 +1,1712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.ValveMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.Valve">
+    <id column="valve_id" jdbcType="INTEGER" property="valveId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="concent_id" jdbcType="INTEGER" property="concentId" />
+    <result column="valve_code" jdbcType="VARCHAR" property="valveCode" />
+    <result column="callber" jdbcType="VARCHAR" property="callber" />
+    <result column="vender_code" jdbcType="CHAR" property="venderCode" />
+    <result column="vender_name" jdbcType="VARCHAR" property="venderName" />
+    <result column="valveVender_name" jdbcType="VARCHAR" property="valveVenderName" />
+    <result column="vender_contact" jdbcType="VARCHAR" property="venderContact" />
+    <result column="vemder_phone" jdbcType="CHAR" property="vemderPhone" />
+    <result column="dealer_name" jdbcType="VARCHAR" property="dealerName" />
+    <result column="dealer_address" jdbcType="VARCHAR" property="dealerAddress" />
+    <result column="dealer_contact" jdbcType="VARCHAR" property="dealerContact" />
+    <result column="dealer_phone" jdbcType="CHAR" property="dealerPhone" />
+    <result column="valve_chn" jdbcType="VARCHAR" property="valveChn" />
+    <result column="valve_bus" jdbcType="CHAR" property="valveBus" />
+    <result column="valve_arrFlag" jdbcType="CHAR" property="valveArrflag" />
+    <result column="wireless" jdbcType="CHAR" property="wireless" />
+    <result column="openrate" jdbcType="VARCHAR" property="openrate" />
+    <result column="valve_status" jdbcType="INTEGER" property="valveStatus" />
+    <result column="valve_modal" jdbcType="VARCHAR" property="valveModal" />
+    <result column="valve_work_mode" jdbcType="VARCHAR" property="valveWorkMode" />
+    <result column="last_valve_work_mode" jdbcType="VARCHAR" property="lastValveWorkMode" />
+    <result column="last_valve_open" jdbcType="VARCHAR" property="lastValveOpen" />
+    <result column="last_open_min" jdbcType="VARCHAR" property="lastOpenMin" />
+    <result column="last_open_max" jdbcType="VARCHAR" property="lastOpenMax" />
+    <result column="last_antirustTmp" jdbcType="VARCHAR" property="lastAntirusttmp" />
+    <result column="last_testInterjust" jdbcType="VARCHAR" property="lastTestinterjust" />
+    <result column="last_testPycle" jdbcType="VARCHAR" property="lastTestpycle" />
+    <result column="last_tempAdjust" jdbcType="VARCHAR" property="lastTempadjust" />
+    <result column="last_low_var" jdbcType="VARCHAR" property="lastLowVar" />
+    <result column="last_high_var" jdbcType="VARCHAR" property="lastHighVar" />
+    <result column="last_valve_room_temp" jdbcType="VARCHAR" property="lastValveRoomTemp" />
+    <result column="last_power" jdbcType="VARCHAR" property="lastPower" />
+    <result column="last_flux" jdbcType="VARCHAR" property="lastFlux" />
+    <result column="last_updateDate" jdbcType="TIMESTAMP" property="lastUpdatedate" />
+    <result column="last_flag" jdbcType="VARCHAR" property="lastFlag" />
+    <result column="valve_address" jdbcType="VARCHAR" property="valveAddress" />
+    <result column="heating_status" jdbcType="VARCHAR" property="heatingStatus" />
+    <result column="valve_defined" jdbcType="VARCHAR" property="valveDefined" />
+    <result column="set_indoor_temp" jdbcType="VARCHAR" property="setIndoorTemp" />
+    <result column="report_time" jdbcType="TIMESTAMP" property="reportTime" />
+    <result column="opening" jdbcType="VARCHAR" property="opening" />
+    <result column="min_open" jdbcType="VARCHAR" property="minOpen" />
+    <result column="max_open" jdbcType="VARCHAR" property="maxOpen" />
+    <result column="temp_upper" jdbcType="VARCHAR" property="tempUpper" />
+    <result column="temp_lower" jdbcType="VARCHAR" property="tempLower" />
+    <result column="set_temp_value" jdbcType="VARCHAR" property="setTempValue" />
+    <result column="set_power" jdbcType="VARCHAR" property="setPower" />
+    <result column="set_flow" jdbcType="VARCHAR" property="setFlow" />
+    <result column="apportion_hot" jdbcType="VARCHAR" property="apportionHot" />
+    <result column="power_opening" jdbcType="VARCHAR" property="powerOpening" />
+    <result column="trim_closing" jdbcType="VARCHAR" property="trimClosing" />
+    <result column="rust_sport" jdbcType="VARCHAR" property="rustSport" />
+    <result column="temp_interval" jdbcType="VARCHAR" property="tempInterval" />
+    <result column="temp_adjust" jdbcType="VARCHAR" property="tempAdjust" />
+  </resultMap>
+
+  <resultMap id="ValveResultMap" type="com.hetting.hottable.entity.Alarm">
+    <id column="alarm_id" jdbcType="BIGINT" property="alarmId" />
+    <result column="valve_id" jdbcType="INTEGER" property="valveId" />
+    <result column="hot_id" jdbcType="INTEGER" property="hotId" />
+    <result column="concent_id" jdbcType="INTEGER" property="concentId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="plot_id" jdbcType="INTEGER" property="plotId" />
+    <result column="eventType" jdbcType="VARCHAR" property="eventType" />
+    <result column="facilityName" jdbcType="VARCHAR" property="facilityName" />
+    <result column="occur_time" jdbcType="TIMESTAMP" property="occurTime" />
+    <result column="facility_status" jdbcType="INTEGER" property="facilityStatus" />
+    <result column="dispose_status" jdbcType="INTEGER" property="disposeStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="plot_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="user_cell" jdbcType="VARCHAR" property="userCell" />
+    <result column="user_building" jdbcType="VARCHAR" property="userBuilding" />
+    <result column="user_doorNum" jdbcType="VARCHAR" property="userDoorNum" />
+    <result column="gps_long" jdbcType="VARCHAR" property="gpsLong" />
+    <result column="gps_latitude" jdbcType="VARCHAR" property="gpsLatitude" />
+    <result column="valve_status" jdbcType="VARCHAR" property="valveStatus" />
+    <result column="valve_code" jdbcType="VARCHAR" property="valveCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    valve_id, user_id, concent_id, valve_code, callber, vender_code, vender_name, valveVender_name,
+    vender_contact, vemder_phone, dealer_name, dealer_address, dealer_contact, dealer_phone,
+    valve_chn, valve_bus, valve_arrFlag, wireless, openrate, valve_status, valve_modal,
+    valve_work_mode, last_valve_work_mode, last_valve_open, last_open_min, last_open_max,
+    last_antirustTmp, last_testInterjust, last_testPycle, last_tempAdjust, last_low_var,
+    last_high_var, last_valve_room_temp, last_power, last_flux, last_updateDate, last_flag,
+    valve_address, heating_status, valve_defined, set_indoor_temp, report_time, opening,
+    min_open, max_open, temp_upper, temp_lower, set_temp_value, set_power, power_opening,
+    trim_closing, rust_sport, temp_interval, temp_adjust
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from valve
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from valve
+    where valve_id = #{valveId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.Valve">
+    insert into valve (valve_id, user_id, callber, 
+      concent_id, vender_code, vender_name, valve_address
+      vender_address, vender_contact, vemder_phone, 
+      dealer_name, dealer_address, dealer_contact, 
+      dealer_phone, valve_chn, valve_bus, 
+      valve_arrFlag, wireless, openrate, 
+      valve_status, valve_modal, last_valve_work_mode, 
+      last_valve_open, last_open_min, last_open_max, 
+      last_antirustTmp, last_testInterjust, last_testPycle, 
+      last_tempAdjust, last_low_var, last_high_var, 
+      last_set_temp, last_power, last_flux, 
+      last_updateDate, last_flag,valve_defined)
+    values (#{valveId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{callber,jdbcType=VARCHAR}, 
+      #{concentId,jdbcType=INTEGER}, #{venderCode,jdbcType=CHAR}, #{venderName,jdbcType=VARCHAR}, 
+      #{valveAddress,jdbcType=VARCHAR}, #{venderAddress,jdbcType=VARCHAR}, #{venderContact,jdbcType=VARCHAR},
+      #{vemderPhone,jdbcType=CHAR}, #{dealerName,jdbcType=VARCHAR}, #{dealerAddress,jdbcType=VARCHAR}, #{dealerContact,jdbcType=VARCHAR},
+      #{dealerPhone,jdbcType=CHAR}, #{valveChn,jdbcType=VARCHAR}, #{valveBus,jdbcType=CHAR},
+      #{valveArrflag,jdbcType=CHAR}, #{wireless,jdbcType=CHAR}, #{openrate,jdbcType=VARCHAR},
+      #{valveStatus,jdbcType=INTEGER}, #{valveModal,jdbcType=VARCHAR}, #{lastValveWorkMode,jdbcType=INTEGER}, 
+      #{lastValveOpen,jdbcType=VARCHAR}, #{lastOpenMin,jdbcType=VARCHAR}, #{lastOpenMax,jdbcType=VARCHAR}, 
+      #{lastAntirusttmp,jdbcType=VARCHAR}, #{lastTestinterjust,jdbcType=VARCHAR}, #{lastTestpycle,jdbcType=VARCHAR}, 
+      #{lastTempadjust,jdbcType=VARCHAR}, #{lastLowVar,jdbcType=VARCHAR}, #{lastHighVar,jdbcType=VARCHAR}, 
+      #{lastSetTemp,jdbcType=VARCHAR}, #{lastPower,jdbcType=VARCHAR}, #{lastFlux,jdbcType=VARCHAR}, 
+      #{lastUpdatedate,jdbcType=TIMESTAMP}, #{lastFlag,jdbcType=VARCHAR},#{valveDefined,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="valveId"  parameterType="com.hetting.hottable.entity.Valve">
+    insert into valve
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="valveId != null">
+        valve_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="callber != null">
+        callber,
+      </if>
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="venderCode != null">
+        vender_code,
+      </if>
+      <if test="venderName != null">
+        vender_name,
+      </if>
+      <if test="valveAddress != null">
+        valve_address,
+      </if>
+      <if test="valveVenderName != null">
+        valveVender_name,
+      </if>
+      <if test="venderAddress != null">
+        vender_address,
+      </if>
+      <if test="venderContact != null">
+        vender_contact,
+      </if>
+      <if test="vemderPhone != null">
+        vemder_phone,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address,
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact,
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone,
+      </if>
+      <if test="valveChn != null">
+        valve_chn,
+      </if>
+      <if test="valveBus != null">
+        valve_bus,
+      </if>
+      <if test="valveArrflag != null">
+        valve_arrFlag,
+      </if>
+      <if test="wireless != null">
+        wireless,
+      </if>
+      <if test="openrate != null">
+        openrate,
+      </if>
+      <if test="valveStatus != null">
+        valve_status,
+      </if>
+      <if test="valveModal != null">
+        valve_modal,
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode,
+      </if>
+      <if test="lastValveOpen != null">
+        last_valve_open,
+      </if>
+      <if test="lastOpenMin != null">
+        last_open_min,
+      </if>
+      <if test="lastOpenMax != null">
+        last_open_max,
+      </if>
+      <if test="lastAntirusttmp != null">
+        last_antirustTmp,
+      </if>
+      <if test="lastTestinterjust != null">
+        last_testInterjust,
+      </if>
+      <if test="lastTestpycle != null">
+        last_testPycle,
+      </if>
+      <if test="lastTempadjust != null">
+        last_tempAdjust,
+      </if>
+      <if test="lastLowVar != null">
+        last_low_var,
+      </if>
+      <if test="lastHighVar != null">
+        last_high_var,
+      </if>
+      <if test="lastSetTemp != null">
+        last_set_temp,
+      </if>
+      <if test="lastPower != null">
+        last_power,
+      </if>
+      <if test="lastFlux != null">
+        last_flux,
+      </if>
+      <if test="lastUpdatedate != null">
+        last_updateDate,
+      </if>
+      <if test="lastFlag != null">
+        last_flag,
+      </if>
+      <if test="valveDefined != null">
+        valve_defined,
+      </if>
+      <if test="setIndoorTemp != null">
+        set_indoor_temp,
+      </if>
+      <if test="opening != null">
+        opening,
+      </if>
+      <if test="minOpen != null">
+        min_open,
+      </if>
+      <if test="maxOpen != null">
+        max_open,
+      </if>
+      <if test="tempUpper != null">
+        temp_upper,
+      </if>
+      <if test="tempLower != null">
+        temp_lower,
+      </if>
+      <if test="setTempValue != null">
+        set_temp_value,
+      </if>
+      <if test="setPower != null">
+        set_power,
+      </if>
+      <if test="powerOpening != null">
+        power_opening,
+      </if>
+      <if test="trimClosing != null">
+        trim_closing,
+      </if>
+      <if test="rustSport != null">
+        rust_sport,
+      </if>
+      <if test="tempInterval != null">
+        temp_interval,
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="valveId != null">
+        #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="callber != null">
+        #{callber,jdbcType=VARCHAR},
+      </if>
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="venderCode != null">
+        #{venderCode,jdbcType=CHAR},
+      </if>
+      <if test="venderName != null">
+        #{venderName,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAddress != null">
+        #{valveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="valveVenderName != null">
+        #{valveVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="venderAddress != null">
+        #{venderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderContact != null">
+        #{venderContact,jdbcType=VARCHAR},
+      </if>
+      <if test="vemderPhone != null">
+        #{vemderPhone,jdbcType=CHAR},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        #{dealerPhone,jdbcType=CHAR},
+      </if>
+      <if test="valveChn != null">
+        #{valveChn,jdbcType=CHAR},
+      </if>
+      <if test="valveBus != null">
+        #{valveBus,jdbcType=VARCHAR},
+      </if>
+      <if test="valveArrflag != null">
+        #{valveArrflag,jdbcType=CHAR},
+      </if>
+      <if test="wireless != null">
+        #{wireless,jdbcType=CHAR},
+      </if>
+      <if test="openrate != null">
+        #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="valveStatus != null">
+        #{valveStatus,jdbcType=CHAR},
+      </if>
+      <if test="valveModal != null">
+        #{valveModal,jdbcType=VARCHAR},
+      </if>
+      <if test="valveWorkMode != null">
+        #{valveWorkMode,jdbcType=INTEGER},
+      </if>
+      <if test="lastValveOpen != null">
+        #{lastValveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMin != null">
+        #{lastOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMax != null">
+        #{lastOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAntirusttmp != null">
+        #{lastAntirusttmp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestinterjust != null">
+        #{lastTestinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestpycle != null">
+        #{lastTestpycle,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTempadjust != null">
+        #{lastTempadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLowVar != null">
+        #{lastLowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHighVar != null">
+        #{lastHighVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSetTemp != null">
+        #{lastSetTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlux != null">
+        #{lastFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedate != null">
+        #{lastUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastFlag != null">
+        #{lastFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="valveDefined != null">
+        #{valveDefined,jdbcType=VARCHAR},
+      </if>
+      <if test="setIndoorTemp != null">
+        #{setIndoorTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="opening != null">
+        #{opening,jdbcType=VARCHAR},
+      </if>
+      <if test="minOpen != null">
+        #{minOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOpen != null">
+        #{maxOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="tempUpper != null">
+        #{tempUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="tempLower != null">
+        #{tempLower,jdbcType=VARCHAR},
+      </if>
+      <if test="setTempValue != null">
+        #{setTempValue,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="powerOpening != null">
+        #{powerOpening,jdbcType=VARCHAR},
+      </if>
+      <if test="trimClosing != null">
+        #{trimClosing,jdbcType=VARCHAR},
+      </if>
+      <if test="rustSport != null">
+        #{rustSport,jdbcType=VARCHAR},
+      </if>
+      <if test="tempInterval != null">
+        #{tempInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.Valve">
+    update valve
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="callber != null">
+        callber = #{callber,jdbcType=VARCHAR},
+      </if>
+      <if test="concentId != null">
+        concent_id = #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="venderCode != null">
+        vender_code = #{venderCode,jdbcType=CHAR},
+      </if>
+      <if test="venderName != null">
+        vender_name = #{venderName,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAddress != null">
+        valve_address = #{valveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderAddress != null">
+        vender_address = #{venderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderContact != null">
+        vender_contact = #{venderContact,jdbcType=VARCHAR},
+      </if>
+      <if test="vemderPhone != null">
+        vemder_phone = #{vemderPhone,jdbcType=CHAR},
+      </if>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address = #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact = #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone = #{dealerPhone,jdbcType=CHAR},
+      </if>
+      <if test="valveChn != null">
+        valve_chn = #{valveChn,jdbcType=VARCHAR},
+      </if>
+      <if test="valveBus != null">
+        valve_bus = #{valveBus,jdbcType=CHAR},
+      </if>
+      <if test="valveArrflag != null">
+        valve_arrFlag = #{valveArrflag,jdbcType=CHAR},
+      </if>
+      <if test="wireless != null">
+        wireless = #{wireless,jdbcType=CHAR},
+      </if>
+      <if test="openrate != null">
+        openrate = #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="valveStatus != null">
+        valve_status = #{valveStatus,jdbcType=CHAR},
+      </if>
+      <if test="valveModal != null">
+        valve_modal = #{valveModal,jdbcType=VARCHAR},
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode = #{valveWorkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastValveOpen != null">
+        last_valve_open = #{lastValveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMin != null">
+        last_open_min = #{lastOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMax != null">
+        last_open_max = #{lastOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAntirusttmp != null">
+        last_antirustTmp = #{lastAntirusttmp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestinterjust != null">
+        last_testInterjust = #{lastTestinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestpycle != null">
+        last_testPycle = #{lastTestpycle,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTempadjust != null">
+        last_tempAdjust = #{lastTempadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLowVar != null">
+        last_low_var = #{lastLowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHighVar != null">
+        last_high_var = #{lastHighVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSetTemp != null">
+        last_set_temp = #{lastSetTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        last_power = #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlux != null">
+        last_flux = #{lastFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedate != null">
+        last_updateDate = #{lastUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastFlag != null">
+        last_flag = #{lastFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="valveDefined != null">
+        last_flag = #{valveDefined,jdbcType=VARCHAR},
+      </if>
+      <if test="setIndoorTemp != null">
+        set_indoor_temp = #{setIndoorTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="opening != null">
+        opening = #{opening,jdbcType=VARCHAR},
+      </if>
+      <if test="minOpen != null">
+        min_open = #{minOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOpen != null">
+        max_open = #{maxOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="tempUpper != null">
+        temp_upper = #{tempUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="tempLower != null">
+        temp_lower = #{tempLower,jdbcType=VARCHAR},
+      </if>
+      <if test="setTempValue != null">
+        set_temp_value = #{setTempValue,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+       set_power = #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="powerOpening != null">
+       power_opening = #{powerOpening,jdbcType=VARCHAR},
+      </if>
+      <if test="trimClosing != null">
+       trim_closing = #{trimClosing,jdbcType=VARCHAR},
+      </if>
+      <if test="rustSport != null">
+       rust_sport = #{rustSport,jdbcType=VARCHAR},
+      </if>
+      <if test="tempInterval != null">
+       temp_interval = #{tempInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+       temp_adjust = #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.Valve">
+    update valve
+    set user_id = #{userId,jdbcType=INTEGER},
+      callber = #{callber,jdbcType=VARCHAR},
+      concent_id = #{concentId,jdbcType=INTEGER},
+      vender_code = #{venderCode,jdbcType=CHAR},
+      vender_name = #{venderName,jdbcType=VARCHAR},
+      valve_address = #{valveAddress,jdbcType=VARCHAR},
+      vender_address = #{venderAddress,jdbcType=VARCHAR},
+      vender_contact = #{venderContact,jdbcType=VARCHAR},
+      vemder_phone = #{vemderPhone,jdbcType=CHAR},
+      dealer_name = #{dealerName,jdbcType=VARCHAR},
+      dealer_address = #{dealerAddress,jdbcType=VARCHAR},
+      dealer_contact = #{dealerContact,jdbcType=VARCHAR},
+      dealer_phone = #{dealerPhone,jdbcType=CHAR},
+      valve_chn = #{valveChn,jdbcType=VARCHAR},
+      valve_bus = #{valveBus,jdbcType=CHAR},
+      valve_arrFlag = #{valveArrflag,jdbcType=CHAR},
+      wireless = #{wireless,jdbcType=CHAR},
+      openrate = #{openrate,jdbcType=VARCHAR},
+      valve_status = #{valveStatus,jdbcType=CHAR},
+      valve_modal = #{valveModal,jdbcType=VARCHAR},
+      last_valve_work_mode = #{lastValveWorkMode,jdbcType=INTEGER},
+      last_valve_open = #{lastValveOpen,jdbcType=VARCHAR},
+      last_open_min = #{lastOpenMin,jdbcType=VARCHAR},
+      last_open_max = #{lastOpenMax,jdbcType=VARCHAR},
+      last_antirustTmp = #{lastAntirusttmp,jdbcType=VARCHAR},
+      last_testInterjust = #{lastTestinterjust,jdbcType=VARCHAR},
+      last_testPycle = #{lastTestpycle,jdbcType=VARCHAR},
+      last_tempAdjust = #{lastTempadjust,jdbcType=VARCHAR},
+      last_low_var = #{lastLowVar,jdbcType=VARCHAR},
+      last_high_var = #{lastHighVar,jdbcType=VARCHAR},
+      last_set_temp = #{lastSetTemp,jdbcType=VARCHAR},
+      last_power = #{lastPower,jdbcType=VARCHAR},
+      last_flux = #{lastFlux,jdbcType=VARCHAR},
+      last_updateDate = #{lastUpdatedate,jdbcType=TIMESTAMP},
+      last_flag = #{lastFlag,jdbcType=VARCHAR}
+      valve_defined = #{valveDefined,jdbcType=VARCHAR}
+      valve_work_mode = #{valveWorkMode,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteById" parameterType="java.util.List">
+    delete from
+     valve where user_id = #{userId}
+  </delete>
+  <delete id="deleteByConcentId" parameterType="java.util.List">
+    delete from
+     valve where concent_id = #{concentId}
+  </delete>
+
+  <update id="updateByValveWorkMode" parameterType="com.hetting.hottable.entity.Valve">
+    update valve
+    <set>
+      <if test="valveWorkMode != null">
+        valve_work_mode = #{valveWorkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="valveDefined != null">
+        valve_defined = #{valveDefined,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where valve_id = #{valveId,jdbcType=INTEGER}
+  </update>
+
+  <update id="settingIndoorTemp" parameterType="com.hetting.hottable.entity.Valve">
+   update valve
+    <set>
+      <if test="valveDefined != null ">
+        valve_defined = #{valveDefined,jdbcType=VARCHAR}
+      </if>
+      <if test="indoorTemp != null ">
+        indoor_temp = #{indoorTemp,jdbcType=VARCHAR}
+      </if>
+    </set>
+        where valve_id = #{valveId,jdbcType=INTEGER}
+  </update>
+  <select id="unfinishedFacility" parameterType="com.hetting.hottable.entity.Alarm" resultMap="ValveResultMap">
+    select u.user_id,u.user_address,u.user_cell,u.user_building,u.user_doorNum,v.valve_id,v.valve_status,a.occur_time,a.dispose_status,valve_code
+        from user u left join valve v on u.user_id = v.user_id left join alarm a on v.valve_id = a.valve_id
+    where v.valve_status = 2 and a.dispose_status = 0
+  </select>
+  <select id="setTemp" parameterType="java.lang.String" resultType="java.lang.String">
+    select floor(avg(set_indoor_temp)) as indoorTemp from valve
+  </select>
+
+  <update id="updateByImportData" parameterType="com.hetting.hottable.entity.Valve">
+    update valve
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="callber != null">
+        callber = #{callber,jdbcType=VARCHAR},
+      </if>
+      <if test="concentId != null">
+        concent_id = #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="venderCode != null">
+        vender_code = #{venderCode,jdbcType=CHAR},
+      </if>
+      <if test="venderName != null">
+        vender_name = #{venderName,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAddress != null">
+        valve_address = #{valveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderAddress != null">
+        vender_address = #{venderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderContact != null">
+        vender_contact = #{venderContact,jdbcType=VARCHAR},
+      </if>
+      <if test="vemderPhone != null">
+        vemder_phone = #{vemderPhone,jdbcType=CHAR},
+      </if>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address = #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact = #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone = #{dealerPhone,jdbcType=CHAR},
+      </if>
+      <if test="valveChn != null">
+        valve_chn = #{valveChn,jdbcType=VARCHAR},
+      </if>
+      <if test="valveBus != null">
+        valve_bus = #{valveBus,jdbcType=CHAR},
+      </if>
+      <if test="valveArrflag != null">
+        valve_arrFlag = #{valveArrflag,jdbcType=CHAR},
+      </if>
+      <if test="wireless != null">
+        wireless = #{wireless,jdbcType=CHAR},
+      </if>
+      <if test="openrate != null">
+        openrate = #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="valveStatus != null">
+        valve_status = #{valveStatus,jdbcType=CHAR},
+      </if>
+      <if test="valveModal != null">
+        valve_modal = #{valveModal,jdbcType=VARCHAR},
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode = #{valveWorkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastValveOpen != null">
+        last_valve_open = #{lastValveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMin != null">
+        last_open_min = #{lastOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMax != null">
+        last_open_max = #{lastOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAntirusttmp != null">
+        last_antirustTmp = #{lastAntirusttmp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestinterjust != null">
+        last_testInterjust = #{lastTestinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestpycle != null">
+        last_testPycle = #{lastTestpycle,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTempadjust != null">
+        last_tempAdjust = #{lastTempadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLowVar != null">
+        last_low_var = #{lastLowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHighVar != null">
+        last_high_var = #{lastHighVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSetTemp != null">
+        last_set_temp = #{lastSetTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        last_power = #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlux != null">
+        last_flux = #{lastFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedate != null">
+        last_updateDate = #{lastUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastFlag != null">
+        last_flag = #{lastFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="valveDefined != null">
+        last_flag = #{valveDefined,jdbcType=VARCHAR},
+      </if>
+      <if test="setIndoorTemp != null">
+        set_indoor_temp = #{setIndoorTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="opening != null">
+        opening = #{opening,jdbcType=VARCHAR},
+      </if>
+      <if test="minOpen != null">
+        min_open = #{minOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOpen != null">
+        max_open = #{maxOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="tempUpper != null">
+        temp_upper = #{tempUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="tempLower != null">
+        temp_lower = #{tempLower,jdbcType=VARCHAR},
+      </if>
+      <if test="setTempValue != null">
+        set_temp_value = #{setTempValue,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        set_power = #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="powerOpening != null">
+        power_opening = #{powerOpening,jdbcType=VARCHAR},
+      </if>
+      <if test="trimClosing != null">
+        trim_closing = #{trimClosing,jdbcType=VARCHAR},
+      </if>
+      <if test="rustSport != null">
+        rust_sport = #{rustSport,jdbcType=VARCHAR},
+      </if>
+      <if test="tempInterval != null">
+        temp_interval = #{tempInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust = #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where valve_Address = #{valveAddress,jdbcType=VARCHAR}
+  </update>
+
+  <select id="findList" parameterType="com.hetting.hottable.entity.FacilityAllMessage" resultMap="BaseResultMap">
+    select u.user_area from valve v left join user u on v.user_id = u.user_id
+    <where>
+      <if test="valveCode != '' and valveCode != null">
+        and v.valve_code = #{valveCode}
+      </if>
+      <if test="vavleAddress != '' and valveAddress != null">
+        and v.valve_address = #{valveAddress}
+      </if>
+    </where>
+  </select>
+  <select id="findByJzqCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select v.valve_id,v.user_id from concent c left join hot h on c.concent_id = h.concent_id left join valve v on c.concent_id = v.concent_id
+    <where>
+      <if test="concentCode !='' and concentCode != null">
+        and concent_code = #{concentCode}
+      </if>
+    </where>
+  </select>
+  <select id="queryLastMessage" parameterType="com.hetting.hottable.entity.Valve" resultMap="BaseResultMap">
+    select valve_id from valve
+    <where>
+      <if test="lastPower != '' and lastPower != null">
+        and last_power = #{lastPower}
+      </if>
+      <if test="lastPower != '' and lastPower != null">
+        and last_flux = #{lastFlux}
+      </if>
+    </where>
+  </select>
+  <insert id="saveValveLastMessage" useGeneratedKeys="true" keyProperty="valveId"  parameterType="com.hetting.hottable.entity.Valve">
+    insert into valve
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="valveId != null">
+        valve_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="callber != null">
+        callber,
+      </if>
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="venderCode != null">
+        vender_code,
+      </if>
+      <if test="venderName != null">
+        vender_name,
+      </if>
+      <if test="valveAddress != null">
+        valve_address,
+      </if>
+      <if test="valveVenderName != null">
+        valveVender_name,
+      </if>
+      <if test="venderAddress != null">
+        vender_address,
+      </if>
+      <if test="venderContact != null">
+        vender_contact,
+      </if>
+      <if test="vemderPhone != null">
+        vemder_phone,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address,
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact,
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone,
+      </if>
+      <if test="valveChn != null">
+        valve_chn,
+      </if>
+      <if test="valveBus != null">
+        valve_bus,
+      </if>
+      <if test="valveArrflag != null">
+        valve_arrFlag,
+      </if>
+      <if test="wireless != null">
+        wireless,
+      </if>
+      <if test="openrate != null">
+        openrate,
+      </if>
+      <if test="valveStatus != null">
+        valve_status,
+      </if>
+      <if test="valveModal != null">
+        valve_modal,
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode,
+      </if>
+      <if test="lastValveOpen != null">
+        last_valve_open,
+      </if>
+      <if test="lastOpenMin != null">
+        last_open_min,
+      </if>
+      <if test="lastOpenMax != null">
+        last_open_max,
+      </if>
+      <if test="lastAntirusttmp != null">
+        last_antirustTmp,
+      </if>
+      <if test="lastTestinterjust != null">
+        last_testInterjust,
+      </if>
+      <if test="lastTestpycle != null">
+        last_testPycle,
+      </if>
+      <if test="lastTempadjust != null">
+        last_tempAdjust,
+      </if>
+      <if test="lastLowVar != null">
+        last_low_var,
+      </if>
+      <if test="lastHighVar != null">
+        last_high_var,
+      </if>
+      <if test="lastSetTemp != null">
+        last_set_temp,
+      </if>
+      <if test="lastPower != null">
+        last_power,
+      </if>
+      <if test="lastFlux != null">
+        last_flux,
+      </if>
+      <if test="lastUpdatedate != null">
+        last_updateDate,
+      </if>
+      <if test="lastFlag != null">
+        last_flag,
+      </if>
+      <if test="valveDefined != null">
+        valve_defined,
+      </if>
+      <if test="setIndoorTemp != null">
+        set_indoor_temp,
+      </if>
+      <if test="opening != null">
+        opening,
+      </if>
+      <if test="minOpen != null">
+        min_open,
+      </if>
+      <if test="maxOpen != null">
+        max_open,
+      </if>
+      <if test="tempUpper != null">
+        temp_upper,
+      </if>
+      <if test="tempLower != null">
+        temp_lower,
+      </if>
+      <if test="setTempValue != null">
+        set_temp_value,
+      </if>
+      <if test="setPower != null">
+        set_power,
+      </if>
+      <if test="powerOpening != null">
+        power_opening,
+      </if>
+      <if test="trimClosing != null">
+        trim_closing,
+      </if>
+      <if test="rustSport != null">
+        rust_sport,
+      </if>
+      <if test="tempInterval != null">
+        temp_interval,
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="valveId != null">
+        #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="callber != null">
+        #{callber,jdbcType=VARCHAR},
+      </if>
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="venderCode != null">
+        #{venderCode,jdbcType=CHAR},
+      </if>
+      <if test="venderName != null">
+        #{venderName,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAddress != null">
+        #{valveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="valveVenderName != null">
+        #{valveVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="venderAddress != null">
+        #{venderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderContact != null">
+        #{venderContact,jdbcType=VARCHAR},
+      </if>
+      <if test="vemderPhone != null">
+        #{vemderPhone,jdbcType=CHAR},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        #{dealerPhone,jdbcType=CHAR},
+      </if>
+      <if test="valveChn != null">
+        #{valveChn,jdbcType=CHAR},
+      </if>
+      <if test="valveBus != null">
+        #{valveBus,jdbcType=VARCHAR},
+      </if>
+      <if test="valveArrflag != null">
+        #{valveArrflag,jdbcType=CHAR},
+      </if>
+      <if test="wireless != null">
+        #{wireless,jdbcType=CHAR},
+      </if>
+      <if test="openrate != null">
+        #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="valveStatus != null">
+        #{valveStatus,jdbcType=CHAR},
+      </if>
+      <if test="valveModal != null">
+        #{valveModal,jdbcType=VARCHAR},
+      </if>
+      <if test="valveWorkMode != null">
+        #{valveWorkMode,jdbcType=INTEGER},
+      </if>
+      <if test="lastValveOpen != null">
+        #{lastValveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMin != null">
+        #{lastOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMax != null">
+        #{lastOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAntirusttmp != null">
+        #{lastAntirusttmp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestinterjust != null">
+        #{lastTestinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestpycle != null">
+        #{lastTestpycle,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTempadjust != null">
+        #{lastTempadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLowVar != null">
+        #{lastLowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHighVar != null">
+        #{lastHighVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSetTemp != null">
+        #{lastSetTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlux != null">
+        #{lastFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedate != null">
+        #{lastUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastFlag != null">
+        #{lastFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="valveDefined != null">
+        #{valveDefined,jdbcType=VARCHAR},
+      </if>
+      <if test="setIndoorTemp != null">
+        #{setIndoorTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="opening != null">
+        #{opening,jdbcType=VARCHAR},
+      </if>
+      <if test="minOpen != null">
+        #{minOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOpen != null">
+        #{maxOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="tempUpper != null">
+        #{tempUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="tempLower != null">
+        #{tempLower,jdbcType=VARCHAR},
+      </if>
+      <if test="setTempValue != null">
+        #{setTempValue,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="powerOpening != null">
+        #{powerOpening,jdbcType=VARCHAR},
+      </if>
+      <if test="trimClosing != null">
+        #{trimClosing,jdbcType=VARCHAR},
+      </if>
+      <if test="rustSport != null">
+        #{rustSport,jdbcType=VARCHAR},
+      </if>
+      <if test="tempInterval != null">
+        #{tempInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateLastValveMessage" parameterType="com.hetting.hottable.entity.Valve">
+    update valve
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="callber != null">
+        callber = #{callber,jdbcType=VARCHAR},
+      </if>
+      <if test="concentId != null">
+        concent_id = #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="venderCode != null">
+        vender_code = #{venderCode,jdbcType=CHAR},
+      </if>
+      <if test="venderName != null">
+        vender_name = #{venderName,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAddress != null">
+        valve_address = #{valveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderAddress != null">
+        vender_address = #{venderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderContact != null">
+        vender_contact = #{venderContact,jdbcType=VARCHAR},
+      </if>
+      <if test="vemderPhone != null">
+        vemder_phone = #{vemderPhone,jdbcType=CHAR},
+      </if>
+      <if test="dealerName != null">
+        dealer_name = #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address = #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact = #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone = #{dealerPhone,jdbcType=CHAR},
+      </if>
+      <if test="valveChn != null">
+        valve_chn = #{valveChn,jdbcType=VARCHAR},
+      </if>
+      <if test="valveBus != null">
+        valve_bus = #{valveBus,jdbcType=CHAR},
+      </if>
+      <if test="valveArrflag != null">
+        valve_arrFlag = #{valveArrflag,jdbcType=CHAR},
+      </if>
+      <if test="wireless != null">
+        wireless = #{wireless,jdbcType=CHAR},
+      </if>
+      <if test="openrate != null">
+        openrate = #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="valveStatus != null">
+        valve_status = #{valveStatus,jdbcType=CHAR},
+      </if>
+      <if test="valveModal != null">
+        valve_modal = #{valveModal,jdbcType=VARCHAR},
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode = #{valveWorkMode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastValveOpen != null">
+        last_valve_open = #{lastValveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMin != null">
+        last_open_min = #{lastOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMax != null">
+        last_open_max = #{lastOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAntirusttmp != null">
+        last_antirustTmp = #{lastAntirusttmp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestinterjust != null">
+        last_testInterjust = #{lastTestinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestpycle != null">
+        last_testPycle = #{lastTestpycle,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTempadjust != null">
+        last_tempAdjust = #{lastTempadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLowVar != null">
+        last_low_var = #{lastLowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHighVar != null">
+        last_high_var = #{lastHighVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSetTemp != null">
+        last_set_temp = #{lastSetTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        last_power = #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlux != null">
+        last_flux = #{lastFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedate != null">
+        last_updateDate = #{lastUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastFlag != null">
+        last_flag = #{lastFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="valveDefined != null">
+        last_flag = #{valveDefined,jdbcType=VARCHAR},
+      </if>
+      <if test="setIndoorTemp != null">
+        set_indoor_temp = #{setIndoorTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="opening != null">
+        opening = #{opening,jdbcType=VARCHAR},
+      </if>
+      <if test="minOpen != null">
+        min_open = #{minOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOpen != null">
+        max_open = #{maxOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="tempUpper != null">
+        temp_upper = #{tempUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="tempLower != null">
+        temp_lower = #{tempLower,jdbcType=VARCHAR},
+      </if>
+      <if test="setTempValue != null">
+        set_temp_value = #{setTempValue,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        set_power = #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="powerOpening != null">
+        power_opening = #{powerOpening,jdbcType=VARCHAR},
+      </if>
+      <if test="trimClosing != null">
+        trim_closing = #{trimClosing,jdbcType=VARCHAR},
+      </if>
+      <if test="rustSport != null">
+        rust_sport = #{rustSport,jdbcType=VARCHAR},
+      </if>
+      <if test="tempInterval != null">
+        temp_interval = #{tempInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust = #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where valve_id = #{valveId,jdbcType=INTEGER}
+  </update>
+  <!--  根据集中器地址返回点名控阀要下发的信息配置-->
+  <select id="selectValveMessage" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from valve v left join concent c on v.concent_id = c.concent_id
+    <where>
+      <if test="concentCode != '' and concentCode != null">
+        and c.concent_code = #{concentCode}
+      </if>
+    </where>
+  </select>
+  <!--    获取阀门id和用户id  -->
+  <select id="selectValve" resultMap="BaseResultMap">
+    select valve_id,user_id from valve
+  </select>
+<!--  <select id="selectValveAndUserId" resultMap="BaseResultMap">
+    select user_id from valve
+  </select>-->
+
+
+  <!-- MQTT -->
+  <insert id="insertMqttValve" parameterType="com.hetting.hottable.entity.Valve">
+    insert into valve
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="valveId != null">
+        valve_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="callber != null">
+        callber,
+      </if>
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="venderCode != null">
+        vender_code,
+      </if>
+      <if test="venderName != null">
+        vender_name,
+      </if>
+      <if test="valveAddress != null">
+        valve_address,
+      </if>
+      <if test="valveVenderName != null">
+        valveVender_name,
+      </if>
+      <if test="venderAddress != null">
+        vender_address,
+      </if>
+      <if test="venderContact != null">
+        vender_contact,
+      </if>
+      <if test="vemderPhone != null">
+        vemder_phone,
+      </if>
+      <if test="dealerName != null">
+        dealer_name,
+      </if>
+      <if test="dealerAddress != null">
+        dealer_address,
+      </if>
+      <if test="dealerContact != null">
+        dealer_contact,
+      </if>
+      <if test="dealerPhone != null">
+        dealer_phone,
+      </if>
+      <if test="valveChn != null">
+        valve_chn,
+      </if>
+      <if test="valveBus != null">
+        valve_bus,
+      </if>
+      <if test="valveArrflag != null">
+        valve_arrFlag,
+      </if>
+      <if test="wireless != null">
+        wireless,
+      </if>
+      <if test="openrate != null">
+        openrate,
+      </if>
+      <if test="valveStatus != null">
+        valve_status,
+      </if>
+      <if test="valveModal != null">
+        valve_modal,
+      </if>
+      <if test="valveWorkMode != null">
+        valve_work_mode,
+      </if>
+      <if test="lastValveOpen != null">
+        last_valve_open,
+      </if>
+      <if test="lastOpenMin != null">
+        last_open_min,
+      </if>
+      <if test="lastOpenMax != null">
+        last_open_max,
+      </if>
+      <if test="lastAntirusttmp != null">
+        last_antirustTmp,
+      </if>
+      <if test="lastTestinterjust != null">
+        last_testInterjust,
+      </if>
+      <if test="lastTestpycle != null">
+        last_testPycle,
+      </if>
+      <if test="lastTempadjust != null">
+        last_tempAdjust,
+      </if>
+      <if test="lastLowVar != null">
+        last_low_var,
+      </if>
+      <if test="lastHighVar != null">
+        last_high_var,
+      </if>
+      <if test="lastSetTemp != null">
+        last_set_temp,
+      </if>
+      <if test="lastPower != null">
+        last_power,
+      </if>
+      <if test="lastFlux != null">
+        last_flux,
+      </if>
+      <if test="lastUpdatedate != null">
+        last_updateDate,
+      </if>
+      <if test="lastFlag != null">
+        last_flag,
+      </if>
+      <if test="valveDefined != null">
+        valve_defined,
+      </if>
+      <if test="setIndoorTemp != null">
+        set_indoor_temp,
+      </if>
+      <if test="opening != null">
+        opening,
+      </if>
+      <if test="minOpen != null">
+        min_open,
+      </if>
+      <if test="maxOpen != null">
+        max_open,
+      </if>
+      <if test="tempUpper != null">
+        temp_upper,
+      </if>
+      <if test="tempLower != null">
+        temp_lower,
+      </if>
+      <if test="setTempValue != null">
+        set_temp_value,
+      </if>
+      <if test="setPower != null">
+        set_power,
+      </if>
+      <if test="powerOpening != null">
+        power_opening,
+      </if>
+      <if test="trimClosing != null">
+        trim_closing,
+      </if>
+      <if test="rustSport != null">
+        rust_sport,
+      </if>
+      <if test="tempInterval != null">
+        temp_interval,
+      </if>
+      <if test="tempAdjust != null">
+        temp_adjust,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="valveId != null">
+        #{valveId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="callber != null">
+        #{callber,jdbcType=VARCHAR},
+      </if>
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="venderCode != null">
+        #{venderCode,jdbcType=CHAR},
+      </if>
+      <if test="venderName != null">
+        #{venderName,jdbcType=VARCHAR},
+      </if>
+      <if test="valveAddress != null">
+        #{valveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="valveVenderName != null">
+        #{valveVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="venderAddress != null">
+        #{venderAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="venderContact != null">
+        #{venderContact,jdbcType=VARCHAR},
+      </if>
+      <if test="vemderPhone != null">
+        #{vemderPhone,jdbcType=CHAR},
+      </if>
+      <if test="dealerName != null">
+        #{dealerName,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerAddress != null">
+        #{dealerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerContact != null">
+        #{dealerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="dealerPhone != null">
+        #{dealerPhone,jdbcType=CHAR},
+      </if>
+      <if test="valveChn != null">
+        #{valveChn,jdbcType=CHAR},
+      </if>
+      <if test="valveBus != null">
+        #{valveBus,jdbcType=VARCHAR},
+      </if>
+      <if test="valveArrflag != null">
+        #{valveArrflag,jdbcType=CHAR},
+      </if>
+      <if test="wireless != null">
+        #{wireless,jdbcType=CHAR},
+      </if>
+      <if test="openrate != null">
+        #{openrate,jdbcType=VARCHAR},
+      </if>
+      <if test="valveStatus != null">
+        #{valveStatus,jdbcType=CHAR},
+      </if>
+      <if test="valveModal != null">
+        #{valveModal,jdbcType=VARCHAR},
+      </if>
+      <if test="valveWorkMode != null">
+        #{valveWorkMode,jdbcType=INTEGER},
+      </if>
+      <if test="lastValveOpen != null">
+        #{lastValveOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMin != null">
+        #{lastOpenMin,jdbcType=VARCHAR},
+      </if>
+      <if test="lastOpenMax != null">
+        #{lastOpenMax,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAntirusttmp != null">
+        #{lastAntirusttmp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestinterjust != null">
+        #{lastTestinterjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTestpycle != null">
+        #{lastTestpycle,jdbcType=VARCHAR},
+      </if>
+      <if test="lastTempadjust != null">
+        #{lastTempadjust,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLowVar != null">
+        #{lastLowVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHighVar != null">
+        #{lastHighVar,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSetTemp != null">
+        #{lastSetTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlux != null">
+        #{lastFlux,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedate != null">
+        #{lastUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastFlag != null">
+        #{lastFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="valveDefined != null">
+        #{valveDefined,jdbcType=VARCHAR},
+      </if>
+      <if test="setIndoorTemp != null">
+        #{setIndoorTemp,jdbcType=VARCHAR},
+      </if>
+      <if test="opening != null">
+        #{opening,jdbcType=VARCHAR},
+      </if>
+      <if test="minOpen != null">
+        #{minOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOpen != null">
+        #{maxOpen,jdbcType=VARCHAR},
+      </if>
+      <if test="tempUpper != null">
+        #{tempUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="tempLower != null">
+        #{tempLower,jdbcType=VARCHAR},
+      </if>
+      <if test="setTempValue != null">
+        #{setTempValue,jdbcType=VARCHAR},
+      </if>
+      <if test="setPower != null">
+        #{setPower,jdbcType=VARCHAR},
+      </if>
+      <if test="powerOpening != null">
+        #{powerOpening,jdbcType=VARCHAR},
+      </if>
+      <if test="trimClosing != null">
+        #{trimClosing,jdbcType=VARCHAR},
+      </if>
+      <if test="rustSport != null">
+        #{rustSport,jdbcType=VARCHAR},
+      </if>
+      <if test="tempInterval != null">
+        #{tempInterval,jdbcType=VARCHAR},
+      </if>
+      <if test="tempAdjust != null">
+        #{tempAdjust,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 室温达标率 -> 平均温度 -->
+  <select id="avgIndoorTemp" parameterType="java.lang.String" resultType="java.lang.String">
+    select avg(v.last_valve_room_temp) as avgTemp from valve v left join user u on u.user_id = v.user_id left join plot_message pm on u.plot_id = pm.plot_id
+    <where>
+      <if test="plotAddress != '' and plotAddress != null">
+        and plot_address = #{plotAddress}
+      </if>
+    </where>
+  </select>
+
+  <select id="avgInflowTemp" parameterType="java.lang.String" resultType="java.lang.String">
+  select avg(last_vintemp) as avgVinTemp from valve v left join user u on u.user_id = v.user_id left join plot_message pm on u.plot_id = pm.plot_id
+  <where>
+    <if test="plotAddress != '' and plotAddress != null ">
+      and plot_address = #{plotAddress}
+    </if>
+  </where>
+  </select>
+
+  <select id="avgOutflowTemp" parameterType="java.lang.String" resultType="java.lang.String">
+    select avg(last_vouttemp) as avgOutTemp from valve v left join user u on u.user_id = v.user_id left join plot_message pm on u.plot_id = pm.plot_id
+    <where>
+      <if test="plotAddress != '' and plotAddress != null ">
+        and plot_address = #{plotAddress}
+      </if>
+    </where>
+  </select>
+
+  <select id="avgInflowTempMinusOutflowTemp" parameterType="java.lang.String" resultType="java.lang.String">
+    select avg(last_vouttemp - last_vouttemp) as InTempMinusOutTemp from valve v left join user u on u.user_id = v.user_id left join plot_message pm on u.plot_id = pm.plot_id
+    <where>
+      <if test="plotAddress != '' and plotAddress != null ">
+        and plot_address = #{plotAddress}
+      </if>
+    </where>
+  </select>
+
+  <select id="buildingList" parameterType="java.lang.String" resultType="java.lang.Object">
+    select u.user_building as 楼号,u.user_cell as 单元,v.last_valve_room_temp as 室内温度,last_vouttemp as 回水温度,last_vintemp as 供水温度
+    from plot_message pm left join user u on pm.plot_id = u.plot_id left join valve v on u.user_id = v.user_id
+    <where>
+      <if test="plotAddress != '' and plotAddress != null ">
+        and pm.plot_address = #{plotAddress}
+      </if>
+    </where>
+  </select>
+</mapper>

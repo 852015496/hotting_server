@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.IndoorTempMapper">
+    <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.IndoorTemp">
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_contactWay" jdbcType="VARCHAR" property="userContactWay" />
+        <result column="user_building" jdbcType="VARCHAR" property="userBuilding" />
+        <result column="user_cell" jdbcType="VARCHAR" property="userCell" />
+        <result column="user_doorNum" jdbcType="VARCHAR" property="userDoorNum" />
+        <result column="user_type" jdbcType="VARCHAR" property="userType" />
+        <result column="user_area" jdbcType="VARCHAR" property="userArea" />
+        <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+        <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+        <result column="plot_name" jdbcType="VARCHAR" property="plotName" />
+        <result column="plot_address" jdbcType="VARCHAR" property="plotAddress" />
+        <result column="valve_address" jdbcType="VARCHAR" property="valveAddress" />
+        <result column="valve_status" jdbcType="VARCHAR" property="valveStatus" />
+        <result column="valve_work_modal" jdbcType="VARCHAR" property="valveWorkModal" />
+        <result column="last_updateDate" jdbcType="VARCHAR" property="lastUpdateDate" />
+        <result column="last_flag" jdbcType="VARCHAR" property="lastFlag" />
+        <result column="last_vintemp" jdbcType="VARCHAR" property="lastVintemp" />
+        <result column="last_outtemp" jdbcType="VARCHAR" property="lastOuttemp" />
+        <result column="heatingStatus" jdbcType="VARCHAR" property="heatingStatus" />
+        <result column="set_indoor_temp" jdbcType="VARCHAR" property="setIndoorTemp" />
+        <result column="last_valve_room_temp" jdbcType="VARCHAR" property="lastValveRoomTemp" />
+        <result column="opening" jdbcType="VARCHAR" property="opening" />
+    </resultMap>
+
+    <select id="buildingList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select u.user_building as user_building,u.user_cell as user_cell,v.last_valve_room_temp as last_valve_room_temp,last_vouttemp as last_outtemp,last_vintemp as last_vintemp
+        from plot_message pm left join user u on pm.plot_id = u.plot_id left join valve v on u.user_id = v.user_id
+        <where>
+            <if test="plotAddress != '' and plotAddress != null ">
+                and pm.plot_address = #{plotAddress}
+            </if>
+        </where>
+    </select>
+
+    <select id="cellList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select u.user_building as user_building,u.user_cell as user_cell,u.user_doorNum as user_doorNum,v.last_valve_room_temp as last_valve_room_temp,
+        last_vouttemp as last_outtemp,last_vintemp as last_vintemp,v.opening as opening,v.last_updateDate as last_updateDate
+        from plot_message pm left join user u on pm.plot_id = u.plot_id left join valve v on u.user_id = v.user_id
+        <where>
+            <if test="plotAddress != '' and plotAddress != null ">
+                and u.user_building = #{userBuilding}
+            </if>
+        </where>
+    </select>
+
+    <select id="doorTempData" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select u.user_building as user_building,u.user_cell as user_cell,u.user_doorNum as user_doorNum,v.last_valve_room_temp as last_valve_room_temp,
+        v.last_vintemp as last_vintemp,v.last_vouttemp as last_vouttemp,v.last_flux as last_flux
+     from plot_message pm left join user u on pm.plot_id = u.plot_id left join valve v on u.user_id = v.user_id
+     <where>
+         <if test="userDoorNum != '' and userDoorNum != null">
+            and u.user_doorNum = #{userDoorNum}
+         </if>
+     </where>
+    </select>
+</mapper>

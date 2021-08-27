@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.SocketMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.Socket">
+    <id column="socket_id" jdbcType="INTEGER" property="socketId" />
+    <result column="socket_name" jdbcType="VARCHAR" property="socketName" />
+    <result column="socket_address" jdbcType="VARCHAR" property="socketAddress" />
+    <result column="imei" jdbcType="VARCHAR" property="imei" />
+    <result column="ccid" jdbcType="VARCHAR" property="ccid" />
+    <result column="readInterval" jdbcType="VARCHAR" property="readinterval" />
+    <result column="mainServer_address" jdbcType="VARCHAR" property="mainserverAddress" />
+    <result column="gprs_uploudTime" jdbcType="VARCHAR" property="gprsUploudtime" />
+    <result column="resServer_address" jdbcType="VARCHAR" property="resServerAddress" />
+    <result column="temp_perature" jdbcType="VARCHAR" property="tempPerature" />
+    <result column="signal_intensity" jdbcType="VARCHAR" property="signalIntensity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    socket_id, socket_name, socket_address, imei, ccid, readInterval, mainServer_address, 
+    gprs_uploudTime,resServer_address,temp_perature,signal_intensity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from socket
+    where socket_id = #{socketId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from socket
+    where socket_id = #{socketId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.Socket">
+    insert into socket (socket_id, socket_name, socket_address, 
+      imei, ccid, readInterval, 
+      mainServer_address, gprs_uploudTime,resServer_address,temp_perature,signal_intensity)
+    values (#{socketId,jdbcType=INTEGER}, #{socketName,jdbcType=VARCHAR}, #{socketAddress,jdbcType=VARCHAR}, 
+      #{imei,jdbcType=VARCHAR}, #{ccid,jdbcType=VARCHAR}, #{readinterval,jdbcType=VARCHAR}, 
+      #{mainserverAddress,jdbcType=VARCHAR}, #{gprsUploudtime,jdbcType=VARCHAR},
+       #{resServerAddress,jdbcType=VARCHAR} #{tempPerature,jdbcType=VARCHAR} #{signalIntensity,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.Socket">
+    insert into socket
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="socketId != null">
+        socket_id,
+      </if>
+      <if test="socketName != null">
+        socket_name,
+      </if>
+      <if test="socketAddress != null">
+        socket_address,
+      </if>
+      <if test="imei != null">
+        imei,
+      </if>
+      <if test="ccid != null">
+        ccid,
+      </if>
+      <if test="readinterval != null">
+        readInterval,
+      </if>
+      <if test="mainserverAddress != null">
+        mainServer_address,
+      </if>
+      <if test="gprsUploudtime != null">
+        gprs_uploudTime,
+      </if>
+      <if test="resServerAddress != null">
+        resServer_address,
+      </if>
+      <if test="tempPerature != null">
+        temp_perature,
+      </if>
+      <if test="signalIntensity != null">
+        signal_intensity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="socketId != null">
+        #{socketId,jdbcType=INTEGER},
+      </if>
+      <if test="socketName != null">
+        #{socketName,jdbcType=VARCHAR},
+      </if>
+      <if test="socketAddress != null">
+        #{socketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="ccid != null">
+        #{ccid,jdbcType=VARCHAR},
+      </if>
+      <if test="readinterval != null">
+        #{readinterval,jdbcType=VARCHAR},
+      </if>
+      <if test="mainserverAddress != null">
+        #{mainserverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsUploudtime != null">
+        #{gprsUploudtime,jdbcType=VARCHAR},
+      </if>
+      <if test="resServerAddress != null">
+        #{resServerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="tempPerature != null">
+        #{tempPerature,jdbcType=VARCHAR},
+      </if>
+      <if test="signalIntensity != null">
+        #{signalIntensity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.Socket">
+    update socket
+    <set>
+      <if test="socketName != null">
+        socket_name = #{socketName,jdbcType=VARCHAR},
+      </if>
+      <if test="socketAddress != null">
+        socket_address = #{socketAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="ccid != null">
+        ccid = #{ccid,jdbcType=VARCHAR},
+      </if>
+      <if test="readinterval != null">
+        readInterval = #{readinterval,jdbcType=VARCHAR},
+      </if>
+      <if test="mainserverAddress != null">
+        mainServer_address = #{mainserverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="gprsUploudtime != null">
+        gprs_uploudTime = #{gprsUploudtime,jdbcType=VARCHAR},
+      </if>
+      <if test="resServerAddress != null">
+        resServer_address = #{gprsUploudtime,jdbcType=VARCHAR},
+      </if>
+      <if test="tempPerature != null">
+        temp_perature = #{gprsUploudtime,jdbcType=VARCHAR},
+      </if>
+      <if test="signalIntensity != null">
+        signal_intensity = #{gprsUploudtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where socket_id = #{socketId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.Socket">
+    update socket
+    set socket_name = #{socketName,jdbcType=VARCHAR},
+      socket_address = #{socketAddress,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      ccid = #{ccid,jdbcType=VARCHAR},
+      readInterval = #{readinterval,jdbcType=VARCHAR},
+      mainServer_address = #{mainserverAddress,jdbcType=VARCHAR},
+      gprs_uploudTime = #{gprsUploudtime,jdbcType=VARCHAR},
+      resServer_address = #{resServerAddress,jdbcType=VARCHAR},
+      temp_perature = #{tempPerature,jdbcType=VARCHAR},
+      signal_intensity = #{signalIntensity,jdbcType=VARCHAR}
+    where socket_id = #{socketId,jdbcType=INTEGER}
+  </update>
+  <select id="socketList" parameterType="com.hetting.hottable.entity.Socket" resultMap="BaseResultMap">
+    select 
+        <include refid="Base_Column_List"/>
+    from socket
+   <!-- <where>
+      <if test="concentCode !='' and concentCode != null">
+        and concent.concent_code = #{concentCode}
+      </if>
+      <if test="housing !='' and housing != null">
+        and concent.housing = #{housing}
+      </if>
+    </where>-->
+  </select>
+
+  <delete id="deleteALlSocket" parameterType="java.util.List">
+    delete from
+    socket  where socket_id in
+    <foreach item="id" collection="id" open="(" close=")" separator="," >
+      #{id}
+    </foreach>
+  </delete>
+</mapper>

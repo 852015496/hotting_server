@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.HotMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.Hot">
+    <id column="hot_id" jdbcType="INTEGER" property="hotId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="concent_id" jdbcType="INTEGER" property="concentId" />
+    <result column="hotTable_name" jdbcType="VARCHAR" property="hottableName" />
+    <result column="hotTable_number" jdbcType="INTEGER" property="hottableNumber" />
+    <result column="hotTable_address" jdbcType="VARCHAR" property="hottableAddress" />
+    <result column="hot_address" jdbcType="VARCHAR" property="hotAddress" />
+    <result column="hot_type" jdbcType="INTEGER" property="hotType" />
+    <result column="hot_aisle" jdbcType="CHAR" property="hotAisle" />
+    <result column="hot_manu_code" jdbcType="INTEGER" property="hotManuCode" />
+    <result column="cailber" jdbcType="VARCHAR" property="cailber" />
+    <result column="hot_status" jdbcType="CHAR" property="hotStatus" />
+    <result column="hot_modal" jdbcType="VARCHAR" property="hotModal" />
+    <result column="last_cooling" jdbcType="VARCHAR" property="lastCooling" />
+    <result column="last_hotting" jdbcType="VARCHAR" property="lastHotting" />
+    <result column="last_vol" jdbcType="VARCHAR" property="lastVol" />
+    <result column="last_worktime" jdbcType="VARCHAR" property="lastWorktime" />
+    <result column="last_flow_time" jdbcType="VARCHAR" property="lastFlowTime" />
+    <result column="last_power" jdbcType="VARCHAR" property="lastPower" />
+    <result column="last_sumflow" jdbcType="VARCHAR" property="lastSumflow" />
+    <result column="last_hot_entrance" jdbcType="VARCHAR" property="lastHotEntrance" />
+    <result column="last_hot_exit" jdbcType="VARCHAR" property="lastHotExit" />
+    <result column="hot_mater_date" jdbcType="TIMESTAMP" property="hotMaterDate" />
+  </resultMap>
+  <resultMap id="HotResultMap" type="com.hetting.hottable.entity.Alarm">
+    <id column="alarm_id" jdbcType="BIGINT" property="alarmId" />
+    <result column="valve_id" jdbcType="INTEGER" property="valveId" />
+    <result column="hot_id" jdbcType="INTEGER" property="hotId" />
+    <result column="concent_id" jdbcType="INTEGER" property="concentId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="plot_id" jdbcType="INTEGER" property="plotId" />
+    <result column="eventType" jdbcType="VARCHAR" property="eventType" />
+    <result column="facilityName" jdbcType="VARCHAR" property="facilityName" />
+    <result column="occur_time" jdbcType="TIMESTAMP" property="occurTime" />
+    <result column="facility_status" jdbcType="INTEGER" property="facilityStatus" />
+    <result column="dispose_status" jdbcType="INTEGER" property="disposeStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="user_address" jdbcType="VARCHAR" property="userAddress" />
+    <result column="plot_address" jdbcType="VARCHAR" property="plotAddress" />
+    <result column="user_cell" jdbcType="VARCHAR" property="userCell" />
+    <result column="user_building" jdbcType="VARCHAR" property="userBuilding" />
+    <result column="user_doorNum" jdbcType="VARCHAR" property="userDoorNum" />
+    <result column="gps_long" jdbcType="VARCHAR" property="gpsLong" />
+    <result column="gps_latitude" jdbcType="VARCHAR" property="gpsLatitude" />
+    <result column="hot_status" jdbcType="VARCHAR" property="hotStatus" />
+    <result column="hot_code" jdbcType="VARCHAR" property="hotCode" />
+  </resultMap>
+  <resultMap id="DataContrast" type="com.hetting.hottable.entity.DataContrastVO">
+    <result column="last_hotting" jdbcType="VARCHAR" property="lastHotting" />
+    <result column="last_vol" jdbcType="VARCHAR" property="lastVol" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    hot_id, hotTable_name, hotTable_number, hotTable_address,hot_address, hot_type, hot_aisle, hot_manu_code,
+    cailber, hot_status, hot_modal, last_cooling, last_hotting, last_vol, last_worktime, 
+    last_flow_time, last_power, last_sumflow, last_hot_entrance, last_hot_exit,hot_mater_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hot
+    where hot_id = #{hotId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hot
+    where hot_id = #{hotId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.Hot">
+    insert into hot (hot_id,user_id, hotTable_name, hotTable_number,
+      hotTable_address,hot_address, hot_type, hot_aisle,
+      hot_manu_code, cailber, hot_status, 
+      hot_modal, last_cooling, last_hotting, 
+      last_vol, last_worktime, last_flow_time, 
+      last_power, last_sumflow, last_hot_entrance, 
+      last_hot_exit,hot_mater_date)
+    values (#{hotId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER}, #{hottableName,jdbcType=VARCHAR}, #{hottableNumber,jdbcType=INTEGER},
+      #{hottableAddress,jdbcType=VARCHAR},#{hotAddress,jdbcType=VARCHAR}, #{hotType,jdbcType=INTEGER}, #{hotAisle,jdbcType=CHAR},
+      #{hotManuCode,jdbcType=INTEGER}, #{cailber,jdbcType=VARCHAR}, #{hotStatus,jdbcType=CHAR},
+      #{hotModal,jdbcType=VARCHAR}, #{lastCooling,jdbcType=VARCHAR}, #{lastHotting,jdbcType=VARCHAR}, 
+      #{lastVol,jdbcType=VARCHAR}, #{lastWorktime,jdbcType=VARCHAR}, #{lastFlowTime,jdbcType=VARCHAR}, 
+      #{lastPower,jdbcType=VARCHAR}, #{lastSumflow,jdbcType=VARCHAR}, #{lastHotEntrance,jdbcType=VARCHAR}, 
+      #{lastHotExit,jdbcType=VARCHAR},#{hotMaterDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective"  useGeneratedKeys="true" keyProperty="hotId"  parameterType="com.hetting.hottable.entity.Hot">
+    insert into hot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotId != null">
+        hot_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="hottableName != null">
+        hotTable_name,
+      </if>
+      <if test="hottableNumber != null">
+        hotTable_number,
+      </if>
+      <if test="hottableAddress != null">
+        hotTable_address,
+      </if>
+      <if test="hotVenderName != null">
+        hotVender_name,
+      </if>
+      <if test="hotAddress != null">
+        hot_address,
+      </if>
+      <if test="hotType != null">
+        hot_type,
+      </if>
+      <if test="hotAisle != null">
+        hot_aisle,
+      </if>
+      <if test="hotManuCode != null">
+        hot_manu_code,
+      </if>
+      <if test="cailber != null">
+        cailber,
+      </if>
+      <if test="hotStatus != null">
+        hot_status,
+      </if>
+      <if test="hotModal != null">
+        hot_modal,
+      </if>
+      <if test="lastCooling != null">
+        last_cooling,
+      </if>
+      <if test="lastHotting != null">
+        last_hotting,
+      </if>
+      <if test="lastVol != null">
+        last_vol,
+      </if>
+      <if test="lastWorktime != null">
+        last_worktime,
+      </if>
+      <if test="lastFlowTime != null">
+        last_flow_time,
+      </if>
+      <if test="lastPower != null">
+        last_power,
+      </if>
+      <if test="lastSumflow != null">
+        last_sumflow,
+      </if>
+      <if test="lastHotEntrance != null">
+        last_hot_entrance,
+      </if>
+      <if test="lastHotExit != null">
+        last_hot_exit,
+      </if>
+      <if test="hotMaterDate != null">
+        hot_mater_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotId != null">
+        #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="hottableName != null">
+        #{hottableName,jdbcType=VARCHAR},
+      </if>
+      <if test="hottableNumber != null">
+        #{hottableNumber,jdbcType=INTEGER},
+      </if>
+      <if test="hottableAddress != null">
+        #{hottableAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotVenderName != null">
+        #{hotVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotAddress != null">
+        #{hotAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotType != null">
+        #{hotType,jdbcType=INTEGER},
+      </if>
+      <if test="hotAisle != null">
+        #{hotAisle,jdbcType=CHAR},
+      </if>
+      <if test="hotManuCode != null">
+        #{hotManuCode,jdbcType=INTEGER},
+      </if>
+      <if test="cailber != null">
+        #{cailber,jdbcType=VARCHAR},
+      </if>
+      <if test="hotStatus != null">
+        #{hotStatus,jdbcType=CHAR},
+      </if>
+      <if test="hotModal != null">
+        #{hotModal,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCooling != null">
+        #{lastCooling,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotting != null">
+        #{lastHotting,jdbcType=VARCHAR},
+      </if>
+      <if test="lastVol != null">
+        #{lastVol,jdbcType=VARCHAR},
+      </if>
+      <if test="lastWorktime != null">
+        #{lastWorktime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlowTime != null">
+        #{lastFlowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSumflow != null">
+        #{lastSumflow,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotEntrance != null">
+        #{lastHotEntrance,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotExit != null">
+        #{lastHotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotMaterDate != null">
+        #{hotMaterDate,jdbcType=TIMESTAMP}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.Hot">
+    update hot
+    <set>
+      <if test="hottableName != null">
+        hotTable_name = #{hottableName,jdbcType=VARCHAR},
+      </if>
+      <if test="hottableNumber != null">
+        hotTable_number = #{hottableNumber,jdbcType=INTEGER},
+      </if>
+      <if test="hottableAddress != null">
+        hotTable_address = #{hottableAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotAddress != null">
+        hot_address = #{hotAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotType != null">
+        hot_type = #{hotType,jdbcType=INTEGER},
+      </if>
+      <if test="hotAisle != null">
+        hot_aisle = #{hotAisle,jdbcType=CHAR},
+      </if>
+      <if test="hotManuCode != null">
+        hot_manu_code = #{hotManuCode,jdbcType=INTEGER},
+      </if>
+      <if test="cailber != null">
+        cailber = #{cailber,jdbcType=VARCHAR},
+      </if>
+      <if test="hotStatus != null">
+        hot_status = #{hotStatus,jdbcType=CHAR},
+      </if>
+      <if test="hotModal != null">
+        hot_modal = #{hotModal,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCooling != null">
+        last_cooling = #{lastCooling,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotting != null">
+        last_hotting = #{lastHotting,jdbcType=VARCHAR},
+      </if>
+      <if test="lastVol != null">
+        last_vol = #{lastVol,jdbcType=VARCHAR},
+      </if>
+      <if test="lastWorktime != null">
+        last_worktime = #{lastWorktime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlowTime != null">
+        last_flow_time = #{lastFlowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        last_power = #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSumflow != null">
+        last_sumflow = #{lastSumflow,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotEntrance != null">
+        last_hot_entrance = #{lastHotEntrance,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotExit != null">
+        last_hot_exit = #{lastHotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotMaterDate != null">
+        hot_mater_date = #{hotMaterDate,jdbcType=TIMESTAMP}
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.Hot">
+    update hot
+    set hotTable_name = #{hottableName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      hotTable_number = #{hottableNumber,jdbcType=INTEGER},
+      hotTable_address = #{hottableAddress,jdbcType=VARCHAR},
+      hot_address = #{hotAddress,jdbcType=VARCHAR},
+      hotVender_name = #{hotVenderName,jdbcType=VARCHAR},
+      hot_type = #{hotType,jdbcType=INTEGER},
+      hot_aisle = #{hotAisle,jdbcType=CHAR},
+      hot_manu_code = #{hotManuCode,jdbcType=INTEGER},
+      cailber = #{cailber,jdbcType=VARCHAR},
+      hot_status = #{hotStatus,jdbcType=CHAR},
+      hot_modal = #{hotModal,jdbcType=VARCHAR},
+      last_cooling = #{lastCooling,jdbcType=VARCHAR},
+      last_hotting = #{lastHotting,jdbcType=VARCHAR},
+      last_vol = #{lastVol,jdbcType=VARCHAR},
+      last_worktime = #{lastWorktime,jdbcType=VARCHAR},
+      last_flow_time = #{lastFlowTime,jdbcType=VARCHAR},
+      last_power = #{lastPower,jdbcType=VARCHAR},
+      last_sumflow = #{lastSumflow,jdbcType=VARCHAR},
+      last_hot_entrance = #{lastHotEntrance,jdbcType=VARCHAR},
+      last_hot_exit = #{lastHotExit,jdbcType=VARCHAR},
+      hot_mater_date = #{hotMaterDate,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <delete id="deleteById" parameterType="java.util.List">
+    delete from
+     hot where user_id = #{userId}
+  </delete>
+  <delete id="deleteByConcentId" parameterType="java.util.List">
+    delete from
+     hot where concent_id = #{concentId}
+  </delete>
+  <select id="unfinishedFacility" parameterType="com.hetting.hottable.entity.Alarm" resultMap="HotResultMap">
+    select u.user_id,u.user_address,u.user_cell,u.user_building,u.user_doorNum,h.hot_id,h.hot_status,a.occur_time,a.dispose_status,hot_code
+        from user u left join hot h on u.user_id = h.user_id left join alarm a on h.hot_id = a.hot_id
+    where h.hot_status = 2 and a.dispose_status = 0
+  </select>
+  <select id="selectByUserId" parameterType="java.util.List" resultType="java.lang.String">
+    select distinct c.concent_code from hot h left join concent c on c.concent_id = h.concent_id where h.user_id in
+    <foreach collection="list" item="ids" open="(" close=")" separator="," index="">
+      #{ids}
+    </foreach>
+  </select>
+
+  <update id="updateByImportData" parameterType="com.hetting.hottable.entity.Hot">
+    update hot
+    <set>
+      <if test="hottableName != null">
+        hotTable_name = #{hottableName,jdbcType=VARCHAR},
+      </if>
+      <if test="hottableNumber != null">
+        hotTable_number = #{hottableNumber,jdbcType=INTEGER},
+      </if>
+      <if test="hottableAddress != null">
+        hotTable_address = #{hottableAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotAddress != null">
+        hot_address = #{hotAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotType != null">
+        hot_type = #{hotType,jdbcType=INTEGER},
+      </if>
+      <if test="hotAisle != null">
+        hot_aisle = #{hotAisle,jdbcType=CHAR},
+      </if>
+      <if test="hotManuCode != null">
+        hot_manu_code = #{hotManuCode,jdbcType=INTEGER},
+      </if>
+      <if test="cailber != null">
+        cailber = #{cailber,jdbcType=VARCHAR},
+      </if>
+      <if test="hotStatus != null">
+        hot_status = #{hotStatus,jdbcType=CHAR},
+      </if>
+      <if test="hotModal != null">
+        hot_modal = #{hotModal,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCooling != null">
+        last_cooling = #{lastCooling,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotting != null">
+        last_hotting = #{lastHotting,jdbcType=VARCHAR},
+      </if>
+      <if test="lastVol != null">
+        last_vol = #{lastVol,jdbcType=VARCHAR},
+      </if>
+      <if test="lastWorktime != null">
+        last_worktime = #{lastWorktime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlowTime != null">
+        last_flow_time = #{lastFlowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        last_power = #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSumflow != null">
+        last_sumflow = #{lastSumflow,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotEntrance != null">
+        last_hot_entrance = #{lastHotEntrance,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotExit != null">
+        last_hot_exit = #{lastHotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotMaterDate != null">
+        hot_mater_date = #{hotMaterDate,jdbcType=TIMESTAMP}
+      </if>
+    </set>
+    where hot_address = #{hotAddress,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllMessage" resultMap="BaseResultMap">
+    select sum(h.last_hotting) as last_hotting,sum(h.last_vol) as last_vol from hot h
+    left join user u on h.user_id = u.user_id left join plot_message pm on u.plot_id = pm.plot_id
+  </select>
+  <select id="hotAndContrast" parameterType="com.hetting.hottable.entity.DataContrastVO" resultMap="BaseResultMap">
+    select sum(h.last_hotting) as last_hotting,sum(h.last_vol) as last_vol from hot h
+    left join user u on h.user_id = u.user_id left join plot_message pm on u.plot_id = pm.plot_id
+    <where>
+      <if test="plotAddress != '' and plotAddress != null">
+        and pm.plot_address = #{plotAddress}
+      </if>
+      <if test="userBuilding != '' and userBuilding != null">
+        and u.user_building = #{userBuilding}
+      </if>
+      <if test="userDoorNum != '' and userDoorNum != null">
+        and u.user_doorNum = #{userDoorNum}
+      </if>
+    </where>
+  </select>
+  <select id="hotAndContrastTwo" parameterType="com.hetting.hottable.entity.DataContrastVO" resultMap="BaseResultMap">
+    select sum(h.last_hotting) as last_power,sum(h.last_vol) as last_sumflow from hot h
+    left join user u on h.user_id = u.user_id left join plot_message pm on u.plot_id = pm.plot_id
+    <where>
+      <if test="dbPlotAddress != '' and dbPlotAddress != null">
+        and pm.plot_address = #{dbPlotAddress}
+      </if>
+      <if test="dbUserBuilding != '' and dbUserBuilding != null">
+        and u.user_building = #{dbUserBuilding}
+      </if>
+      <if test="dbUserDoorNum !='' and dbUserDoorNum != null ">
+        and u.user_doorNum = #{dbUserDoorNum}
+      </if>
+    </where>
+  </select>
+  <select id="findByJzqCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select h.hot_id,h.user_id from concent c left join hot h on c.concent_id = h.concent_id left join valve v on c.concent_id = v.concent_id
+    <where>
+      <if test="concentCode !='' and concentCode != null">
+        and concent_code = #{concentCode}
+      </if>
+    </where>
+    group by h.user_id
+  </select>
+  <!-- 热表信息表获取热表id和用户id -->
+  <select id="selectHotIdAndUserId" resultMap="BaseResultMap">
+    select hot_id,user_id from user
+  </select>
+
+  <!-- MQTT  -->
+  <insert id="insertMqttHot" parameterType="com.hetting.hottable.entity.Hot">
+    insert into hot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hotId != null">
+        hot_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="concentId != null">
+        concent_id,
+      </if>
+      <if test="hottableName != null">
+        hotTable_name,
+      </if>
+      <if test="hottableNumber != null">
+        hotTable_number,
+      </if>
+      <if test="hottableAddress != null">
+        hotTable_address,
+      </if>
+      <if test="hotVenderName != null">
+        hotVender_name,
+      </if>
+      <if test="hotAddress != null">
+        hot_address,
+      </if>
+      <if test="hotType != null">
+        hot_type,
+      </if>
+      <if test="hotAisle != null">
+        hot_aisle,
+      </if>
+      <if test="hotManuCode != null">
+        hot_manu_code,
+      </if>
+      <if test="cailber != null">
+        cailber,
+      </if>
+      <if test="hotStatus != null">
+        hot_status,
+      </if>
+      <if test="hotModal != null">
+        hot_modal,
+      </if>
+      <if test="lastCooling != null">
+        last_cooling,
+      </if>
+      <if test="lastHotting != null">
+        last_hotting,
+      </if>
+      <if test="lastVol != null">
+        last_vol,
+      </if>
+      <if test="lastWorktime != null">
+        last_worktime,
+      </if>
+      <if test="lastFlowTime != null">
+        last_flow_time,
+      </if>
+      <if test="lastPower != null">
+        last_power,
+      </if>
+      <if test="lastSumflow != null">
+        last_sumflow,
+      </if>
+      <if test="lastHotEntrance != null">
+        last_hot_entrance,
+      </if>
+      <if test="lastHotExit != null">
+        last_hot_exit,
+      </if>
+      <if test="hotMaterDate != null">
+        hot_mater_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hotId != null">
+        #{hotId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="concentId != null">
+        #{concentId,jdbcType=INTEGER},
+      </if>
+      <if test="hottableName != null">
+        #{hottableName,jdbcType=VARCHAR},
+      </if>
+      <if test="hottableNumber != null">
+        #{hottableNumber,jdbcType=INTEGER},
+      </if>
+      <if test="hottableAddress != null">
+        #{hottableAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotVenderName != null">
+        #{hotVenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="hotAddress != null">
+        #{hotAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hotType != null">
+        #{hotType,jdbcType=INTEGER},
+      </if>
+      <if test="hotAisle != null">
+        #{hotAisle,jdbcType=CHAR},
+      </if>
+      <if test="hotManuCode != null">
+        #{hotManuCode,jdbcType=INTEGER},
+      </if>
+      <if test="cailber != null">
+        #{cailber,jdbcType=VARCHAR},
+      </if>
+      <if test="hotStatus != null">
+        #{hotStatus,jdbcType=CHAR},
+      </if>
+      <if test="hotModal != null">
+        #{hotModal,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCooling != null">
+        #{lastCooling,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotting != null">
+        #{lastHotting,jdbcType=VARCHAR},
+      </if>
+      <if test="lastVol != null">
+        #{lastVol,jdbcType=VARCHAR},
+      </if>
+      <if test="lastWorktime != null">
+        #{lastWorktime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastFlowTime != null">
+        #{lastFlowTime,jdbcType=VARCHAR},
+      </if>
+      <if test="lastPower != null">
+        #{lastPower,jdbcType=VARCHAR},
+      </if>
+      <if test="lastSumflow != null">
+        #{lastSumflow,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotEntrance != null">
+        #{lastHotEntrance,jdbcType=VARCHAR},
+      </if>
+      <if test="lastHotExit != null">
+        #{lastHotExit,jdbcType=VARCHAR},
+      </if>
+      <if test="hotMaterDate != null">
+        #{hotMaterDate,jdbcType=TIMESTAMP}
+      </if>
+    </trim>
+  </insert>
+</mapper>

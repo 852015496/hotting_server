@@ -1,0 +1,22 @@
+
+#mq配置
+com:
+  mqtt:
+
+    host: tcp://42.159.87.162:1883
+    clientid: JavaSample
+    topic: demo/topics
+    timeout: 10
+    keepalive: 20
+    maxReconnectTimes: 5
+    reconnInterval: 1
+    prefixUrl: http://42.159.87.162:18083
+
+  server:
+  port: 9090
+  
+
+  {"Edge_ID":"edge server sn","TimeStamp":1572342232,"dataRecords": [{"status":"success","rcdType":"热表法","meterFac":0,"meterChn":"MBus:4","meterTypeAddr":"2091001002","shareMeterRcd":0,"roomArea":67,"valveFac":0,"valveChn":0,"valveTypeAddr":"0001","arrFlag":"不欠费","valveWorkMode":"自温控阀","mode":"无更新","rcdNum":"","cold":"", "hot":"","power":"","flux":"","vol":"","intemp":"","outtemp":"","worktime":"","stat1":"","stat2":"","coldunit":"","hotunit":"","openRate":"","stat":"","vintemp":"","vouttemp":"","ralval":{"ralval":[1,3,7,9]},"opentime":"","shareHeat":"",}]}
+
+
+  {"Edge_ID":"edge server sn","Name":"集中器测试机1","TimeStamp":157234221231,"Address":"xx小区xx号楼1-101","Location":{"Address":"xx省xx市xx区xx街道xxx","Latitude":43.01,"Longtitude":161.01},"HW version":"B1.1","OS version":"Ubuntu 2020-03-08:11:35:47","SW version":"v1.1","Status":"Online/Failure","BUS":[{"NAME":"MBUS","Status":"Enabled","CAPACITY":1},{"NAME":"485","Status":"Enabled","CAPACITY":1},{"NAME":"433","Status":"Disabled","CAPACITY":1},{"NAME":"UART","Status":"Enabled","CAPACITY ":4}],"Device":[{"MeterID":"91002235","meterStatus":"1","ValveID":"19000003","valveStatus":"1",},{"MeterID":"91002236","meterStatus":"1","ValveID":"19000006","valveStatus":"1"}]}

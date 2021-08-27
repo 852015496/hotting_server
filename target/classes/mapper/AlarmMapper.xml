@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.AlarmMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.Alarm">
+    <id column="alarm_id" jdbcType="BIGINT" property="alarmId" />
+    <result column="device_code" jdbcType="VARCHAR" property="deviceCode" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="housing" jdbcType="VARCHAR" property="housing" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="gps_latitude" jdbcType="VARCHAR" property="gpsLatitude" />
+    <result column="gps_long" jdbcType="VARCHAR" property="gpsLong" />
+    <result column="device_status" jdbcType="INTEGER" property="deviceStatus" />
+    <result column="occur_time" jdbcType="TIMESTAMP" property="occurTime" />
+    <result column="dispose_status" jdbcType="INTEGER" property="disposeStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    alarm_id, device_code, device_name, address, gps_latitude, gps_long, device_status, 
+    occur_time, dispose_status, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from alarm
+    where alarm_id = #{alarmId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from alarm
+    where alarm_id = #{alarmId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.Alarm">
+    insert into alarm (alarm_id, device_code, device_name, 
+      address, gps_latitude, gps_long, 
+      device_status, occur_time, dispose_status, 
+      update_time)
+    values (#{alarmId,jdbcType=BIGINT}, #{deviceCode,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{gpsLatitude,jdbcType=VARCHAR}, #{gpsLong,jdbcType=VARCHAR}, 
+      #{deviceStatus,jdbcType=INTEGER}, #{occurTime,jdbcType=TIMESTAMP}, #{disposeStatus,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.Alarm">
+    insert into alarm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alarmId != null">
+        alarm_id,
+      </if>
+      <if test="deviceCode != null">
+        device_code,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="gpsLatitude != null">
+        gps_latitude,
+      </if>
+      <if test="gpsLong != null">
+        gps_long,
+      </if>
+      <if test="deviceStatus != null">
+        device_status,
+      </if>
+      <if test="occurTime != null">
+        occur_time,
+      </if>
+      <if test="disposeStatus != null">
+        dispose_status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alarmId != null">
+        #{alarmId,jdbcType=BIGINT},
+      </if>
+      <if test="deviceCode != null">
+        #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsLatitude != null">
+        #{gpsLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsLong != null">
+        #{gpsLong,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceStatus != null">
+        #{deviceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="occurTime != null">
+        #{occurTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disposeStatus != null">
+        #{disposeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.Alarm">
+    update alarm
+    <set>
+      <if test="deviceCode != null">
+        device_code = #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsLatitude != null">
+        gps_latitude = #{gpsLatitude,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsLong != null">
+        gps_long = #{gpsLong,jdbcType=VARCHAR},
+      </if>
+      <if test="occurTime != null">
+        occur_time = #{occurTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disposeStatus != null">
+        dispose_status = #{disposeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where alarm_id = #{alarmId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.Alarm">
+    update alarm
+    set device_code = #{deviceCode,jdbcType=VARCHAR},
+      device_name = #{deviceName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      gps_latitude = #{gpsLatitude,jdbcType=VARCHAR},
+      gps_long = #{gpsLong,jdbcType=VARCHAR},
+      device_status = #{deviceStatus,jdbcType=INTEGER},
+      occur_time = #{occurTime,jdbcType=TIMESTAMP},
+      dispose_status = #{disposeStatus,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where alarm_id = #{alarmId,jdbcType=BIGINT}
+  </update>
+  <insert id="saveFacility" parameterType="com.hetting.hottable.entity.Alarm" keyProperty="alarm_id" useGeneratedKeys="true">
+    insert into alarm (device_name,device_code,housing,address,device_status,gps_long,gps_latitude,occur_time,dispose_status) select * from
+    (select "集中器" as device_name,c.concent_code as device_code,c.housing,concat(c.housing,c.building,"楼号",c.cell,"单元",c.roomNum)as address,c.concent_status as device_status,
+    pm.gps_long as gps_long,pm.gps_latitude as gps_latitude,c.report_time as occur_time,"1" as dispose_status
+    from plot_message pm left join concent c on pm.plot_id = c.plot_id where c.concent_status != 0
+    union all
+    select "阀门" as device_name,v.valve_address as device_code,pm.plot_address as housing,concat(pm.plot_address,u.user_building,"楼号",u.user_cell,"单元",u.user_doorNum) as address,v.valve_status as device_status,
+    pm.gps_long as gps_long,pm.gps_latitude as gps_latitude,v.report_time as occur_time,"1" as dispose_status
+    from user u left join valve v on u.user_id = v.user_id left join plot_message pm on u.plot_id = pm.plot_id
+    where v.valve_status != 0 and v.valve_status != 20
+    union all
+    select  "热表" as device_name,h.hot_address as device_code,pm.plot_address as housing,concat(pm.plot_address,u.user_building,"楼号",u.user_cell,"单元",u.user_doorNum) as address,h.hot_status as device_status,
+    pm.gps_long as gps_long,pm.gps_latitude as gps_latitude,h.report_time as occur_time,"1" as dispose_status
+    from user u left join hot h on u.user_id = h.user_id left join plot_message pm on u.plot_id = pm.plot_id
+    where h.hot_status != 0) am where not EXISTS (select * from alarm a where a.device_code = am.device_code and a.dispose_status != 3)
+    <selectKey resultType="Integer" keyProperty="alarm_id">
+              <![CDATA[SELECT LAST_INSERT_ID() AS ID ]]>
+              <!-- 该方法LAST_INSERT_ID()与数据库连接绑定，同属统一会话级别，不会发生上述MS SQL Server的函数问题。 -->
+    </selectKey>
+  </insert>
+  <select id="unfinishedFacility" parameterType="com.hetting.hottable.entity.Alarm" resultMap="BaseResultMap">
+    select * from alarm where dispose_status != 3
+    <if test="deviceCode !='' and deviceCode != null ">
+      and device_code = #{deviceCode}
+    </if>
+  </select>
+  <select id="processedFacility" parameterType="com.hetting.hottable.entity.Alarm" resultMap="BaseResultMap">
+    select * from alarm where dispose_status = 3
+    <if test="deviceCode !='' and deviceCode != null ">
+        and device_code = #{deviceCode}
+    </if>
+  </select>
+  <select id="alarmsImg" parameterType="com.hetting.hottable.entity.Alarm" resultMap="BaseResultMap">
+    select date_format(occur_time,'%m-%d') as date,count(*) as number from alarm where occur_time BETWEEN date_sub(curdate(), INTERVAL 6 DAY) and NOW() group by date
+  </select>
+  <select id="facilityList" parameterType="com.hetting.hottable.entity.Alarm" resultMap="BaseResultMap">
+    select * from alarm
+  </select>
+  <select id="queryList" resultMap="BaseResultMap">
+    select alarm_id,occur_time from alarm
+  </select>
+  <update id="updateOccurTime" parameterType="com.hetting.hottable.entity.Alarm">
+    update alarm
+    <set>
+      <if test="occurTime != null">
+        occur_time = #{occurTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where alarm_id = #{alarmId,jdbcType=BIGINT}
+  </update>
+</mapper>

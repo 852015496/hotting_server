@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.ProtocolMaintainMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.ProtocolMaintain">
+    <id column="protocol_id" jdbcType="INTEGER" property="protocolId" />
+    <result column="protocol_code" jdbcType="VARCHAR" property="protocolCode" />
+    <result column="protocol_name" jdbcType="VARCHAR" property="protocolName" />
+    <result column="protocol_type" jdbcType="INTEGER" property="protocolType" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    protocol_id, protocol_code , protocol_name, protocol_type, creat_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from protocol_maintian
+    where protocol_id = #{protocolId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from protocol_maintian
+    where protocol_id = #{protocolId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.ProtocolMaintain">
+    insert into protocol_maintian (protocol_id, protocol_code , protocol_name, protocol_type,
+      creat_time)
+    values (#{protocolId,jdbcType=INTEGER},#{protocolCode,jdbcType=VARCHAR}, #{protocolName,jdbcType=VARCHAR}, #{protocolType,jdbcType=INTEGER},
+      #{creatTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hetting.hottable.entity.ProtocolMaintain">
+    insert into protocol_maintian
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="protocolId != null">
+        protocol_id,
+      </if>
+      <if test="protocolCode != null">
+        protocol_code,
+      </if>
+      <if test="protocolName != null">
+        protocol_name,
+      </if>
+      <if test="protocolType != null">
+        protocol_type,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="protocolId != null">
+        #{protocolId,jdbcType=INTEGER},
+      </if>
+      <if test="protocolCode != null">
+        #{protocolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolName != null">
+        #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolType != null">
+        #{protocolType,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.ProtocolMaintain">
+    update protocol_maintian
+    <set>
+      <if test="protocolCode != null">
+        protocol_code = #{protocolCode,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolName != null">
+        protocol_name = #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolType != null">
+        protocol_type = #{protocolType,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where protocol_id = #{protocolId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.ProtocolMaintain">
+    update protocol_maintian
+    set protocol_name = #{protocolName,jdbcType=VARCHAR},
+      protocol_code = #{protocolCode,jdbcType=VARCHAR},
+      protocol_type = #{protocolType,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP}
+    where protocol_id = #{protocolId,jdbcType=INTEGER}
+  </update>
+  <select id="queryList" parameterType="com.hetting.hottable.entity.ProtocolMaintain" resultMap="BaseResultMap">
+    select * from protocol_maintian
+    <where>
+        <if test="protocolName != '' and protocolName != null ">
+          and protocol_name like concat('%', #{protocolName,jdbcType = VARCHAR},'%')
+        </if>
+    </where>
+  </select>
+  <delete id="deleteAllById" parameterType="java.util.List">
+    delete from protocol_maintian where protocol_id in
+    <foreach item="id" collection="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+  <select id="protoColName" parameterType="com.hetting.hottable.entity.ProtocolMaintain" resultMap="BaseResultMap">
+    select protocol_name from protocol_maintian
+  </select>
+</mapper>

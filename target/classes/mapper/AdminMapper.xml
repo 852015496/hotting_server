@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hetting.hottable.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.hetting.hottable.entity.Admin">
+    <id column="admin_id" jdbcType="INTEGER" property="adminId" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="admin_userName" jdbcType="VARCHAR" property="adminUserName" />
+    <result column="admin_postbox" jdbcType="VARCHAR" property="adminPostbox" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_role" jdbcType="VARCHAR" property="userRole" />
+    <result column="admin_phone" jdbcType="CHAR" property="adminPhone" />
+    <result column="admin_pass" jdbcType="VARCHAR" property="adminPass" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="admin_describe" jdbcType="VARCHAR" property="adminDescribe" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    admin_id, company_id, admin_userName, admin_postbox, admin_phone, admin_pass, create_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin_table
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from admin_table
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hetting.hottable.entity.Admin">
+    insert into admin_table (admin_id, company_id, admin_userName, 
+      admin_postbox, admin_phone, admin_pass, 
+      create_date)
+    values (#{adminId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{adminUserName,jdbcType=VARCHAR}, 
+      #{adminPostbox,jdbcType=VARCHAR}, #{adminPhone,jdbcType=CHAR}, #{adminPass,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="adminId" parameterType="com.hetting.hottable.entity.Admin">
+    insert into admin_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="adminUserName != null">
+        admin_userName,
+      </if>
+      <if test="userName != null">
+        user_Name,
+      </if>
+      <if test="adminPostbox != null">
+        admin_postbox,
+      </if>
+      <if test="adminPhone != null">
+        admin_phone,
+      </if>
+      <if test="userRole != null">
+        user_role,
+      </if>
+      <if test="adminPass != null">
+        admin_pass,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="adminDescribe != null">
+        admin_describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="adminUserName != null">
+        #{adminUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPostbox != null">
+        #{adminPostbox,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        #{adminPhone,jdbcType=CHAR},
+      </if>
+      <if test="userRole != null">
+        #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPass != null">
+        #{adminPass,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminDescribe != null">
+        #{adminDescribe,jdbcType=VARCHAR},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hetting.hottable.entity.Admin">
+    update admin_table
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="adminUserName != null">
+        admin_userName = #{adminUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null">
+        admin_Name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPostbox != null">
+        admin_postbox = #{adminPostbox,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPhone != null">
+        admin_phone = #{adminPhone,jdbcType=CHAR},
+      </if>
+      <if test="userRole != null">
+        user_role = #{userRole,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPass != null">
+        admin_pass = #{adminPass,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hetting.hottable.entity.Admin">
+    update admin_table
+    set company_id = #{companyId,jdbcType=INTEGER},
+      admin_userName = #{adminUserName,jdbcType=VARCHAR},
+      admin_postbox = #{adminPostbox,jdbcType=VARCHAR},
+      admin_phone = #{adminPhone,jdbcType=CHAR},
+      admin_pass = #{adminPass,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where admin_id = #{adminId,jdbcType=INTEGER}
+  </update>
+
+  <select id="verifyAdmin" parameterType="com.hetting.hottable.entity.Admin" resultMap="BaseResultMap">
+		select
+        <include refid="Base_Column_List" />
+		from admin_table where admin_userName = #{adminUserName}
+  </select>
+  <select id="companyList" parameterType="com.hetting.hottable.entity.Admin" resultMap="BaseResultMap">
+    select * from admin_table
+  </select>
+  <select id="adminRoles" parameterType="com.hetting.hottable.entity.Admin" resultMap="BaseResultMap">
+    select * from admin_table where admin_userName = #{adminUserName}
+  </select>
+  <delete id="deleteAllCompanyId" parameterType="java.util.List">
+    delete from admin_table where admin_id in
+    <foreach item="id" collection="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+  <select id="verifyUserPhone" parameterType="com.hetting.hottable.entity.Admin" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from admin_table where admin_phone = #{adminPhone}
+  </select>
+  <select id="verifyUserPostPox" parameterType="com.hetting.hottable.entity.Admin" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from admin_table where admin_postbox = #{adminPostbox}
+  </select>
+  <select id="adminQuery" parameterType="com.hetting.hottable.entity.Admin" resultMap="BaseResultMap">
+    select * from admin_table
+  </select>
+  <update id="updateUserPass" parameterType="com.hetting.hottable.entity.Admin">
+update admin_table
+    set admin_pass = #{adminPass,jdbcType=VARCHAR}
+    where admin_userName = #{adminUserName,jdbcType=VARCHAR}
+  </update>
+  <select id="verifyAdminName" parameterType="com.hetting.hottable.entity.Admin" resultMap="BaseResultMap">
+    select * from admin_table where admin_userName = #{adminUserName}
+  </select>
+  <select id="queryUserList" parameterType="com.hetting.hottable.export.Entity.ExportUserEntity" resultMap="BaseResultMap">
+    select * from admin_table
+  </select>
+</mapper>
